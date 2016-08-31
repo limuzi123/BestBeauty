@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_background">
+        <RelativeLayout
+            android:id="@+id/relative_layout_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/six"
+                android:text="@string/choose_sex"
+                android:textColor="@color/color_text_color"
+                android:textSize="@dimen/eighteen" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_view_sex"
+                android:layout_marginTop="@dimen/thirty_five"
+                android:background="@mipmap/line" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative_layout_boy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_layout_choose">
+
+            <TextView
+                android:id="@+id/text_view_men"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/five"
+                android:text="@string/boy"
+                android:textColor="@color/color"
+                android:textSize="@dimen/twenty" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_view_sex"
+                android:layout_marginTop="@dimen/thirty_five"
+                android:background="@mipmap/line" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative_layout_gril"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_layout_boy">
+
+            <TextView
+                android:id="@+id/text_view_women"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/five"
+                android:text="@string/gril"
+                android:textColor="@color/color"
+                android:textSize="@dimen/twenty" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_view_sex"
+                android:layout_marginTop="@dimen/thirty_five"
+                android:background="@mipmap/line" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative_layout_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_layout_gril">
+
+            <TextView
+                android:id="@+id/text_view_privary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/five"
+                android:text="@string/privary"
+                android:textColor="@color/color"
+                android:textSize="@dimen/twenty" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_view_sex"
+                android:layout_marginTop="@dimen/thirty_five"
+                android:background="@mipmap/line" />
+        </RelativeLayout>
+</LinearLayout>

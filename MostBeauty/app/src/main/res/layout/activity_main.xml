@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/re"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".activity.MainActivity">
+
+    <FrameLayout
+
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+    <RadioGroup
+        android:background="@color/color_background"
+        android:id="@+id/main_radio"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_main_height_bar"
+        android:orientation="horizontal"
+     android:layout_alignParentBottom="true"
+
+       >
+        <RadioButton
+            android:id="@+id/pictal_radio"
+            android:layout_width="@dimen/activity_main_radio_marginTop"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            style="@style/style"
+            android:drawableTop="@drawable/shape_pictorial_image"
+            android:textColor="@drawable/shape_color"
+            android:text="@string/text_huabao_button"/>
+        <RadioButton
+            android:id="@+id/havething_radio"
+            android:layout_width="@dimen/activity_main_radio_marginTop"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            style="@style/style"
+            android:drawableTop="@drawable/shape_havething_image"
+            android:textColor="@drawable/shape_color"
+            android:text="@string/text_youwu"/>
+        <RadioButton
+            android:id="@+id/stailst_radio"
+            android:layout_width="@dimen/activity_main_radio_marginTop"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            style="@style/style"
+            android:drawableTop="@drawable/shape_stailst_shape"
+            android:textColor="@drawable/shape_color"
+            android:text="@string/text_sheji_button"/>
+        <RadioButton
+            android:id="@+id/my_radio"
+            android:layout_width="@dimen/activity_main_radio_marginTop"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            style="@style/style"
+            android:drawableTop="@drawable/shape_my_imgae"
+            android:textColor="@drawable/shape_color"
+            android:text="@string/text_my_button"/>
+
+
+    </RadioGroup>
+</RelativeLayout>

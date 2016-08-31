@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MostBeauty</string>
+    <string name="text_huabao_button">画报</string>
+    <string name="text_my_button">我</string>
+    <string name="text_sheji_button">设计师</string>
+    <string name="text_youwu">有物</string>
+    <string name="text_material">编辑资料</string>
+    <string name="material_head">更改头像</string>
+    <string name="material_nickname">昵称</string>
+    <string name="text_sex">性别</string>
+    <string name="text_view_birthday">生日</string>
+    <string name="binding_mailbox">绑定邮箱</string>
+    <string name="mailbox">邮箱</string>
+    <string name="choose_sex">选择性别</string>
+    <string name="boy">男</string>
+    <string name="gril">女</string>
+    <string name="privary">保密</string>
+</resources>
