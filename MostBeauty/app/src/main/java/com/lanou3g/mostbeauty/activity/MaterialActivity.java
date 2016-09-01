@@ -371,9 +371,9 @@ public class MaterialActivity extends BaseActivity implements View.OnClickListen
         editTextNickName.setText(nickname);
         String mailbox = sharedPreferences.getString("MAILBOX","");
         editTextMailbox.setText(mailbox);
-        String sex = sharedPreferences.getString("SEX","");
+        String sex = sharedPreferences.getString("SEX","选择性别");
         textViewSex.setText(sex);
-        String birthday = sharedPreferences.getString("BIRTHDAY","");
+        String birthday = sharedPreferences.getString("BIRTHDAY","选择生日");
         Log.d("MainActivity", "999999999"+birthday);
         textView.setText(birthday);
     }
