@@ -1,7 +1,10 @@
 package com.lanou3g.mostbeauty.activity;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -10,6 +13,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +23,11 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lanou3g.mostbeauty.R;
 import com.lanou3g.mostbeauty.base.BaseActivity;
@@ -46,6 +54,9 @@ public class MaterialActivity extends BaseActivity implements View.OnClickListen
     private Bitmap head;//头像Bitmap
     private static String path = "/sdcard/myHead";//sd卡路径
 
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+    private EditText editTextNickName,editTextMailbox;
     @Override
     protected int getLayout() {
         return R.layout.material_activity;
@@ -57,6 +68,8 @@ public class MaterialActivity extends BaseActivity implements View.OnClickListen
         textView = (TextView) findViewById(R.id.text_view_birthday);
         textViewSex = (TextView) findViewById(R.id.text_view_sex);
         imageViewHead = (ImageView) findViewById(R.id.image_head);
+        editTextMailbox = (EditText) findViewById(R.id.edit_text_mailbox);
+        editTextNickName = (EditText) findViewById(R.id.text_view_nickname);
         imageViewHead.setOnClickListener(this);
         textViewSex.setOnClickListener(this);
         textView.setOnClickListener(this);
@@ -77,8 +90,11 @@ public class MaterialActivity extends BaseActivity implements View.OnClickListen
              *
              */
         }
+        sharedPreferences = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         showPopUp();
         choosePopUp();
+        Storage();
     }
 
     public void showDatePickerDialog() {
@@ -92,6 +108,8 @@ public class MaterialActivity extends BaseActivity implements View.OnClickListen
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                         textView.setText(year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                        editor.putString("BIRTHDAY",year + "-" + (monthOfYear + 1) + "-" + dayOfMonth);
+                        editor.commit();
                     }
                 }, mYear, mMoth, mDay);
         datePickerDialog.show();
@@ -166,6 +184,7 @@ public class MaterialActivity extends BaseActivity implements View.OnClickListen
         switch (v.getId()) {
             case R.id.image_back_material:
                 finish();
+                Toast.makeText(this, "资料保存成功", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.text_view_birthday:
                 showDatePickerDialog();
@@ -285,6 +304,78 @@ public class MaterialActivity extends BaseActivity implements View.OnClickListen
             }
 
         }
+    }
+    //边输入边存储
+    private void Storage(){
+        editTextNickName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String str = editTextNickName.getText().toString().trim();
+                editor.putString("NICKNAME",str);
+                editor.commit();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        editTextMailbox.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String string = editTextMailbox.getText().toString().trim();
+                editor.putString("MAILBOX",string);
+                editor.commit();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        textViewSex.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String ss = textViewSex.getText().toString();
+                editor.putString("SEX",ss);
+                editor.commit();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        sharedPreferences = getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
+        String nickname = sharedPreferences.getString("NICKNAME","");
+        editTextNickName.setText(nickname);
+        String mailbox = sharedPreferences.getString("MAILBOX","");
+        editTextMailbox.setText(mailbox);
+        String sex = sharedPreferences.getString("SEX","");
+        textViewSex.setText(sex);
+        String birthday = sharedPreferences.getString("BIRTHDAY","");
+        Log.d("MainActivity", "999999999"+birthday);
+        textView.setText(birthday);
     }
 
 }
