@@ -192,6 +192,7 @@ public class MaterialActivity extends BaseActivity implements View.OnClickListen
             case R.id.text_view_sex:
                 mPop.showAtLocation(v, Gravity.BOTTOM, 0, 0);
                 backgroundAlpha(0.7f);
+
                 break;
             case R.id.text_view_men:
                 textViewSex.setText("男");
@@ -371,9 +372,9 @@ public class MaterialActivity extends BaseActivity implements View.OnClickListen
         editTextNickName.setText(nickname);
         String mailbox = sharedPreferences.getString("MAILBOX","");
         editTextMailbox.setText(mailbox);
-        String sex = sharedPreferences.getString("SEX","");
+        String sex = sharedPreferences.getString("SEX","选择性别");
         textViewSex.setText(sex);
-        String birthday = sharedPreferences.getString("BIRTHDAY","");
+        String birthday = sharedPreferences.getString("BIRTHDAY","选择生日");
         Log.d("MainActivity", "999999999"+birthday);
         textView.setText(birthday);
     }

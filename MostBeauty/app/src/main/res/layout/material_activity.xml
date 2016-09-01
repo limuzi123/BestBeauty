@@ -102,8 +102,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/twenty"
             android:layout_marginTop="@dimen/twenty"
-            android:background="@null"
-            android:text="女"
+            android:text="@string/choose_sexs"
             android:textColor="@color/color_text_color"
             android:textSize="@dimen/eighteen" />
 
@@ -138,8 +137,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/twenty"
             android:layout_marginTop="@dimen/twenty"
-            android:background="@null"
-            android:text="1995-03-15"
+            android:text="@string/choose_birthday"
             android:textColor="@color/color_text_color"
             android:textSize="@dimen/eighteen" />
 

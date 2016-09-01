@@ -15,4 +15,7 @@
     <string name="boy">男</string>
     <string name="gril">女</string>
     <string name="privary">保密</string>
+    <string name="choose_birthday">选择生日</string>
+    <string name="girl">女</string>
+    <string name="choose_sexs">选择性别</string>
 </resources>
