@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.lanou3g.mostbeauty.Bean.HaveThingsHaveBean;
 import com.lanou3g.mostbeauty.R;
@@ -59,17 +60,26 @@ public class HaveThingsHaveAdapter extends BaseAdapter {
         }
 
         getNetData(id[position], holder);
-        // TODO: 16/8/31 listView第一个有尾布局 都有头布局
+
+
+
+
+
+
+
         return convertView;
     }
 
 
     public class ViewHolder {
         private ListView listView;
-
+        private TextView date;
         public ViewHolder(View view) {
             listView = (ListView) view.findViewById(R.id.adapter_have_things_have_lv);
-
+            // TODO: 16/8/31 listView第一个有尾布局 都有头布局
+            View headView = LayoutInflater.from(context).inflate(R.layout.adapter_have_things_have_head,null);
+            date= (TextView) headView.findViewById(R.id.adapter_have_things_have_head_date);
+            listView.addHeaderView(headView);
         }
     }
 

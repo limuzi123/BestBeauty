@@ -25,6 +25,9 @@ public class HaveThingsFragment extends BaseFragment {
     protected void initView() {
         tabLayout= (TabLayout) getView().findViewById(R.id.haveThings_tl);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        tabLayout.setSmoothScrollingEnabled(true);
+        tabLayout.setTabTextColors(0xee606060,0xeeFFFFFF);
+        tabLayout.setSelectedTabIndicatorColor(0xeeFFFFFF);
         viewPager= (ViewPager) getView().findViewById(R.id.haveThings_vp);
         adapter=new HaveThingsAdapter(getChildFragmentManager());
     }
@@ -46,7 +49,6 @@ public class HaveThingsFragment extends BaseFragment {
 
                     }
                 });
-
 
     }
 }
