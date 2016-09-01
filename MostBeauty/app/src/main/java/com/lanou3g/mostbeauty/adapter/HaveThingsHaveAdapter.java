@@ -15,6 +15,9 @@ import com.lanou3g.mostbeauty.activity.API;
 import com.lanou3g.mostbeauty.gson.NetTool;
 import com.lanou3g.mostbeauty.gson.onHttpCallBack;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 /**
  * Created by dllo on 16/8/31.
  * 布局只有一个ListView
@@ -23,6 +26,7 @@ public class HaveThingsHaveAdapter extends BaseAdapter {
     private Context context;
     private String[] id;
     private HaveThingsHaveItemAdapter adapter;
+    private DateFormat dateFormat , dfWay;
 
     public HaveThingsHaveAdapter(Context context) {
         this.context = context;
@@ -58,15 +62,7 @@ public class HaveThingsHaveAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-
-        getNetData(id[position], holder);
-
-
-
-
-
-
-
+        getNetData(id[position], holder,position);
         return convertView;
     }
 
@@ -79,11 +75,11 @@ public class HaveThingsHaveAdapter extends BaseAdapter {
             // TODO: 16/8/31 listView第一个有尾布局 都有头布局
             View headView = LayoutInflater.from(context).inflate(R.layout.adapter_have_things_have_head,null);
             date= (TextView) headView.findViewById(R.id.adapter_have_things_have_head_date);
-            listView.addHeaderView(headView);
+            listView.addHeaderView(headView,null,true);
         }
     }
 
-    private void getNetData(String id, final ViewHolder holder) {
+    private void getNetData(String id, final ViewHolder holder, final int position) {
         String url = API.Have_Things_Have_Adapter +
                 id +
                 API.Have_Things_Have_Adapter_End;
@@ -96,6 +92,8 @@ public class HaveThingsHaveAdapter extends BaseAdapter {
                         adapter.setBean(response);
                         holder.listView.setAdapter(adapter);
                         setListViewHeightBasedOnChildren(holder.listView);
+                        long date = response.getData().getActivities().get(position).getPublish_at();
+                        Date(date,holder);
                     }
 
                     @Override
@@ -125,6 +123,14 @@ public class HaveThingsHaveAdapter extends BaseAdapter {
         ViewGroup.LayoutParams params = listView.getLayoutParams();
         params.height = totalHeight + (listView.getDividerHeight() * (adapter.getCount() - 1)) + 5;
         listView.setLayoutParams(params);
+    }
+    public void Date(long date,ViewHolder holder){
+        dateFormat = new SimpleDateFormat("yyyy.MM.dd,");
+        dfWay = new SimpleDateFormat("EEEE");
+        String dataStr = dateFormat.format(date);
+        String mWay = dfWay.format(date);
+
+        holder.date.setText(dataStr+mWay);
     }
 
 }
