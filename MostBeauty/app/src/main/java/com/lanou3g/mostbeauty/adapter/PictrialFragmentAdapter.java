@@ -48,12 +48,18 @@ public class PictrialFragmentAdapter extends OverviewAdapter<PictrialFragmentAda
     }
 
     @Override
-    public void onBindViewHolder(NetViewHolder netViewHolder) {
+    public void onBindViewHolder(final NetViewHolder netViewHolder) {
         netViewHolder.itemView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context,PictorialActivity.class);
+                int id = bean.getData().getArticles().get(bean.getData().getArticles().size()-netViewHolder.getPosition()-1).getId();
+                String strId = Integer.toString(id);
+                String imgTitle = bean.getData().getArticles()
+                        .get(bean.getData().getArticles().size()-netViewHolder.getPosition()-1).getImage_url();
                 Log.d("OverviewActivity", "ccccccccc"+intent);
+                intent.putExtra("id",strId);
+                intent.putExtra("img",imgTitle);
                 context.startActivity(intent);
             }
         });
