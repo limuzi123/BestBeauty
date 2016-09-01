@@ -63,6 +63,11 @@ public class HaveThingsHaveAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
         getNetData(id[position], holder,position);
+        // TODO: 16/8/31 listView第一个有尾布局
+        if (position==0) {
+            View footerView = LayoutInflater.from(context).inflate(R.layout.adapter_have_things_have_foot, parent, false);
+            holder.listView.addFooterView(footerView, null, true);
+        }
         return convertView;
     }
 
@@ -72,7 +77,7 @@ public class HaveThingsHaveAdapter extends BaseAdapter {
         private TextView date;
         public ViewHolder(View view) {
             listView = (ListView) view.findViewById(R.id.adapter_have_things_have_lv);
-            // TODO: 16/8/31 listView第一个有尾布局 都有头布局
+            // TODO: 16/8/31 都有头布局 写在这里方便赋值
             View headView = LayoutInflater.from(context).inflate(R.layout.adapter_have_things_have_head,null);
             date= (TextView) headView.findViewById(R.id.adapter_have_things_have_head_date);
             listView.addHeaderView(headView,null,true);

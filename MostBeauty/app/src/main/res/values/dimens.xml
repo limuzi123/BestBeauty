@@ -25,4 +25,5 @@
     <dimen name="sixty">60dp</dimen>
     <dimen name="one">1dp</dimen>
     <dimen name="one_husand_fifty">150dp</dimen>
+    <dimen name="three_hundred">300dp</dimen>
 </resources>
