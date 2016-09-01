@@ -26,7 +26,7 @@
        >
         <RadioButton
             android:id="@+id/pictal_radio"
-            android:layout_width="@dimen/activity_main_radio_marginTop"
+            android:layout_height="@dimen/activity_main_radio_marginTop"
             android:layout_weight="1"
             android:gravity="center"
             android:layout_gravity="center"
@@ -36,7 +36,7 @@
             android:text="@string/text_huabao_button"/>
         <RadioButton
             android:id="@+id/havething_radio"
-            android:layout_width="@dimen/activity_main_radio_marginTop"
+            android:layout_height="@dimen/activity_main_radio_marginTop"
             android:layout_weight="1"
             android:gravity="center"
             android:layout_gravity="center"
@@ -46,7 +46,7 @@
             android:text="@string/text_youwu"/>
         <RadioButton
             android:id="@+id/stailst_radio"
-            android:layout_width="@dimen/activity_main_radio_marginTop"
+            android:layout_height="@dimen/activity_main_radio_marginTop"
             android:layout_weight="1"
             android:gravity="center"
             android:layout_gravity="center"
@@ -56,7 +56,7 @@
             android:text="@string/text_sheji_button"/>
         <RadioButton
             android:id="@+id/my_radio"
-            android:layout_width="@dimen/activity_main_radio_marginTop"
+            android:layout_height="@dimen/activity_main_radio_marginTop"
             android:layout_weight="1"
             android:gravity="center"
             android:layout_gravity="center"

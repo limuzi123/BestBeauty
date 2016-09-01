@@ -1,6 +1,6 @@
 package com.lanou3g.mostbeauty.activity;
 
-import android.support.v7.app.AppCompatActivity;
+
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
