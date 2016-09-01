@@ -1,11 +1,14 @@
 package com.lanou3g.mostbeauty.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -20,6 +23,8 @@ public class PhoneActivity extends AppCompatActivity implements View.OnClickList
     private TextView textViewSure, textViewSend;
     private EditText editTextPhone;
     private ImageView imageViewPhoneBack;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,8 @@ public class PhoneActivity extends AppCompatActivity implements View.OnClickList
         editTextPhone.setFilters(new InputFilter[]{new InputFilter.LengthFilter(11)});
 
         setCode();
+        sharedPreferences = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
     }
 
     @Override
@@ -47,12 +54,13 @@ public class PhoneActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.text_view_sure:
                 startActivity(new Intent(this,MaterialActivity.class));
+                finish();
                 break;
         }
     }
 
     private void setCode() {
-        textViewSend.addTextChangedListener(new TextWatcher() {
+        editTextPhone.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -68,6 +76,10 @@ public class PhoneActivity extends AppCompatActivity implements View.OnClickList
                     textViewSend.setEnabled(false);
                     textViewSend.setTextColor(0xff9f9f9f);
                 }
+                String strss = editTextPhone.getText().toString();
+                editor.putString("Binbing", strss);
+                editor.commit();
+                Log.d("3333333333", strss);
             }
 
             @Override

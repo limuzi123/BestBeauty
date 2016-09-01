@@ -372,15 +372,22 @@ public class MaterialActivity extends BaseActivity implements View.OnClickListen
     protected void onStart() {
         super.onStart();
         sharedPreferences = getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
-        String nickname = sharedPreferences.getString("NICKNAME","");
+        String nickname = sharedPreferences.getString("NICKNAME","昵称");
         editTextNickName.setText(nickname);
-        String mailbox = sharedPreferences.getString("MAILBOX","");
+        String mailbox = sharedPreferences.getString("MAILBOX","绑定邮箱");
         editTextMailbox.setText(mailbox);
         String sex = sharedPreferences.getString("SEX","选择性别");
         textViewSex.setText(sex);
         String birthday = sharedPreferences.getString("BIRTHDAY","选择生日");
         Log.d("MainActivity", "999999999"+birthday);
         textView.setText(birthday);
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String binbing = sharedPreferences.getString("Binbing","绑定手机号");
+        textViewBinbing.setText(binbing);
+        Log.d("1111111111", binbing);
     }
 
 }
