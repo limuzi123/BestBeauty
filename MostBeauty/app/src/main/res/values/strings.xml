@@ -15,4 +15,11 @@
     <string name="boy">男</string>
     <string name="gril">女</string>
     <string name="privary">保密</string>
+    <string name="text_share">分享这篇文章</string>
+    <string name="text_name">申请成为作者</string>
+    <string name="tv_content">这里就是你的发布台.</string>
+    <string name="tv_content_two">希望分享给大家,找到品味相投的伙伴?</string>
+    <string name="tv_content_one">有你自已喜欢的独特品牌</string>
+    <string name="tv_title_one">成为最美作者</string>
+    <string name="tv_name_tt">作者</string>
 </resources>

@@ -21,7 +21,7 @@
                     android:id="@+id/web_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="-40dp">
+                    android:layout_marginTop="50dp">
 
                 </WebView>
 
@@ -57,6 +57,7 @@
                         android:layout_height="300dp"/>
 
                     <FrameLayout
+                        android:layout_marginTop="@dimen/forty"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -71,6 +72,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                               android:textColor="@color/color"
                                 android:layout_marginLeft="@dimen/twenty"
                                 android:layout_marginRight="@dimen/twenty"
                                 android:gravity="center"
@@ -81,11 +83,13 @@
                                 android:text="zhozhe"/>
 
                             <TextView
+                                android:layout_marginTop="@dimen/five"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="作者"/>
+                                android:text="@string/tv_name_tt"/>
 
                             <TextView
+                                android:gravity="center"
                                 android:id="@+id/tv_antuor"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -95,71 +99,103 @@
                                 android:paddingRight="@dimen/twenty"/>
 
                         </LinearLayout>
-
-                        <ImageView
-                            android:id="@+id/img_anduor"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                        <FrameLayout
                             android:layout_gravity="center_horizontal"
-                            android:src="@drawable/shape_name"/>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:id="@+id/img_anduor"
+                                android:layout_width="@dimen/fifty_five"
+                                android:layout_height="@dimen/fifty_five"
+                                android:layout_gravity="center_horizontal"
+                               />
+                            <ImageView
+
+                                android:layout_gravity="center"
+                                android:src="@drawable/shape_name"
+                                android:layout_width="@dimen/sixty"
+                                android:layout_height="@dimen/sixty"/>
+                        </FrameLayout>
+
+
+
                     </FrameLayout>
 
 
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_marginBottom="@dimen/one_husand_fifty"
+                    android:layout_gravity="bottom"
+                    android:background="@color/color_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+                    <ImageView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/one"
+                        android:layout_gravity="center"
+                        android:background="@color/color_hui"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/fifteen"
+                        android:text="@string/tv_title_one"
+                        android:textColor="@color/color"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/twenty"
+                        android:text="@string/tv_content_one"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_content_two"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tv_content"/>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/twenty"
+                        android:layout_marginTop="@dimen/twenty"
+                        android:background="@color/color"
+                        android:paddingLeft="@dimen/twenty"
+                        android:paddingRight="@dimen/twenty"
+                        android:text="@string/text_name"
+                        android:textColor="@color/color_background"/>
+                    <ImageView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/one"
+                        android:layout_gravity="center"
+                        android:background="@color/color_hui"/>
+                    <TextView
+                        android:textColor="@color/color"
+                        android:layout_marginTop="@dimen/fifteen"
+                       android:text="@string/text_share"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </LinearLayout>
+                </LinearLayout>
+
             </FrameLayout>
 
-            <ImageView
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@mipmap/line"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/fifteen"
-                    android:text="成为最美作者"
-                    android:textColor="@color/color"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/twenty"
-                    android:text="有你自已喜欢的独特品牌"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="希望分享给大家,找到品味相投的伙伴?"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="这里就是你的发布台."/>
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/twenty"
-                    android:layout_marginTop="@dimen/twenty"
-                    android:background="@color/color"
-                    android:paddingLeft="@dimen/twenty"
-                    android:paddingRight="@dimen/twenty"
-                    android:text="申请成为作者"
-                    android:textColor="@color/color_background"/>
-
-                <ImageView
-                    android:layout_width="350dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@mipmap/line"/>
-            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
