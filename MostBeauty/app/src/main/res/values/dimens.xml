@@ -20,4 +20,9 @@
     <dimen name="fifteen">15dp</dimen>
     <dimen name="ten">10dp</dimen>
     <dimen name="thirty_five">35dp</dimen>
+    <dimen name="fifty">50dp</dimen>
+    <dimen name="fifty_five">55dp</dimen>
+    <dimen name="sixty">60dp</dimen>
+    <dimen name="one">1dp</dimen>
+    <dimen name="one_husand_fifty">150dp</dimen>
 </resources>
