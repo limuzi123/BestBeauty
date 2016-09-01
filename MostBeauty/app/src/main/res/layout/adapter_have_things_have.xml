@@ -7,5 +7,6 @@
     <ListView
         android:id="@+id/adapter_have_things_have_lv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:divider="@null"/>
 </LinearLayout>

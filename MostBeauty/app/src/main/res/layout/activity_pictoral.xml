@@ -67,7 +67,7 @@
                             android:layout_marginLeft="@dimen/twenty"
                             android:layout_marginRight="@dimen/twenty"
                             android:layout_marginTop="@dimen/twenty"
-                            android:background="@color/color_huaabao_name"
+                            android:background="@color/color_hui"
                             android:gravity="center_horizontal"
                             android:orientation="vertical">
 
