@@ -41,14 +41,7 @@ public class PictorialFragment extends BaseFragment implements Overview.RecentsV
 
     @Override
     protected void initData() {
-//        mRecentsView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
-//                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
-//                View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
 
-//        // Register the broadcast receiver to handle messages when the screen is turned off
-//        IntentFilter filter = new IntentFilter();
-//        filter.addAction(Intent.ACTION_SCREEN_OFF);
-//        filter.addAction(SearchManager.INTENT_GLOBAL_SEARCH_ACTIVITY_CHANGED);
         models = new ArrayList<>();
 
         // Private API calls to make the shadows look better

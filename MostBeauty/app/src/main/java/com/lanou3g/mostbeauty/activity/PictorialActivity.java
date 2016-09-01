@@ -22,8 +22,9 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
  */
 public class PictorialActivity extends BaseActivity {
     private WebView webView;
-    private TextView tvTitle,tvSmallTitle,tvName,tvAuthor;
-    private ImageView imgTitle,imgName;
+    private TextView tvTitle,tvSmallTitle,tvName,tvAuthor,tvSmall,tvSmallOne,tvContent;
+
+    private ImageView imgTitle,imgName,imgNameOne;
 
     @Override
     protected int getLayout() {
@@ -39,6 +40,10 @@ public class PictorialActivity extends BaseActivity {
         tvAuthor = (TextView) findViewById(R.id.tv_antuor);
         tvName = (TextView) findViewById(R.id.tv_name);
         imgName = (ImageView) findViewById(R.id.img_anduor);
+        tvSmall = (TextView) findViewById(R.id.tv_tiltle_small);
+        tvSmallOne = (TextView) findViewById(R.id.tv_small);
+        tvContent = (TextView) findViewById(R.id.tv_content);
+        imgNameOne = (ImageView) findViewById(R.id.img_name_one);
 
 
     }
@@ -62,6 +67,14 @@ public class PictorialActivity extends BaseActivity {
                         tvName.setText(response.getData().getAuthor().getUsername());
                         tvAuthor.setText(response.getData().getAuthor().getSign());
                         Glide.with(PictorialActivity.this).load(response.getData().getAuthor().getAvatar_url()).bitmapTransform(new CropCircleTransformation(PictorialActivity.this)).into(imgName);
+
+
+                        
+                       tvSmall.setText(response.getData().getDesigners().get(0).getName());
+
+
+
+
 
 
                     }
