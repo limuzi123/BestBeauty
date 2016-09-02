@@ -36,7 +36,7 @@
             android:textColor="@color/color_huabao_title"
             android:textSize="@dimen/eighteen" />
 
-        <com.lanou3g.mostbeauty.customView.circleImageView
+        <com.lanou3g.mostbeauty.myview.circleImageView
             android:id="@+id/image_head_set"
             android:layout_width="@dimen/forty"
             android:layout_height="@dimen/forty"

@@ -103,17 +103,25 @@ public class PictorialActivity extends BaseActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(API.PICTORIAL_ACTIVITY_WEBVIEW + id + API.PICTORIAL_ACTIVITY_WEBVIEW_TWO);
-        relativeLayoutSmall.getBackground().setAlpha(200);
+        relativeLayoutSmall.getBackground().setAlpha(220);
         scrollView.setOnScrollChangeListener(new OnScrollChangeListener() {
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                if(scrollY >0 && oldScrollY==0){
+
+
+                if (scrollY > 0 && oldScrollY == 0) {
                     relativeLayout.setVisibility(View.VISIBLE);
-                Animation animation = AnimationUtils.loadAnimation(PictorialActivity.this,R.anim.enter_title);
-                relativeLayout.startAnimation(animation);}
-                else {
+                    Animation animation = AnimationUtils.loadAnimation(PictorialActivity.this, R.anim.enter_title);
+                    relativeLayout.startAnimation(animation);
+                } else {
                     relativeLayout.setVisibility(View.INVISIBLE);
                 }
+                if (oldScrollY > scrollY && oldScrollY - scrollY > 40) {
+                    relativeLayout.setVisibility(View.VISIBLE);
+                    Animation animation = AnimationUtils.loadAnimation(PictorialActivity.this, R.anim.exit_title);
+                    relativeLayout.startAnimation(animation);
+                }
+
             }
         });
 
