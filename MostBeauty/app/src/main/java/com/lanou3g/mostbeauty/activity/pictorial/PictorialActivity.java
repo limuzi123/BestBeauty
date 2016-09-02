@@ -1,20 +1,17 @@
-package com.lanou3g.mostbeauty.activity;
+package com.lanou3g.mostbeauty.activity.pictorial;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build.VERSION_CODES;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnScrollChangeListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
@@ -26,15 +23,14 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.lanou3g.mostbeauty.Bean.PictorialActivityBean;
 import com.lanou3g.mostbeauty.R;
+import com.lanou3g.mostbeauty.activity.API;
 import com.lanou3g.mostbeauty.adapter.PictorialActivityGridAdapter;
 import com.lanou3g.mostbeauty.adapter.PictorialActivityListAdapter;
 import com.lanou3g.mostbeauty.base.BaseActivity;
-import com.lanou3g.mostbeauty.base.MyApp;
 import com.lanou3g.mostbeauty.gson.NetTool;
 import com.lanou3g.mostbeauty.gson.onHttpCallBack;
 import com.lanou3g.mostbeauty.myview.StationGridview;
 
-import jp.wasabeef.glide.transformations.ColorFilterTransformation;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 import static com.lanou3g.mostbeauty.R.id.tv_city;

@@ -22,12 +22,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MaterialActivity"/>
-        <activity android:name=".activity.PictorialActivity"/>
-        <activity android:name=".activity.PhoneActivity"/>
-        <activity android:name=".activity.SetActivity"/>
-        <activity android:name=".activity.FeedbackActivity"/>
-        <activity android:name=".activity.PersonContactActivity"/>
+        <activity android:name=".activity.mine.MaterialActivity"/>
+        <activity android:name=".activity.pictorial.PictorialActivity"/>
+        <activity android:name=".activity.mine.PhoneActivity"/>
+        <activity android:name=".activity.mine.SetActivity"/>
+        <activity android:name=".activity.mine.FeedbackActivity"/>
+        <activity android:name=".activity.mine.PersonContactActivity"/>
+        <activity android:name=".activity.pictorial.PictorialCommentActivity"/>
     </application>
 
 </manifest>

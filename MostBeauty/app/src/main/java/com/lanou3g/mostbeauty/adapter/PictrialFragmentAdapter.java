@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.lanou3g.mostbeauty.Bean.PictorialBean;
 import com.lanou3g.mostbeauty.R;
-import com.lanou3g.mostbeauty.activity.PictorialActivity;
+import com.lanou3g.mostbeauty.activity.pictorial.PictorialActivity;
 import com.wirelesspienetwork.overview.model.OverviewAdapter;
 import com.wirelesspienetwork.overview.model.ViewHolder;
 
