@@ -9,6 +9,7 @@ import com.lanou3g.mostbeauty.base.BaseActivity;
 /**
  * Created by dllo on 16/9/2.
  */
+//关注的设计师
 public class DesignAttentionActivity extends BaseActivity{
     private ImageView imageViewDesignBack;
     @Override
