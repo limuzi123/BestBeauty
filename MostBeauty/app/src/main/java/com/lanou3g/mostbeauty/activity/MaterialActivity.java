@@ -46,7 +46,7 @@ import java.util.Calendar;
  */
 public class MaterialActivity extends BaseActivity implements View.OnClickListener {
     private ImageView imageViewBackMaterial,imageViewHead;
-    private TextView textView;
+    private TextView textView,textViewBinbing;
     private TextView textViewMen, textViewWomen, textViewPrivary, textViewSex;
     private int mYear, mMoth, mDay;
     private PopupWindow mPop, popupWindow;
@@ -67,6 +67,8 @@ public class MaterialActivity extends BaseActivity implements View.OnClickListen
         imageViewBackMaterial = (ImageView) findViewById(R.id.image_back_material);
         textView = (TextView) findViewById(R.id.text_view_birthday);
         textViewSex = (TextView) findViewById(R.id.text_view_sex);
+        textViewBinbing = (TextView) findViewById(R.id.text_view_binbing);
+        textViewBinbing.setOnClickListener(this);
         imageViewHead = (ImageView) findViewById(R.id.image_head);
         editTextMailbox = (EditText) findViewById(R.id.edit_text_mailbox);
         editTextNickName = (EditText) findViewById(R.id.text_view_nickname);
@@ -208,6 +210,9 @@ public class MaterialActivity extends BaseActivity implements View.OnClickListen
             case R.id.image_head:
                 popupWindow.showAtLocation(v,Gravity.BOTTOM,0,0);
                 backgroundAlpha(0.7f);
+                break;
+            case R.id.text_view_binbing:
+                startActivity(new Intent(this,PhoneActivity.class));
                 break;
             case R.id.btn_photos://从相册选取照片
                 Intent intent = new Intent(Intent.ACTION_PICK,null);
@@ -367,15 +372,22 @@ public class MaterialActivity extends BaseActivity implements View.OnClickListen
     protected void onStart() {
         super.onStart();
         sharedPreferences = getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
-        String nickname = sharedPreferences.getString("NICKNAME","");
+        String nickname = sharedPreferences.getString("NICKNAME","昵称");
         editTextNickName.setText(nickname);
-        String mailbox = sharedPreferences.getString("MAILBOX","");
+        String mailbox = sharedPreferences.getString("MAILBOX","绑定邮箱");
         editTextMailbox.setText(mailbox);
-        String sex = sharedPreferences.getString("SEX","");
+        String sex = sharedPreferences.getString("SEX","选择性别");
         textViewSex.setText(sex);
-        String birthday = sharedPreferences.getString("BIRTHDAY","");
+        String birthday = sharedPreferences.getString("BIRTHDAY","选择生日");
         Log.d("MainActivity", "999999999"+birthday);
         textView.setText(birthday);
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String binbing = sharedPreferences.getString("Binbing","绑定手机号");
+        textViewBinbing.setText(binbing);
+        Log.d("1111111111", binbing);
     }
 
 }
