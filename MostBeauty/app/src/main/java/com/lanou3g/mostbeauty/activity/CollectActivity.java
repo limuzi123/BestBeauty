@@ -4,7 +4,9 @@ import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.lanou3g.mostbeauty.R;
 import com.lanou3g.mostbeauty.adapter.CollectAdapter;
@@ -17,11 +19,13 @@ import java.util.ArrayList;
 /**
  * Created by dllo on 16/9/2.
  */
+//收藏画报
 public class CollectActivity extends BaseActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ArrayList<Fragment> data;
-    private CollectAdapter adapter;
+    private CollectAdapter collectAdapter;
+    private ImageView imageViewCollectBack;
 
     @Override
     protected int getLayout() {
@@ -32,11 +36,12 @@ public class CollectActivity extends BaseActivity {
     protected void initView() {
         tabLayout = (TabLayout) findViewById(R.id.tab_layout_collect);
         viewPager = (ViewPager) findViewById(R.id.view_pager_collect);
+        imageViewCollectBack = (ImageView) findViewById(R.id.image_back_collect);
         data = new ArrayList<>();
         data.add(new CollectFragment());
         data.add(new AssistFragment());
-        adapter = new CollectAdapter(getSupportFragmentManager(), data);
-        viewPager.setAdapter(adapter);
+        collectAdapter = new CollectAdapter(getSupportFragmentManager(), data);
+        viewPager.setAdapter(collectAdapter);
     }
 
     @Override
@@ -44,5 +49,12 @@ public class CollectActivity extends BaseActivity {
         tabLayout.setTabTextColors(Color.WHITE, Color.WHITE);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setSelectedTabIndicatorColor(Color.WHITE);
+
+        imageViewCollectBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

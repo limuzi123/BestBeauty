@@ -4,13 +4,16 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lanou3g.mostbeauty.R;
 import com.lanou3g.mostbeauty.activity.CollectActivity;
+import com.lanou3g.mostbeauty.activity.DesignAttentionActivity;
 import com.lanou3g.mostbeauty.activity.FeedbackActivity;
 import com.lanou3g.mostbeauty.activity.MaterialActivity;
 import com.lanou3g.mostbeauty.activity.SetActivity;
+import com.lanou3g.mostbeauty.activity.WishActivity;
 import com.lanou3g.mostbeauty.base.BaseFragment;
 
 /**
@@ -19,6 +22,7 @@ import com.lanou3g.mostbeauty.base.BaseFragment;
 public class MyFragment extends BaseFragment implements View.OnClickListener {
     private ImageView imageViewMyHead,imageViewSet;
     private TextView textViewFeedBack,textViewdraw;
+    private RelativeLayout relativeLayoutAttention,relativeLayoutWish;
 
     @Override
     protected int initLayout() {
@@ -35,6 +39,10 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         textViewFeedBack.setOnClickListener(this);
         textViewdraw = (TextView) getView().findViewById(R.id.text_view_collect_draw);
         textViewdraw.setOnClickListener(this);
+        relativeLayoutAttention = (RelativeLayout) getView().findViewById(R.id.relative_layout_attention);
+        relativeLayoutAttention.setOnClickListener(this);
+        relativeLayoutWish = (RelativeLayout) getView().findViewById(R.id.relative_layout_wish);
+        relativeLayoutWish.setOnClickListener(this);
     }
 
     @Override
@@ -56,6 +64,12 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.text_view_collect_draw:
                 startActivity(new Intent(getActivity(), CollectActivity.class));
+                break;
+            case R.id.relative_layout_attention:
+                startActivity(new Intent(getActivity(), DesignAttentionActivity.class));
+                break;
+            case R.id.relative_layout_wish:
+                startActivity(new Intent(getActivity(), WishActivity.class));
                 break;
         }
     }

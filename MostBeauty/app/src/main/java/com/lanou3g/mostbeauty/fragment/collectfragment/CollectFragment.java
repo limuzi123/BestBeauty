@@ -1,5 +1,6 @@
 package com.lanou3g.mostbeauty.fragment.collectfragment;
 
+import com.lanou3g.mostbeauty.R;
 import com.lanou3g.mostbeauty.base.BaseFragment;
 
 /**
@@ -8,7 +9,7 @@ import com.lanou3g.mostbeauty.base.BaseFragment;
 public class CollectFragment extends BaseFragment{
     @Override
     protected int initLayout() {
-        return 0;
+        return R.layout.collect_fragment;
     }
 
     @Override

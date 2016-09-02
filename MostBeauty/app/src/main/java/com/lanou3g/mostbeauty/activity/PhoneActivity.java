@@ -18,22 +18,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lanou3g.mostbeauty.R;
+import com.lanou3g.mostbeauty.base.BaseActivity;
 
 /**
  * Created by dllo on 16/9/1.
  */
-public class PhoneActivity extends AppCompatActivity implements View.OnClickListener {
+public class PhoneActivity extends BaseActivity implements View.OnClickListener {
     private TextView textViewSure, textViewSend;
     private EditText editTextPhone;
     private ImageView imageViewPhoneBack;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+    @Override
+    protected int getLayout() {
+        return R.layout.activity_phone;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phone);
-
+    protected void initView() {
         textViewSure = (TextView) findViewById(R.id.text_view_sure);
         textViewSend = (TextView) findViewById(R.id.text_view_verification);
         imageViewPhoneBack = (ImageView) findViewById(R.id.image_back_material);
@@ -41,7 +43,11 @@ public class PhoneActivity extends AppCompatActivity implements View.OnClickList
         textViewSure.setOnClickListener(this);
         textViewSend.setOnClickListener(this);
         editTextPhone = (EditText) findViewById(R.id.edit_text_phone);
-        //限制EditText的长度
+    }
+
+    @Override
+    protected void initData() {
+//限制EditText的长度
         editTextPhone.setFilters(new InputFilter[]{new InputFilter.LengthFilter(11)});
 
         setCode();

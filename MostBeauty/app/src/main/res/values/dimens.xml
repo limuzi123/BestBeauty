@@ -37,5 +37,7 @@
     <dimen name="three">3dp</dimen>
     <dimen name="one_hundred">100dp</dimen>
 
+    <dimen name="_seventy">70dp</dimen>
+
 
 </resources>

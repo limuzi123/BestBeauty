@@ -28,6 +28,9 @@
         <activity android:name=".activity.SetActivity"/>
         <activity android:name=".activity.FeedbackActivity"/>
         <activity android:name=".activity.CollectActivity"/>
+        <activity android:name=".activity.PersonContactActivity"/>
+        <activity android:name=".activity.WishActivity"/>
+        <activity android:name=".activity.DesignAttentionActivity"/>
     </application>
 
 </manifest>

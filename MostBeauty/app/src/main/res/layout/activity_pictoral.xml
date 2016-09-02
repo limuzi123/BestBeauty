@@ -376,14 +376,16 @@
 
             </ListView>
             <TextView
+                android:gravity="center"
                 android:id="@+id/tv_all"
                 android:textColor="@color/color"
                 android:background="@color/color_background"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/twenty"
                 android:text="@string/tv_commmeny"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_width="@dimen/one_thousand"
+                android:layout_height="@dimen/forty"
+                android:layout_marginBottom="@dimen/_seventy"/>
 
             </LinearLayout>
 
@@ -407,7 +409,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/sixty"
             android:orientation="horizontal">
-            <com.lanou3g.mostbeauty.customView.circleImageView
+            <com.lanou3g.mostbeauty.myview.circleImageView
                 android:src="@mipmap/best_beauty"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/ten"
@@ -427,6 +429,7 @@
                 android:layout_width="@dimen/twenty_five"
                 android:layout_height="@dimen/twenty_five"/>
             <TextView
+
                 android:layout_marginLeft="@dimen/one"
                 android:layout_marginTop="@dimen/ten"
                 android:text="32"

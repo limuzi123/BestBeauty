@@ -18,14 +18,19 @@ public class CollectAdapter extends FragmentPagerAdapter {
         this.data = data;
     }
 
+    public void setData(ArrayList<Fragment> data) {
+        this.data = data;
+        notifyDataSetChanged();
+    }
+
     @Override
     public Fragment getItem(int position) {
-        return data.get(position);
+        return data != null && data.size() > 0 ? data.get(position) : null;
     }
 
     @Override
     public int getCount() {
-        return data.size() > 0 ? data.size() : 0;
+        return data != null && data.size() > 0 ? data.size() : 0;
     }
 
     @Override
