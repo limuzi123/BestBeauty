@@ -3,7 +3,6 @@ package com.lanou3g.mostbeauty.fragment.haveThingsFragments;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-
 import com.lanou3g.mostbeauty.Bean.HaveThingsReuseBean;
 import com.lanou3g.mostbeauty.Bean.HaveThingsReuseTitleBean;
 import com.lanou3g.mostbeauty.R;
@@ -61,7 +59,6 @@ public class ReuseFragment extends BaseFragment {
     protected void initData() {
         int id= HaveThingsAdapter.getId(getPosition());
         getNetData(id);
-        Log.d("____________", "getPosition()-1:" + (getPosition() - 1));
         if (popBean.getData().getCategories().get(getPosition()-1).getSub_categories()==null){
             linearLayout.setVisibility(View.GONE);
         }else {
