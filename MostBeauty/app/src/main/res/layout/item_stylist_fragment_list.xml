@@ -7,10 +7,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <ImageView
-            android:background="@color/colorPrimary"
+
             android:id="@+id/img_top"
+            android:scaleType="fitXY"
             android:layout_width="match_parent"
-            android:layout_height="200dp"/>
+            android:layout_height="250dp"/>
         <LinearLayout
            android:layout_below="@+id/img_top"
             android:background="@color/color_one"

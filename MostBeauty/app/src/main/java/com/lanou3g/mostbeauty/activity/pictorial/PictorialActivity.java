@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build.VERSION_CODES;
 import android.util.Log;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnScrollChangeListener;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -38,7 +39,7 @@ import static com.lanou3g.mostbeauty.R.id.tv_city;
 /**
  * Created by dllo on 16/8/31.
  */
-public class PictorialActivity extends BaseActivity {
+public class PictorialActivity extends BaseActivity implements OnClickListener{
     private WebView webView;
     private TextView tvTitle, tvSmallTitle, tvName, tvAuthor, tvSmall, tvSmallOne, tvContent, tvSay, tvAll, tvTopName, tvCity,tvSayHow,tvLike;
     private ScrollView scrollView;
@@ -51,6 +52,7 @@ public class PictorialActivity extends BaseActivity {
     private PictorialActivityGridAdapter gridAdapter;
     private Button btnAll;
     private PictorialActivityListAdapter listAdapter;
+    private String str;
 
     @Override
     protected int getLayout() {
@@ -86,6 +88,11 @@ public class PictorialActivity extends BaseActivity {
         tvLike = (TextView) findViewById(R.id.tv_like);
 
 
+
+        tvAll.setOnClickListener(this);
+        btnAll.setOnClickListener(this);
+
+
     }
 
     @TargetApi(VERSION_CODES.M)
@@ -94,7 +101,7 @@ public class PictorialActivity extends BaseActivity {
         gridAdapter = new PictorialActivityGridAdapter(this);
         listAdapter = new PictorialActivityListAdapter(this);
         Intent intent = getIntent();
-        String str = intent.getStringExtra("id");
+        str = intent.getStringExtra("id");
         int id = Integer.parseInt(str);
         String img = intent.getStringExtra("img");
         Glide.with(this).load(img).into(imgTitle);
@@ -184,11 +191,7 @@ public class PictorialActivity extends BaseActivity {
                         listAdapter.setBean(response);
                         listView.setAdapter(listAdapter);
                         setListViewHeightBasedOnChildren(listView);
-                        if (response.getData().getComments().size() < 10) {
-                            tvAll.setVisibility(View.GONE);
-                        } else {
-                            tvAll.setVisibility(View.VISIBLE);
-                        }
+
 
 
                     }
@@ -214,5 +217,20 @@ public class PictorialActivity extends BaseActivity {
         ViewGroup.LayoutParams params = listView.getLayoutParams();
         params.height = totalHeight + (listView.getDividerHeight() * (adapter.getCount() - 1));
         listView.setLayoutParams(params);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.tv_all:
+                Intent intent = new Intent(this,PictorialCommentActivity.class);
+                intent.putExtra("id",str);
+                startActivity(intent);
+                break;
+            case R.id.btn_all:
+                break;
+
+        }
+
     }
 }
