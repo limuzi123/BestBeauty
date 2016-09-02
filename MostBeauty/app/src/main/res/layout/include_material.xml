@@ -18,12 +18,5 @@
             android:background="@mipmap/menu_action_back" />
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/six"
-        android:text="@string/text_material"
-        android:textColor="@color/color_material"
-        android:textSize="@dimen/twenty" />
+
 </RelativeLayout>
