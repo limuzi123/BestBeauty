@@ -24,6 +24,7 @@ public class PersonContactActivity extends BaseActivity implements View.OnClickL
     private SharedPreferences sharedPreferences;
     private EditText editTextContact;
     private SharedPreferences.Editor editor;
+    private EditText editTextPerson;
     @Override
     protected int getLayout() {
         return R.layout.activity_person;
@@ -33,7 +34,11 @@ public class PersonContactActivity extends BaseActivity implements View.OnClickL
     protected void initView() {
         textViewSurePerson = (TextView) findViewById(R.id.text_view_sure_person);
         imageViewBackPerson = (ImageView) findViewById(R.id.image_back_material);
+
         editTextContact = (EditText) findViewById(R.id.edit_text_person);
+
+
+
         textViewSurePerson.setOnClickListener(this);
         imageViewBackPerson.setOnClickListener(this);
     }
@@ -43,6 +48,9 @@ public class PersonContactActivity extends BaseActivity implements View.OnClickL
         sharedPreferences = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
+
+
+        ContactPerson();
 
     }
 
@@ -58,32 +66,53 @@ public class PersonContactActivity extends BaseActivity implements View.OnClickL
                 break;
         }
     }
-    private void ContactStrogth(){
-        editTextContact.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+
+            private void ContactPerson() {
+                editTextPerson.addTextChangedListener(new TextWatcher() {
+
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                        String str = editTextContact.getText().toString().trim();
+                        editor.putString("CONTACT", str);
+
+                        String ss = editTextPerson.getText().toString();
+                        editor.putString("CONTACT", ss);
+
+                        editor.commit();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                    }
+                });
             }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String str = editTextContact.getText().toString().trim();
-                editor.putString("CONTACT",str);
-                editor.commit();
-            }
 
             @Override
-            public void afterTextChanged(Editable s) {
-
+            protected void onStart() {
+                super.onStart();
+                sharedPreferences = getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
+                String contact = sharedPreferences.getString("CONTACT", "");
+                editTextContact.setText(contact);
             }
-        });
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        sharedPreferences = getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
-        String contact = sharedPreferences.getString("CONTACT","");
-        editTextContact.setText(contact);
-    }
-}
+
+            @Override
+            protected void onResume() {
+                super.onResume();
+                sharedPreferences = getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
+                String nickname = sharedPreferences.getString("CONTACT", "");
+                editTextPerson.setText(nickname);
+            }
+
+
+        }
+
