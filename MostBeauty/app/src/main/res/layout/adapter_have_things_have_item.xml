@@ -6,24 +6,15 @@
     android:background="#1f1f1f">
 
     <FrameLayout
+        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="370dp">
         <ImageView
             android:id="@+id/adapter_have_things_have_item_images"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:scaleType="fitXY"/>
-        <!--<TextView-->
-            <!--android:id="@+id/adapter_have_things_have_item_product_name"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:background="#ee000000"-->
-            <!--android:text="name"-->
-            <!--android:textColor="#ffffff"-->
-            <!--android:textSize="15sp"-->
-            <!--android:padding="3dp"-->
-            <!--android:layout_gravity="bottom|center_horizontal"-->
-            <!--android:layout_marginBottom="50dp"/>-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,24 +66,24 @@
             android:layout_marginTop="5dp"/>
         <ImageView
             android:id="@+id/adapter_have_things_have_item_cry"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_centerVertical="true"
-            android:src="@mipmap/cry"
+            android:src="@mipmap/feed_dislike"
             android:layout_alignParentRight="true"/>
         <LinearLayout
             android:layout_width="0.1dp"
-            android:layout_height="20dp"
+            android:layout_height="15dp"
             android:background="#ffffff"
             android:layout_centerVertical="true"
             android:layout_margin="10dp"
             android:layout_toLeftOf="@+id/adapter_have_things_have_item_cry"/>
         <ImageView
             android:id="@+id/adapter_have_things_have_item_smile"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_centerVertical="true"
-            android:src="@mipmap/smile"
+            android:src="@mipmap/feed_like"
             android:layout_marginRight="20dp"
             android:layout_toLeftOf="@+id/adapter_have_things_have_item_cry"/>
 
