@@ -11,6 +11,7 @@ import com.lanou3g.mostbeauty.base.BaseActivity;
 /**
  * Created by dllo on 16/9/2.
  */
+//用户反馈
 public class FeedbackActivity extends BaseActivity implements View.OnClickListener {
     private ImageView imageViewFeedBack;
     private TextView textViewSendFeed, textViewContact;
