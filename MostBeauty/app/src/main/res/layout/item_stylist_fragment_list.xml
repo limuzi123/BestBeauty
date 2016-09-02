@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:background="@color/colorPrimary"
+            android:id="@+id/img_top"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"/>
+        <LinearLayout
+           android:layout_below="@+id/img_top"
+            android:background="@color/color_one"
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+           <TextView
+               android:textSize="@dimen/twenty"
+               android:layout_marginTop="@dimen/forty"
+               android:layout_gravity="center"
+               android:text="名字"
+               android:textColor="@color/color_two"
+               android:id="@+id/tv_name"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv_small"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_gravity="center"
+                android:text="hhhhh"
+                android:textColor="@color/color_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:paddingTop="@dimen/five"
+                android:paddingBottom="@dimen/five"
+                android:paddingRight="@dimen/ten"
+                android:paddingLeft="@dimen/ten"
+                android:background="@drawable/shape_care"
+                android:layout_marginTop="@dimen/ten"
+                android:layout_gravity="center"
+                android:text="+ 关注"
+                android:textColor="@color/color_four"
+                android:id="@+id/tv_care"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/twenty"/>
+
+        </LinearLayout>
+        <ImageView
+            android:layout_marginLeft="@dimen/one_hundred_and_sixty_six"
+            android:layout_below="@+id/img_top"
+            android:id="@+id/img_name"
+            android:layout_marginTop="@dimen/_twenty_five"
+            android:src="@mipmap/ic_launcher"
+            android:layout_width="@dimen/fifty"
+            android:layout_height="@dimen/fifty"/>
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>

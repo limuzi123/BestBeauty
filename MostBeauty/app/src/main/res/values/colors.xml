@@ -12,5 +12,9 @@
     <color name="color_huabao_title">#000000</color>
     <color name="color_hui">#f4f4f4</color>
     <color name="color_gary">#eeeeee</color>
+    <color name="color_one">#1f1f1f</color>
+    <color name="color_two">#a5a5a5</color>
+    <color name="color_three">#6c6c6c</color>
+    <color name="color_four">#1ea05d</color>
 
 </resources>

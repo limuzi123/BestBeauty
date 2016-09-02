@@ -1,4 +1,4 @@
-package com.lanou3g.mostbeauty.activity;
+package com.lanou3g.mostbeauty.activity.mine;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -30,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lanou3g.mostbeauty.R;
+import com.lanou3g.mostbeauty.activity.mine.PhoneActivity;
 import com.lanou3g.mostbeauty.base.BaseActivity;
 
 import java.io.File;
