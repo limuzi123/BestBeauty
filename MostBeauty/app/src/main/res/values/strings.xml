@@ -60,6 +60,8 @@
 
     <string name="person_contact">填写联系方式</string>
     <string name="person_write">请填写QQ,手机号或者邮箱等任何可以联系到您的方式.</string>
+    <string name="tv_comment_tt">评论</string>
+    <string name="tv_send">发送</string>
 
 
 </resources>
