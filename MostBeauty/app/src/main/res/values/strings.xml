@@ -46,5 +46,9 @@
     <string name="recommend">推荐给朋友</string>
     <string name="about_our">关于我们</string>
     <string name="exit">退出</string>
+    <string name="user_feedback">用户反馈</string>
+    <string name="contact">填写联系方式</string>
+    <string name="send">发送</string>
+    <string name="write_advice">写下您的建议和反馈</string>
 
 </resources>

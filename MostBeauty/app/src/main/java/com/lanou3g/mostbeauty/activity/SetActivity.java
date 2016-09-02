@@ -10,6 +10,7 @@ import com.lanou3g.mostbeauty.base.BaseActivity;
 /**
  * Created by dllo on 16/9/2.
  */
+//设置页面
 public class SetActivity extends BaseActivity implements View.OnClickListener{
     private ImageView imageViewSetHead,imageViewSetBack;
 

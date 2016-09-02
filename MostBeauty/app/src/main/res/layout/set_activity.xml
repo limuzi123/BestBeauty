@@ -33,6 +33,7 @@
             android:layout_marginLeft="@dimen/fifteen"
             android:layout_marginTop="@dimen/ten"
             android:text="@string/personage"
+            android:textColor="@color/color_huabao_title"
             android:textSize="@dimen/eighteen" />
 
         <com.lanou3g.mostbeauty.customView.circleImageView
@@ -73,6 +74,7 @@
             android:layout_marginLeft="@dimen/fifteen"
             android:layout_marginTop="@dimen/ten"
             android:text="@string/clean"
+            android:textColor="@color/color_huabao_title"
             android:textSize="@dimen/eighteen" />
 
         <ImageView
@@ -115,6 +117,7 @@
             android:layout_marginLeft="@dimen/fifteen"
             android:layout_marginTop="@dimen/ten"
             android:text="@string/feedback"
+            android:textColor="@color/color_huabao_title"
             android:textSize="@dimen/eighteen" />
 
         <ImageView
@@ -147,6 +150,7 @@
             android:layout_marginLeft="@dimen/fifteen"
             android:layout_marginTop="@dimen/ten"
             android:text="@string/good_reputation"
+            android:textColor="@color/color_huabao_title"
             android:textSize="@dimen/eighteen" />
 
         <ImageView
@@ -179,6 +183,7 @@
             android:layout_marginLeft="@dimen/fifteen"
             android:layout_marginTop="@dimen/ten"
             android:text="@string/recommend"
+            android:textColor="@color/color_huabao_title"
             android:textSize="@dimen/eighteen" />
 
         <ImageView
@@ -211,6 +216,7 @@
             android:layout_marginLeft="@dimen/fifteen"
             android:layout_marginTop="@dimen/ten"
             android:text="@string/about_our"
+            android:textColor="@color/color_huabao_title"
             android:textSize="@dimen/eighteen" />
 
         <ImageView
@@ -243,6 +249,7 @@
             android:layout_marginLeft="@dimen/fifteen"
             android:layout_marginTop="@dimen/ten"
             android:text="@string/exit"
+            android:textColor="@color/color_huabao_title"
             android:textSize="@dimen/eighteen" />
 
         <ImageView

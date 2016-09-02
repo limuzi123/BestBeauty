@@ -100,6 +100,7 @@
             android:layout_marginTop="@dimen/ten"
             android:layout_toRightOf="@+id/image_draw"
             android:text="@string/collect_draw"
+            android:textColor="@color/color_huabao_title"
             android:textSize="@dimen/eighteen" />
 
         <ImageView
@@ -140,6 +141,7 @@
             android:layout_marginTop="@dimen/three"
             android:layout_toRightOf="@+id/image_attention"
             android:text="@string/attention"
+            android:textColor="@color/color_huabao_title"
             android:textSize="@dimen/eighteen" />
 
         <ImageView
@@ -179,6 +181,7 @@
             android:layout_marginTop="@dimen/three"
             android:layout_toRightOf="@+id/image_wish"
             android:text="@string/my_wish"
+            android:textColor="@color/color_huabao_title"
             android:textSize="@dimen/eighteen" />
 
         <ImageView
@@ -218,6 +221,7 @@
             android:layout_marginTop="@dimen/five"
             android:layout_toRightOf="@+id/image_beautiful"
             android:text="@string/beautiful"
+            android:textColor="@color/color_huabao_title"
             android:textSize="@dimen/eighteen" />
 
         <ImageView
