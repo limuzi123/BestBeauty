@@ -17,6 +17,7 @@ public class PersonContactActivity extends BaseActivity implements View.OnClickL
     private TextView textViewSurePerson;
     private ImageView imageViewBackPerson;
     private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
     @Override
     protected int getLayout() {
         return R.layout.activity_person;
@@ -32,7 +33,7 @@ public class PersonContactActivity extends BaseActivity implements View.OnClickL
 
     @Override
     protected void initData() {
-        sharedPreferences = getSharedPreferences("userInfo",)
+        //sharedPreferences = getSharedPreferences("userInfo",);
 
     }
 
