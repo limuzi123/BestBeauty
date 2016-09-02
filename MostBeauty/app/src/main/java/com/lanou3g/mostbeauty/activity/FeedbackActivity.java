@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lanou3g.mostbeauty.R;
 import com.lanou3g.mostbeauty.base.BaseActivity;
@@ -43,7 +44,7 @@ public class FeedbackActivity extends BaseActivity implements View.OnClickListen
                 finish();
                 break;
             case R.id.text_send_feed:
-
+                Toast.makeText(this, "发送成功", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.text_view_contact:
                 startActivity(new Intent(FeedbackActivity.this,PersonContactActivity.class));

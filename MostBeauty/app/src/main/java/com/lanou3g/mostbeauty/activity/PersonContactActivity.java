@@ -1,8 +1,13 @@
 package com.lanou3g.mostbeauty.activity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +23,7 @@ public class PersonContactActivity extends BaseActivity implements View.OnClickL
     private ImageView imageViewBackPerson;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+    private EditText editTextPerson;
     @Override
     protected int getLayout() {
         return R.layout.activity_person;
@@ -27,14 +33,16 @@ public class PersonContactActivity extends BaseActivity implements View.OnClickL
     protected void initView() {
         textViewSurePerson = (TextView) findViewById(R.id.text_view_sure_person);
         imageViewBackPerson = (ImageView) findViewById(R.id.image_back_material);
+        editTextPerson = (EditText) findViewById(R.id.edit_view_person);
         textViewSurePerson.setOnClickListener(this);
         imageViewBackPerson.setOnClickListener(this);
     }
 
     @Override
     protected void initData() {
-        //sharedPreferences = getSharedPreferences("userInfo",);
-
+        sharedPreferences = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        ContactPerson();
     }
 
     @Override
@@ -49,4 +57,35 @@ public class PersonContactActivity extends BaseActivity implements View.OnClickL
                 break;
         }
     }
+    private void ContactPerson(){
+        editTextPerson.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String ss = editTextPerson.getText().toString();
+                editor.putString("CONTACT",ss);
+                editor.commit();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sharedPreferences = getSharedPreferences("userInfo",Activity.MODE_PRIVATE);
+        String nickname = sharedPreferences.getString("CONTACT","");
+        editTextPerson.setText(nickname);
+    }
+
+
 }
