@@ -31,6 +31,7 @@
         android:textSize="@dimen/eighteen" />
 
     <EditText
+        android:id="@+id/edit_text_person"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/include_person"
