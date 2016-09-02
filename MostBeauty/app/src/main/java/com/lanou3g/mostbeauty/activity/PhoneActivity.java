@@ -1,5 +1,8 @@
 package com.lanou3g.mostbeauty.activity;
 
+import android.support.v7.app.AppCompatActivity;
+
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -89,3 +92,5 @@ public class PhoneActivity extends AppCompatActivity implements View.OnClickList
         });
     }
 }
+
+

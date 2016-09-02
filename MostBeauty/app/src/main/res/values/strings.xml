@@ -15,6 +15,7 @@
     <string name="boy">男</string>
     <string name="gril">女</string>
     <string name="privary">保密</string>
+
     <string name="text_share">分享这篇文章</string>
     <string name="text_name">申请成为作者</string>
     <string name="tv_content">这里就是你的发布台.</string>
@@ -50,5 +51,10 @@
     <string name="contact">填写联系方式</string>
     <string name="send">发送</string>
     <string name="write_advice">写下您的建议和反馈</string>
+
+
+    <string name="choose_birthday">选择生日</string>
+    <string name="girl">女</string>
+    <string name="choose_sexs">选择性别</string>
 
 </resources>

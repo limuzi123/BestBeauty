@@ -194,6 +194,7 @@ public class MaterialActivity extends BaseActivity implements View.OnClickListen
             case R.id.text_view_sex:
                 mPop.showAtLocation(v, Gravity.BOTTOM, 0, 0);
                 backgroundAlpha(0.7f);
+
                 break;
             case R.id.text_view_men:
                 textViewSex.setText("男");
