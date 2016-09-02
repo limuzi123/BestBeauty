@@ -189,12 +189,18 @@ public class ReuseFragment extends BaseFragment {
         gvPop.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int idPop = popBean.getData().getCategories().get(getPosition()-1).getSub_categories().get(position-1).getId();
-                popDismiss();
-                getNetData(idPop);
                 SharedPreferences sharedPreferences = getContext().getSharedPreferences("have", Activity.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putInt("position",position);
+                if (position==0){
+                    popDismiss();
+                    getNetData(HaveThingsAdapter.getId(getPosition()));
+                    editor.putInt("position", position);
+                }else {
+                    int idPop = popBean.getData().getCategories().get(getPosition() - 1).getSub_categories().get(position - 1).getId();
+                    popDismiss();
+                    getNetData(idPop);
+                    editor.putInt("position", position);
+                }
                 editor.apply();
             }
         });
