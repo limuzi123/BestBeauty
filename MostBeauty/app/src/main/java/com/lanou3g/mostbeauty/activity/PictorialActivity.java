@@ -44,11 +44,11 @@ import static com.lanou3g.mostbeauty.R.id.tv_city;
  */
 public class PictorialActivity extends BaseActivity {
     private WebView webView;
-    private TextView tvTitle, tvSmallTitle, tvName, tvAuthor, tvSmall, tvSmallOne, tvContent,tvSay,tvAll,tvTopName,tvCity;
+    private TextView tvTitle, tvSmallTitle, tvName, tvAuthor, tvSmall, tvSmallOne, tvContent, tvSay, tvAll, tvTopName, tvCity,tvSayHow,tvLike;
     private ScrollView scrollView;
-    private RelativeLayout relativeLayout,relativeLayoutSmall;
+    private RelativeLayout relativeLayout, relativeLayoutSmall;
 
-    private ImageView imgTitle, imgName, imgNameOne,imgTopName;
+    private ImageView imgTitle, imgName, imgNameOne, imgTopName;
     private LinearLayout linearLayout;
     private StationGridview gridView;
     private ListView listView;
@@ -75,7 +75,7 @@ public class PictorialActivity extends BaseActivity {
         tvContent = (TextView) findViewById(R.id.tv_content);
         imgNameOne = (ImageView) findViewById(R.id.img_name_one);
         linearLayout = (LinearLayout) findViewById(R.id.linear);
-        gridView= (StationGridview) findViewById(R.id.grid_view);
+        gridView = (StationGridview) findViewById(R.id.grid_view);
         listView = (ListView) findViewById(R.id.list_view);
         btnAll = (Button) findViewById(R.id.btn_all);
         tvSay = (TextView) findViewById(R.id.tv_say);
@@ -85,7 +85,9 @@ public class PictorialActivity extends BaseActivity {
         relativeLayout = (RelativeLayout) findViewById(R.id.relative_layout);
         relativeLayoutSmall = (RelativeLayout) findViewById(R.id.relative_layout_small);
         imgTopName = (ImageView) findViewById(R.id.img_top_name);
-       scrollView = (ScrollView) findViewById(R.id.scroll_View);
+        scrollView = (ScrollView) findViewById(R.id.scroll_View);
+        tvSayHow = (TextView) findViewById(R.id.tv_say_how);
+        tvLike = (TextView) findViewById(R.id.tv_like);
 
 
     }
@@ -108,15 +110,20 @@ public class PictorialActivity extends BaseActivity {
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
 
+                if (scrollY > oldScrollY && scrollY - oldScrollY > 40) {
+                    if (scrollY > 0 && oldScrollY == 0) {
+                        Log.d("PictorialActivity", "88888888");
+                        relativeLayout.setVisibility(View.VISIBLE);
+                        Animation animation = AnimationUtils.loadAnimation(PictorialActivity.this, R.anim.enter_title);
+                        relativeLayout.startAnimation(animation);
+                    } else {
+                        Log.d("PictorialActivity", "999999999");
+                        relativeLayout.setVisibility(View.GONE);
 
-                if (scrollY > 0 && oldScrollY == 0) {
-                    relativeLayout.setVisibility(View.VISIBLE);
-                    Animation animation = AnimationUtils.loadAnimation(PictorialActivity.this, R.anim.enter_title);
-                    relativeLayout.startAnimation(animation);
-                } else {
-                    relativeLayout.setVisibility(View.INVISIBLE);
-                }
-                if (oldScrollY > scrollY && oldScrollY - scrollY > 40) {
+
+                    }
+                } else if (oldScrollY > scrollY && oldScrollY - scrollY > 40) {
+                    Log.d("PictorialActivity", "101010101010");
                     relativeLayout.setVisibility(View.VISIBLE);
                     Animation animation = AnimationUtils.loadAnimation(PictorialActivity.this, R.anim.exit_title);
                     relativeLayout.startAnimation(animation);
@@ -126,7 +133,6 @@ public class PictorialActivity extends BaseActivity {
         });
 
         getNetRequest(id);
-
 
 
     }
@@ -163,29 +169,30 @@ public class PictorialActivity extends BaseActivity {
                             relativeLayoutSmall.setVisibility(View.GONE);
 
                         }
-                        if(response.getData().getRefer_products() ==null){
+                        if (response.getData().getRefer_products() == null) {
                             gridView.setVisibility(View.GONE);
-                        }else {
-                            if(response.getData().getRefer_products().size() < 10){
+                        } else {
+                            if (response.getData().getRefer_products().size() < 10) {
                                 btnAll.setVisibility(View.GONE);
-                            }else {
+                            } else {
                                 btnAll.setVisibility(View.VISIBLE);
                             }
                             gridView.setVisibility(View.VISIBLE);
                             gridAdapter.setBean(response);
                             gridView.setAdapter(gridAdapter);
                         }
-                       int id =response.getData().getFavor_user_num();
-                        tvSay.setText("评论("+id+")");
-                      listAdapter.setBean(response);
+                        int id = response.getData().getFavor_user_num();
+                        tvLike.setText(response.getData().getLike_user_num()+"");
+                        tvSay.setText("评论(" + id + ")");
+                        tvSayHow.setText(id+"");
+                        listAdapter.setBean(response);
                         listView.setAdapter(listAdapter);
                         setListViewHeightBasedOnChildren(listView);
-                        if(response.getData().getComments().size()<10){
+                        if (response.getData().getComments().size() < 10) {
                             tvAll.setVisibility(View.GONE);
-                        }else {
+                        } else {
                             tvAll.setVisibility(View.VISIBLE);
                         }
-
 
 
                     }
@@ -209,7 +216,7 @@ public class PictorialActivity extends BaseActivity {
             totalHeight += listItem.getMeasuredHeight();
         }
         ViewGroup.LayoutParams params = listView.getLayoutParams();
-        params.height = totalHeight + (listView.getDividerHeight() * (adapter.getCount() - 1)) ;
+        params.height = totalHeight + (listView.getDividerHeight() * (adapter.getCount() - 1));
         listView.setLayoutParams(params);
     }
 }
