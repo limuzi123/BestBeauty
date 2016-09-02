@@ -56,5 +56,6 @@
     <string name="choose_birthday">选择生日</string>
     <string name="girl">女</string>
     <string name="choose_sexs">选择性别</string>
+    <string name="empty">这里空空的什么都还没有呢...</string>
 
 </resources>

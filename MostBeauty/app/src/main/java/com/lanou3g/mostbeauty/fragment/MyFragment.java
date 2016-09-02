@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lanou3g.mostbeauty.R;
+import com.lanou3g.mostbeauty.activity.CollectActivity;
 import com.lanou3g.mostbeauty.activity.FeedbackActivity;
 import com.lanou3g.mostbeauty.activity.MaterialActivity;
 import com.lanou3g.mostbeauty.activity.SetActivity;
@@ -17,7 +18,7 @@ import com.lanou3g.mostbeauty.base.BaseFragment;
  */
 public class MyFragment extends BaseFragment implements View.OnClickListener {
     private ImageView imageViewMyHead,imageViewSet;
-    private TextView textViewFeedBack;
+    private TextView textViewFeedBack,textViewdraw;
 
     @Override
     protected int initLayout() {
@@ -32,6 +33,8 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         imageViewSet.setOnClickListener(this);
         textViewFeedBack = (TextView) getView().findViewById(R.id.text_feedback);
         textViewFeedBack.setOnClickListener(this);
+        textViewdraw = (TextView) getView().findViewById(R.id.text_view_collect_draw);
+        textViewdraw.setOnClickListener(this);
     }
 
     @Override
@@ -50,6 +53,9 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.text_feedback:
                 startActivity(new Intent(getActivity(), FeedbackActivity.class));
+                break;
+            case R.id.text_view_collect_draw:
+                startActivity(new Intent(getActivity(), CollectActivity.class));
                 break;
         }
     }
