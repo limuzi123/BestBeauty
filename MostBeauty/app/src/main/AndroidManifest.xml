@@ -27,6 +27,7 @@
         <activity android:name=".activity.PhoneActivity"/>
         <activity android:name=".activity.SetActivity"/>
         <activity android:name=".activity.FeedbackActivity"/>
+        <activity android:name=".activity.PersonContactActivity"/>
     </application>
 
 </manifest>
