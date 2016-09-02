@@ -9,6 +9,7 @@ import com.lanou3g.mostbeauty.base.BaseActivity;
 /**
  * Created by dllo on 16/9/2.
  */
+//我的心愿单
 public class WishActivity extends BaseActivity{
     private ImageView imageViewWish;
     @Override
