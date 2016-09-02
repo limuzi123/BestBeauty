@@ -67,6 +67,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="@dimen/fifteen"
+        android:layout_marginRight="@dimen/five"
         android:text="@string/send"
         android:textColor="@color/color_huabao_title"
         android:textSize="@dimen/twenty_five" />
