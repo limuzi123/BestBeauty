@@ -29,6 +29,9 @@ public class HaveThingsFragment extends BaseFragment {
         tabLayout.setTabTextColors(0xee606060,0xeeFFFFFF);
         tabLayout.setSelectedTabIndicatorColor(0xeeFFFFFF);
         viewPager= (ViewPager) getView().findViewById(R.id.haveThings_vp);
+        // 1.换图片加载 UnversialImageLoader
+        // 2.设置ViewPager懒加载
+        viewPager.setOffscreenPageLimit(7);
         adapter=new HaveThingsAdapter(getChildFragmentManager());
     }
     @Override

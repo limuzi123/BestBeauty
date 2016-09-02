@@ -15,8 +15,8 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
-
 import com.lanou3g.mostbeauty.Bean.HaveThingsReuseBean;
 import com.lanou3g.mostbeauty.Bean.HaveThingsReuseTitleBean;
 import com.lanou3g.mostbeauty.R;
@@ -65,6 +65,7 @@ public class ReuseFragment extends BaseFragment {
     protected void initData() {
         int id= HaveThingsAdapter.getId(getPosition());
         getNetData(id);
+
         searchText();
         popGridViewListener();
         popupWindow= CreatePop();
@@ -170,6 +171,13 @@ public class ReuseFragment extends BaseFragment {
             gvPop.setAdapter(popAdapter);
         }
         popupWindow.setContentView(view);
+        popupWindow.setOnDismissListener(new OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                popDismiss();
+            }
+        });
+
         return popupWindow;
     }
 
