@@ -13,7 +13,7 @@ import com.lanou3g.mostbeauty.fragment.haveThingsFragments.ReuseFragment;
  * Created by dllo on 16/8/30.
  */
 public class HaveThingsAdapter extends FragmentPagerAdapter {
-    private HaveThingsReuseTitleBean bean;
+    private static HaveThingsReuseTitleBean bean;
     public HaveThingsAdapter(FragmentManager fm) {
         super(fm);
     }
@@ -34,15 +34,21 @@ public class HaveThingsAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return bean.getData().getCategories().size();
+        return bean.getData().getCategories().size()+1;
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
         if (position==0){
-            return "有物";
+            return "Daily";
         }else {
-            return bean.getData().getCategories().get(position).getName();
+            return bean.getData().getCategories().get(position-1).getName();
         }
+    }
+    //传值给ReuseFragment
+    public static int getId(int position){
+        int id = bean.getData().getCategories().get(position-1).getId();
+        //标题位置position-1
+        return id;
     }
 }

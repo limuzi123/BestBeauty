@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.GridView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ public class HaveThingsHaveAdapter extends BaseAdapter {
     private String[] id;
     private HaveThingsHaveItemAdapter adapter;
     private DateFormat dateFormat , dfWay;
+    private HaveThingsHaveChooseAdapter chooseAdapter;
 
     public HaveThingsHaveAdapter(Context context) {
         this.context = context;
@@ -57,17 +59,13 @@ public class HaveThingsHaveAdapter extends BaseAdapter {
         ViewHolder holder = null;
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.adapter_have_things_have, parent, false);
-            holder = new ViewHolder(convertView);
+            holder = new ViewHolder(convertView,position);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
         getNetData(id[position], holder,position);
-        // TODO: 16/8/31 listView第一个有尾布局
-        if (position==0) {
-            View footerView = LayoutInflater.from(context).inflate(R.layout.adapter_have_things_have_foot, parent, false);
-            holder.listView.addFooterView(footerView, null, true);
-        }
+
         return convertView;
     }
 
@@ -75,12 +73,20 @@ public class HaveThingsHaveAdapter extends BaseAdapter {
     public class ViewHolder {
         private ListView listView;
         private TextView date;
-        public ViewHolder(View view) {
+        private GridView gridView;
+        public ViewHolder(View view,int position) {
             listView = (ListView) view.findViewById(R.id.adapter_have_things_have_lv);
+            listView.setHeaderDividersEnabled(false);//删除分割线
+            listView.setFooterDividersEnabled(false);
             // TODO: 16/8/31 都有头布局 写在这里方便赋值
             View headView = LayoutInflater.from(context).inflate(R.layout.adapter_have_things_have_head,null);
             date= (TextView) headView.findViewById(R.id.adapter_have_things_have_head_date);
             listView.addHeaderView(headView,null,true);
+            if (position==0) {
+                View footerView = LayoutInflater.from(context).inflate(R.layout.adapter_have_things_have_foot, null);
+                gridView= (GridView) footerView.findViewById(R.id.adapter_have_things_have_foot_cv);
+                listView.addFooterView(footerView, null, true);
+            }
         }
     }
 
@@ -99,8 +105,14 @@ public class HaveThingsHaveAdapter extends BaseAdapter {
                         setListViewHeightBasedOnChildren(holder.listView);
                         long date = response.getData().getActivities().get(position).getPublish_at();
                         Date(date,holder);
+                        // TODO: 16/8/31 listView第一个有尾布局
+                        // TODO: 16/9/1 gridView绑适配器
+                        if (position==0) {
+                            chooseAdapter = new HaveThingsHaveChooseAdapter(context);
+                            chooseAdapter.setBean(response);
+                            holder.gridView.setAdapter(chooseAdapter);
+                        }
                     }
-
                     @Override
                     public void onError(Throwable e) {
 
@@ -129,6 +141,12 @@ public class HaveThingsHaveAdapter extends BaseAdapter {
         params.height = totalHeight + (listView.getDividerHeight() * (adapter.getCount() - 1)) + 5;
         listView.setLayoutParams(params);
     }
+
+    /**
+     * 获取时间
+     * @param date
+     * @param holder
+     */
     public void Date(long date,ViewHolder holder){
         dateFormat = new SimpleDateFormat("yyyy.MM.dd,");
         dfWay = new SimpleDateFormat("EEEE");
