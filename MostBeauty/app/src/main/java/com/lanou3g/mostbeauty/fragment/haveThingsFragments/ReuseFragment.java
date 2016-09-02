@@ -1,13 +1,16 @@
 package com.lanou3g.mostbeauty.fragment.haveThingsFragments;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -34,11 +37,12 @@ public class ReuseFragment extends BaseFragment {
     private HaveThingsReuseAdapter gvAdapter;
     private TextView textView;
     private ImageView imageView;
-    private Boolean flag=true;
     private PopupWindow popupWindow;
     private LinearLayout linearLayout;
     private HaveThingsReuseTitleBean popBean;
     private HaveThingsReusePopAdapter popAdapter;
+    private View view;
+
     @Override
     protected int initLayout() {
         return R.layout.fragment_have_reuse;
@@ -53,36 +57,57 @@ public class ReuseFragment extends BaseFragment {
         popAdapter=new HaveThingsReusePopAdapter(getContext());
         linearLayout = (LinearLayout) getView().findViewById(R.id.fragment_have_reuse_ll);
         popBean=HaveThingsAdapter.getHaveThingsReuseTitleBean();
-        popupWindow=CreatePop();
-
+        view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_have_reuse_pop,null);
+        gvPop = (GridView) view.findViewById(R.id.fragment_have_reuse_pop_gv);
     }
 
     @Override
     protected void initData() {
         int id= HaveThingsAdapter.getId(getPosition());
         getNetData(id);
-        Log.d("____________", "getPosition()-1:" + (getPosition() - 1));
+        searchText();
+        popGridViewListener();
+        popupWindow= CreatePop();
+    }
+
+    /**
+     * 搜索框显示和隐藏 linearLayout点击事件
+     */
+    private void searchText() {
         if (popBean.getData().getCategories().get(getPosition()-1).getSub_categories()==null){
             linearLayout.setVisibility(View.GONE);
+
         }else {
             linearLayout.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (flag == true) {
-                        textView.setVisibility(View.INVISIBLE);
-                        imageView.setImageResource(R.mipmap.icon_category_fold);
-                        popupWindow.showAsDropDown(linearLayout, 0, 0);
-                        flag = false;
+                    if (!popupWindow.isShowing()) {
+                       popShow();
                     } else {
-                        textView.setVisibility(View.VISIBLE);
-                        imageView.setImageResource(R.mipmap.icon_category_unfold);
-                        popupWindow.dismiss();
-                        flag = true;
+                        popDismiss();
                     }
                 }
             });
         }
     }
+
+    private void popShow() {
+        textView.setVisibility(View.INVISIBLE);
+        imageView.setImageResource(R.mipmap.icon_category_fold);
+        popupWindow.showAsDropDown(linearLayout);
+
+    }
+
+    private void popDismiss() {
+        textView.setVisibility(View.VISIBLE);
+        imageView.setImageResource(R.mipmap.icon_category_unfold);
+        popupWindow.dismiss();
+    }
+
+    /**
+     * 网络解析
+     * @param id
+     */
     protected void getNetData(int id){
         String url = start+id+end;
         NetTool.getInstance().startRequest(url, HaveThingsReuseBean.class, new onHttpCallBack<HaveThingsReuseBean>() {
@@ -98,23 +123,7 @@ public class ReuseFragment extends BaseFragment {
             }
         });
     }
-    private PopupWindow CreatePop(){
-        PopupWindow popupWindow = new PopupWindow(getContext());
-        popupWindow.setHeight(LayoutParams.WRAP_CONTENT);
-        popupWindow.setWidth(LayoutParams.MATCH_PARENT);
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_have_reuse_pop,null);
-        gvPop = (GridView) view.findViewById(R.id.fragment_have_reuse_pop_gv);
-        //适配器
-        popAdapter.setHaveThingsReuseTitleBean(popBean);
-        popAdapter.setItem(getPosition()-1);
-        //gvPop.setAdapter(popAdapter);
-        popupWindow.setContentView(view);
-        Drawable d = new ColorDrawable(0x00000000);
-        popupWindow.setBackgroundDrawable(d);
-        return popupWindow;
-    }
 
-//Fragment复用 以下两个方法把Fragment和位置绑定到一起//////////////////////////////////////////////////////////////////////////
     /**
      * Fragment绑定TabLayout 用于Fragment的复用 在GuideViewPagerAdapter里调用
      * @param position
@@ -127,6 +136,7 @@ public class ReuseFragment extends BaseFragment {
         fragment.setArguments(args);
         return fragment;
     }
+
     /**
      * 获取Fragment绑定的TabLayout 在GuideViewPagerAdapter里调用 对应的标题位置
      * @return
@@ -140,4 +150,45 @@ public class ReuseFragment extends BaseFragment {
             return position;
         }else return 0;
     }
+
+    /**
+     * 创建popupWindow
+     * @return
+     */
+    private PopupWindow CreatePop(){
+        final PopupWindow popupWindow = new PopupWindow(getContext());
+        popupWindow.setHeight(LayoutParams.WRAP_CONTENT);
+        popupWindow.setWidth(LayoutParams.MATCH_PARENT);
+        Drawable d = new ColorDrawable(0x00000000);
+        popupWindow.setBackgroundDrawable(d);
+        popupWindow.setOutsideTouchable(false);
+        popupWindow.setFocusable(true);//设置焦点
+        //适配器
+        popAdapter.setHaveThingsReuseTitleBean(popBean);
+        popAdapter.setItem(getPosition()-1);
+        if (popBean.getData().getCategories().get(getPosition()-1).getSub_categories()!=null) {
+            gvPop.setAdapter(popAdapter);
+        }
+        popupWindow.setContentView(view);
+        return popupWindow;
+    }
+
+    /**
+     * popupWindow里面GridView的点击监听
+     */
+    private void popGridViewListener() {
+        gvPop.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int idPop = popBean.getData().getCategories().get(getPosition()-1).getSub_categories().get(position-1).getId();
+                popDismiss();
+                getNetData(idPop);
+                SharedPreferences sharedPreferences = getContext().getSharedPreferences("have", Activity.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putInt("position",position);
+                editor.apply();
+            }
+        });
+    }
+
 }
