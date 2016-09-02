@@ -1,4 +1,4 @@
-package com.lanou3g.mostbeauty.activity;
+package com.lanou3g.mostbeauty.activity.mine;
 
 import android.content.Intent;
 import android.view.View;

@@ -1,4 +1,6 @@
-package com.lanou3g.mostbeauty.activity;
+package com.lanou3g.mostbeauty.activity.mine;
+
+//**
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,9 +16,7 @@ import android.widget.TextView;
 import com.lanou3g.mostbeauty.R;
 import com.lanou3g.mostbeauty.base.BaseActivity;
 
-/**
- * Created by dllo on 16/9/2.
- */
+
 //填写联系方式
 public class PersonContactActivity extends BaseActivity implements View.OnClickListener {
     private TextView textViewSurePerson;
@@ -68,51 +68,50 @@ public class PersonContactActivity extends BaseActivity implements View.OnClickL
     }
 
 
-            private void ContactPerson() {
-                editTextPerson.addTextChangedListener(new TextWatcher() {
-
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                        String str = editTextContact.getText().toString().trim();
-                        editor.putString("CONTACT", str);
-
-                        String ss = editTextPerson.getText().toString();
-                        editor.putString("CONTACT", ss);
-
-                        editor.commit();
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-
-                    }
-                });
-            }
-
+    private void ContactPerson() {
+        editTextPerson.addTextChangedListener(new TextWatcher() {
 
             @Override
-            protected void onStart() {
-                super.onStart();
-                sharedPreferences = getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
-                String contact = sharedPreferences.getString("CONTACT", "");
-                editTextContact.setText(contact);
-            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
 
             @Override
-            protected void onResume() {
-                super.onResume();
-                sharedPreferences = getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
-                String nickname = sharedPreferences.getString("CONTACT", "");
-                editTextPerson.setText(nickname);
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                String str = editTextContact.getText().toString().trim();
+                editor.putString("CONTACT", str);
+
+                String ss = editTextPerson.getText().toString();
+                editor.putString("CONTACT", ss);
+
+                editor.commit();
             }
 
+            @Override
+            public void afterTextChanged(Editable s) {
 
-        }
+            }
+        });
+    }
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        sharedPreferences = getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
+        String contact = sharedPreferences.getString("CONTACT", "");
+        editTextContact.setText(contact);
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sharedPreferences = getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
+        String nickname = sharedPreferences.getString("CONTACT", "");
+        editTextPerson.setText(nickname);
+    }
+
+
+}
