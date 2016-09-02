@@ -3,6 +3,7 @@ package com.lanou3g.mostbeauty.fragment.haveThingsFragments;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,9 +15,11 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.lanou3g.mostbeauty.Bean.HaveThingsReuseBean;
+import com.lanou3g.mostbeauty.Bean.HaveThingsReuseTitleBean;
 import com.lanou3g.mostbeauty.R;
 import com.lanou3g.mostbeauty.adapter.HaveThingsAdapter;
 import com.lanou3g.mostbeauty.adapter.HaveThingsReuseAdapter;
+import com.lanou3g.mostbeauty.adapter.HaveThingsReusePopAdapter;
 import com.lanou3g.mostbeauty.base.BaseFragment;
 import com.lanou3g.mostbeauty.gson.NetTool;
 import com.lanou3g.mostbeauty.gson.onHttpCallBack;
@@ -34,6 +37,8 @@ public class ReuseFragment extends BaseFragment {
     private Boolean flag=true;
     private PopupWindow popupWindow;
     private LinearLayout linearLayout;
+    private HaveThingsReuseTitleBean popBean;
+    private HaveThingsReusePopAdapter popAdapter;
     @Override
     protected int initLayout() {
         return R.layout.fragment_have_reuse;
@@ -45,30 +50,38 @@ public class ReuseFragment extends BaseFragment {
         gvAdapter=new HaveThingsReuseAdapter(getContext());
         textView= (TextView) getView().findViewById(R.id.fragment_have_reuse_tv);
         imageView= (ImageView) getView().findViewById(R.id.fragment_have_reuse_iv);
-        popupWindow=CreatePop();
+        popAdapter=new HaveThingsReusePopAdapter(getContext());
         linearLayout = (LinearLayout) getView().findViewById(R.id.fragment_have_reuse_ll);
-        linearLayout.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (flag==true) {
-                    textView.setVisibility(View.INVISIBLE);
-                    imageView.setImageResource(R.mipmap.icon_category_fold);
-                    popupWindow.showAsDropDown(linearLayout, 0, 0);
-                    flag=false;
-                }else {
-                    textView.setVisibility(View.VISIBLE);
-                    imageView.setImageResource(R.mipmap.icon_category_unfold);
-                    popupWindow.dismiss();
-                    flag=true;
-                }
-            }
-        });
+        popBean=HaveThingsAdapter.getHaveThingsReuseTitleBean();
+        popupWindow=CreatePop();
+
     }
 
     @Override
     protected void initData() {
         int id= HaveThingsAdapter.getId(getPosition());
         getNetData(id);
+        Log.d("____________", "getPosition()-1:" + (getPosition() - 1));
+        if (popBean.getData().getCategories().get(getPosition()-1).getSub_categories()==null){
+            linearLayout.setVisibility(View.GONE);
+        }else {
+            linearLayout.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (flag == true) {
+                        textView.setVisibility(View.INVISIBLE);
+                        imageView.setImageResource(R.mipmap.icon_category_fold);
+                        popupWindow.showAsDropDown(linearLayout, 0, 0);
+                        flag = false;
+                    } else {
+                        textView.setVisibility(View.VISIBLE);
+                        imageView.setImageResource(R.mipmap.icon_category_unfold);
+                        popupWindow.dismiss();
+                        flag = true;
+                    }
+                }
+            });
+        }
     }
     protected void getNetData(int id){
         String url = start+id+end;
@@ -91,17 +104,15 @@ public class ReuseFragment extends BaseFragment {
         popupWindow.setWidth(LayoutParams.MATCH_PARENT);
         View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_have_reuse_pop,null);
         gvPop = (GridView) view.findViewById(R.id.fragment_have_reuse_pop_gv);
-        // TODO: 16/9/2 帮适配器
+        //适配器
+        popAdapter.setHaveThingsReuseTitleBean(popBean);
+        popAdapter.setItem(getPosition()-1);
+        //gvPop.setAdapter(popAdapter);
         popupWindow.setContentView(view);
         Drawable d = new ColorDrawable(0x00000000);
         popupWindow.setBackgroundDrawable(d);
         return popupWindow;
     }
-
-
-
-
-
 
 //Fragment复用 以下两个方法把Fragment和位置绑定到一起//////////////////////////////////////////////////////////////////////////
     /**

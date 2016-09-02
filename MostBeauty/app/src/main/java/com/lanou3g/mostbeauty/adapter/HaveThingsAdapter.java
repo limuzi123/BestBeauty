@@ -51,4 +51,7 @@ public class HaveThingsAdapter extends FragmentPagerAdapter {
         //标题位置position-1
         return id;
     }
+    public static HaveThingsReuseTitleBean getHaveThingsReuseTitleBean(){
+       return bean;
+    }
 }
