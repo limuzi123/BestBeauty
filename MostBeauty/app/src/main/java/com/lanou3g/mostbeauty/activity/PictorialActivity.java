@@ -1,18 +1,29 @@
 package com.lanou3g.mostbeauty.activity;
 
 import android.content.Intent;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.lanou3g.mostbeauty.Bean.PictorialActivityBean;
 import com.lanou3g.mostbeauty.R;
+import com.lanou3g.mostbeauty.adapter.PictorialActivityGridAdapter;
+import com.lanou3g.mostbeauty.adapter.PictorialActivityListAdapter;
 import com.lanou3g.mostbeauty.base.BaseActivity;
 import com.lanou3g.mostbeauty.base.MyApp;
 import com.lanou3g.mostbeauty.gson.NetTool;
 import com.lanou3g.mostbeauty.gson.onHttpCallBack;
+import com.lanou3g.mostbeauty.myview.StationGridview;
 
 import jp.wasabeef.glide.transformations.ColorFilterTransformation;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
@@ -22,9 +33,15 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
  */
 public class PictorialActivity extends BaseActivity {
     private WebView webView;
-    private TextView tvTitle,tvSmallTitle,tvName,tvAuthor,tvSmall,tvSmallOne,tvContent;
+    private TextView tvTitle, tvSmallTitle, tvName, tvAuthor, tvSmall, tvSmallOne, tvContent,tvSay,tvAll;
 
-    private ImageView imgTitle,imgName,imgNameOne;
+    private ImageView imgTitle, imgName, imgNameOne;
+    private LinearLayout linearLayout;
+    private StationGridview gridView;
+    private ListView listView;
+    private PictorialActivityGridAdapter gridAdapter;
+    private Button btnAll;
+    private PictorialActivityListAdapter listAdapter;
 
     @Override
     protected int getLayout() {
@@ -44,12 +61,20 @@ public class PictorialActivity extends BaseActivity {
         tvSmallOne = (TextView) findViewById(R.id.tv_small);
         tvContent = (TextView) findViewById(R.id.tv_content);
         imgNameOne = (ImageView) findViewById(R.id.img_name_one);
+        linearLayout = (LinearLayout) findViewById(R.id.linear);
+        gridView= (StationGridview) findViewById(R.id.grid_view);
+        listView = (ListView) findViewById(R.id.list_view);
+        btnAll = (Button) findViewById(R.id.btn_all);
+        tvSay = (TextView) findViewById(R.id.tv_say);
+        tvAll = (TextView) findViewById(R.id.tv_all);
 
 
     }
 
     @Override
     protected void initData() {
+        gridAdapter = new PictorialActivityGridAdapter(this);
+        listAdapter = new PictorialActivityListAdapter(this);
         Intent intent = getIntent();
         String str = intent.getStringExtra("id");
         int id = Integer.parseInt(str);
@@ -57,7 +82,7 @@ public class PictorialActivity extends BaseActivity {
         Glide.with(this).load(img).into(imgTitle);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl(API.PICTORIAL_ACTIVITY_WEBVIEW+ id +API.PICTORIAL_ACTIVITY_WEBVIEW_TWO);
+        webView.loadUrl(API.PICTORIAL_ACTIVITY_WEBVIEW + id + API.PICTORIAL_ACTIVITY_WEBVIEW_TWO);
         NetTool.getInstance().startRequest(API.PICTORIAL_ACTIVITY_ONE + id + API.PICTORIAL_ACTIVITY_TWO,
                 PictorialActivityBean.class, new onHttpCallBack<PictorialActivityBean>() {
                     @Override
@@ -68,12 +93,40 @@ public class PictorialActivity extends BaseActivity {
                         tvAuthor.setText(response.getData().getAuthor().getSign());
                         Glide.with(PictorialActivity.this).load(response.getData().getAuthor().getAvatar_url()).bitmapTransform(new CropCircleTransformation(PictorialActivity.this)).into(imgName);
 
+                        if (response.getData().getDesigners().size() != 0) {
+                            linearLayout.setVisibility(View.VISIBLE);
 
-                        
-                       tvSmall.setText(response.getData().getDesigners().get(0).getName());
+                            tvSmall.setText(response.getData().getDesigners().get(0).getName());
+                            tvSmallOne.setText(response.getData().getDesigners().get(0).getLabel());
+                            Glide.with(PictorialActivity.this).load(response.getData().getDesigners().get(0).getAvatar_url()).bitmapTransform(new CropCircleTransformation(PictorialActivity.this)).into(imgNameOne);
+                            tvContent.setText(response.getData().getDesigners().get(0).getDescription());
 
+                        } else {
+                            linearLayout.setVisibility(View.GONE);
 
-
+                        }
+                        if(response.getData().getRefer_products() ==null){
+                            gridView.setVisibility(View.GONE);
+                        }else {
+                            if(response.getData().getRefer_products().size() < 10){
+                                btnAll.setVisibility(View.GONE);
+                            }else {
+                                btnAll.setVisibility(View.VISIBLE);
+                            }
+                            gridView.setVisibility(View.VISIBLE);
+                            gridAdapter.setBean(response);
+                            gridView.setAdapter(gridAdapter);
+                        }
+                       int id =response.getData().getFavor_user_num();
+                        tvSay.setText("评论("+id+")");
+                      listAdapter.setBean(response);
+                        listView.setAdapter(listAdapter);
+                        setListViewHeightBasedOnChildren(listView);
+                        if(response.getData().getComments().size()<10){
+                            tvAll.setVisibility(View.GONE);
+                        }else {
+                            tvAll.setVisibility(View.VISIBLE);
+                        }
 
 
 
@@ -81,10 +134,25 @@ public class PictorialActivity extends BaseActivity {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        Log.d("PictorialActivity", "aaaaaaaaaaaammmmm");
                     }
                 });
 
 
+    }
+    private void setListViewHeightBasedOnChildren(ListView listView) {
+        ListAdapter adapter = listView.getAdapter();
+        if (adapter == null) {
+            return;
+        }
+        int totalHeight = 0;
+        for (int i = 0; i < adapter.getCount(); i++) {
+            View listItem = adapter.getView(i, null, listView);
+            listItem.measure(0, 0);
+            totalHeight += listItem.getMeasuredHeight();
+        }
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (adapter.getCount() - 1)) ;
+        listView.setLayoutParams(params);
     }
 }

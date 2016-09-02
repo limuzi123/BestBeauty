@@ -22,4 +22,7 @@
     <string name="tv_content_one">有你自已喜欢的独特品牌</string>
     <string name="tv_title_one">成为最美作者</string>
     <string name="tv_name_tt">作者</string>
+    <string name="btn">查看所有商品</string>
+    <string name="tv_commmeny">查看全部评论</string>
+    <string name="et_say">说点什么吧</string>
 </resources>
