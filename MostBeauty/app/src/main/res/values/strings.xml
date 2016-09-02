@@ -39,5 +39,12 @@
     <string name="attention">关注的设计师</string>
     <string name="my_wish">我的心愿单</string>
     <string name="beautiful">最美团队的另一个产品:最美应用</string>
+    <string name="set">设置</string>
+    <string name="personage">个人信息</string>
+    <string name="clean">清除缓存</string>
+    <string name="good_reputation">好评</string>
+    <string name="recommend">推荐给朋友</string>
+    <string name="about_our">关于我们</string>
+    <string name="exit">退出</string>
 
 </resources>
