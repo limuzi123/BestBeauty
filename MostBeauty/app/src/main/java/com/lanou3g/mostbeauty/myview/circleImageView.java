@@ -1,4 +1,4 @@
-package com.lanou3g.mostbeauty.customView;
+package com.lanou3g.mostbeauty.myview;
 
 import android.content.Context;
 import android.graphics.Bitmap;

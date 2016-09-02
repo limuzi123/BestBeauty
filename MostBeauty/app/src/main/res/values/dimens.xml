@@ -35,6 +35,7 @@
     <dimen name="thirty">30dp</dimen>
     <dimen name="twenty_three">23sp</dimen>
     <dimen name="three">3dp</dimen>
+    <dimen name="_seventy">70dp</dimen>
 
 
 </resources>
