@@ -89,6 +89,7 @@ public class ReuseFragment extends BaseFragment {
                 }
             });
         }
+        
     }
 
     private void popShow() {
