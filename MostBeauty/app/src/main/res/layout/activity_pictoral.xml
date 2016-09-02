@@ -10,6 +10,7 @@
 
 
     <ScrollView
+        android:id="@+id/scroll_View"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -457,6 +458,7 @@
         </LinearLayout>
         </LinearLayout>
         <RelativeLayout
+            android:id="@+id/relative_layout"
             android:layout_margin="@dimen/ten"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -467,11 +469,13 @@
                 android:layout_width="@dimen/forty"
                 android:layout_height="@dimen/forty"/>
             <RelativeLayout
+                android:id="@+id/relative_layout_small"
               android:background="@drawable/shape_title"
                 android:layout_alignParentRight="true"
                 android:layout_width="200dp"
                 android:layout_height="@dimen/forty">
                 <TextView
+                    android:maxLines="1"
                     android:layout_margin="@dimen/one"
                     android:layout_toLeftOf="@+id/img_top_name"
                     android:text="名字"
@@ -490,7 +494,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <ImageView
-                    android:layout_margin="@dimen/one"
+
+                    android:layout_margin="@dimen/five"
                     android:id="@+id/img_top_name"
                     android:layout_alignParentRight="true"
                     android:layout_width="@dimen/thirty"
