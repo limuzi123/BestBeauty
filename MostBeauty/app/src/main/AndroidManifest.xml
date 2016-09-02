@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".activity.MaterialActivity"/>
         <activity android:name=".activity.PictorialActivity"/>
+        <activity android:name=".activity.PhoneActivity"/>
     </application>
 
 </manifest>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/include_phone"
+        layout="@layout/include_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:id="@+id/relative_layout_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/include_phone">
+
+        <EditText
+            android:id="@+id/edit_text_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fifty_zz"
+            android:hint="@string/phone_edit" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_layout_phone">
+
+        <EditText
+            android:id="@+id/edit_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fifty_zz"
+            android:hint="@string/verification" />
+
+        <TextView
+            android:id="@+id/text_view_verification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/five"
+            android:layout_marginTop="@dimen/sixty"
+            android:text="@string/send_code"
+            android:textSize="@dimen/eighteen" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/text_view_sure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_code"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/fifty_zz"
+        android:background="@drawable/shap_phone"
+        android:gravity="center"
+        android:text="@string/sure"
+        android:textColor="@color/color_background"
+        android:textSize="@dimen/twenty_five" />
+</RelativeLayout>

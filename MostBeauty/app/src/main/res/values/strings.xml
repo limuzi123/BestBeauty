@@ -22,7 +22,22 @@
     <string name="tv_content_one">有你自已喜欢的独特品牌</string>
     <string name="tv_title_one">成为最美作者</string>
     <string name="tv_name_tt">作者</string>
+
     <string name="btn">查看所有商品</string>
     <string name="tv_commmeny">查看全部评论</string>
     <string name="et_say">说点什么吧</string>
+
+    <string name="phone_edit">绑定手机号</string>
+    <string name="verification">验证码</string>
+    <string name="send_code">发送验证码</string>
+    <string name="sure">确定</string>
+    <string name="phone_text">绑定手机号</string>
+    <string name="phone">绑定手机号</string>
+    <string name="no_logon">未登录</string>
+    <string name="feedback">反馈</string>
+    <string name="collect_draw">收藏的画报</string>
+    <string name="attention">关注的设计师</string>
+    <string name="my_wish">我的心愿单</string>
+    <string name="beautiful">最美团队的另一个产品:最美应用</string>
+
 </resources>

@@ -3,6 +3,7 @@ package com.lanou3g.mostbeauty.fragment;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.lanou3g.mostbeauty.R;
 import com.lanou3g.mostbeauty.activity.MaterialActivity;
@@ -11,8 +12,9 @@ import com.lanou3g.mostbeauty.base.BaseFragment;
 /**
  * Created by dllo on 16/8/30.
  */
-public class MyFragment extends BaseFragment{
-    private Button button;
+public class MyFragment extends BaseFragment implements View.OnClickListener {
+    private ImageView imageViewMyHead;
+
     @Override
     protected int initLayout() {
         return R.layout.fragment_my;
@@ -20,16 +22,21 @@ public class MyFragment extends BaseFragment{
 
     @Override
     protected void initView() {
-     button = (Button) getView().findViewById(R.id.btn_one);
+        imageViewMyHead = (ImageView) getView().findViewById(R.id.my_image_head);
+        imageViewMyHead.setOnClickListener(this);
     }
 
     @Override
     protected void initData() {
-      button.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-              startActivity(new Intent(getActivity(), MaterialActivity.class));
-          }
-      });
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.my_image_head:
+                startActivity(new Intent(getActivity(), MaterialActivity.class));
+                break;
+        }
     }
 }
