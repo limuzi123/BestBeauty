@@ -3,6 +3,7 @@ package com.lanou3g.mostbeauty.activity.mine;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.lanou3g.mostbeauty.R;
 import com.lanou3g.mostbeauty.base.BaseActivity;
@@ -12,7 +13,8 @@ import com.lanou3g.mostbeauty.base.BaseActivity;
  */
 //设置页面
 public class SetActivity extends BaseActivity implements View.OnClickListener{
-    private ImageView imageViewSetHead,imageViewSetBack;
+    private ImageView imageViewSetBack;
+    private RelativeLayout relativeLayoutFeedBack,relativeLayoutSetHead;
 
     @Override
     protected int getLayout() {
@@ -21,10 +23,12 @@ public class SetActivity extends BaseActivity implements View.OnClickListener{
 
     @Override
     protected void initView() {
-        imageViewSetHead = (ImageView) findViewById(R.id.image_head_set);
-        imageViewSetHead.setOnClickListener(this);
+        relativeLayoutSetHead = (RelativeLayout) findViewById(R.id.relative_layout_set);
+        relativeLayoutSetHead.setOnClickListener(this);
         imageViewSetBack = (ImageView) findViewById(R.id.image_back_material);
         imageViewSetBack.setOnClickListener(this);
+        relativeLayoutFeedBack = (RelativeLayout) findViewById(R.id.relative_feedback);
+        relativeLayoutFeedBack.setOnClickListener(this);
 
     }
 
@@ -36,11 +40,14 @@ public class SetActivity extends BaseActivity implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.image_head_set:
+            case R.id.relative_layout_set:
                 startActivity(new Intent(this,MaterialActivity.class));
                 break;
             case R.id.image_back_material:
                 finish();
+                break;
+            case R.id.relative_feedback:
+                startActivity(new Intent(this,FeedbackActivity.class));
                 break;
         }
     }
