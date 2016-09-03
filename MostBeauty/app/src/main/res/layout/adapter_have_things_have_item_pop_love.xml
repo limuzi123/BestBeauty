@@ -4,12 +4,20 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/adapter_have_things_have_item_pop_love_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="测试"
+        android:textSize="15sp"
+        android:textColor="#FFFCF2"/>
     <LinearLayout
         android:id="@+id/adapter_have_things_have_item_pop_love"
         android:layout_width="30dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@drawable/shape_face">
+
         <ImageView
             android:id="@+id/adapter_have_things_have_item_pop_love_iv"
             android:layout_width="30dp"
