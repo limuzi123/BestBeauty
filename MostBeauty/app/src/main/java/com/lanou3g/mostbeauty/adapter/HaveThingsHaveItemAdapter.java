@@ -1,16 +1,21 @@
 package com.lanou3g.mostbeauty.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.view.ViewPager.LayoutParams;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -26,6 +31,11 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
 public class HaveThingsHaveItemAdapter extends BaseAdapter {
     private Context context;
     private HaveThingsHaveBean bean;
+    private LinearLayout llLove,llCry;
+    private ImageView ivLove,ivCry;
+    private AnimationDrawable adLove,adCry;
+    private Message msg;
+    private Handler handler ;
 
     public void setBean(HaveThingsHaveBean bean) {
         this.bean = bean;
@@ -62,7 +72,6 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
 
             holder= (ViewHolder) convertView.getTag();
         }
-        //holder.productName.setText(bean.getData().getActivities().get(position).getProduct().getName());
         String str  = bean.getData().getActivities().get(position).getDigest();
 
         holder.digest.setText(str);
@@ -74,30 +83,76 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
         final int heightCry = bean.getData().getActivities().get(position).getProduct().getUnlike_user_num();
 
         final ViewHolder finalHolder = holder;
+
         holder.smile.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                createPopCry(heightCry/2+200).showAsDropDown(finalHolder.cry,0,-(heightCry/2+200));
-                createPopLove(heightSmile/2+200).showAsDropDown(finalHolder.smile,0,-(heightSmile/2+200));
+                final PopupWindow popCry = createPopCry(heightCry/2+200);
+                final PopupWindow popSmile =  createPopLove(heightSmile/2+200);
+                if (!popCry.isShowing()&&!popSmile.isShowing()) {
+                    llLove.setBackgroundResource(R.drawable.shape_face_yellow);
+                    llCry.setBackgroundResource(R.drawable.shape_face);
+                    popCry.showAsDropDown(finalHolder.cry, 0, -(heightCry / 2 + 200));
+                    popSmile.showAsDropDown(finalHolder.smile, 0, -(heightSmile / 2 + 200));
+                    adLove.start();
+                    popSmile.setOnDismissListener(new OnDismissListener() {
+                        @Override
+                        public void onDismiss() {
+                            finalHolder.smile.setBackgroundResource(R.mipmap.like_10);
+                        }
+                    });
+//                ObjectAnimator.ofFloat(finalHolder.smileLL,"scaleY",heightSmile).setDuration(2000).start();
+//                performAnimate(finalHolder.smileLL,heightSmile);
+                }
+//                else {
+//                    popCry.dismiss();
+//                    popSmile.dismiss();
+//                }
             }
         });
         holder.cry.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                createPopCry(heightCry/2+200).showAsDropDown(finalHolder.cry,0,-(heightCry/2+200));
-                createPopLove(heightSmile/2+200).showAsDropDown(finalHolder.smile,0,-(heightSmile/2+200));
+                final PopupWindow popCry = createPopCry(heightCry/2+200);
+                final PopupWindow popSmile =  createPopLove(heightSmile/2+200);
+                if (!popCry.isShowing()&&!popSmile.isShowing()) {
+                    llLove.setBackgroundResource(R.drawable.shape_face);
+                    llCry.setBackgroundResource(R.drawable.shape_face_yellow);
+                    popCry.showAsDropDown(finalHolder.cry, 0, -(heightCry / 2 + 200));
+                    popSmile.showAsDropDown(finalHolder.smile, 0, -(heightSmile / 2 + 200));
+                    adCry.start();
+                    popSmile.setOnDismissListener(new OnDismissListener() {
+                        @Override
+                        public void onDismiss() {
+                            finalHolder.cry.setImageResource(R.mipmap.dislike_9);
+                        }
+                    });
+//                    threadPop(heightCry,popCry,finalHolder.cry);
+//                    threadPop(heightSmile,popSmile,finalHolder.smile);
+
+//                ObjectAnimator.ofFloat(finalHolder.cryLL,"scaleY",heightCry).setDuration(2000).start();
+//                performAnimate(finalHolder.cryLL,heightCry);
+                }
+//                else {
+//                    popCry.dismiss();
+//                    popSmile.dismiss();
+//                }
             }
         });
-
         return convertView;
     }
+
+
+
     public class ViewHolder{
+        private LinearLayout smileLL,cryLL;
         private ImageView images,designerAvatar,smile,cry;
-        private TextView productName,digest,designerName,desigerLabel;
+        private TextView digest,designerName,desigerLabel;
         public ViewHolder(View view) {
+            smileLL= (LinearLayout) view.findViewById(R.id.adapter_have_things_have_item_smile_ll);
+            cryLL= (LinearLayout) view.findViewById(R.id.adapter_have_things_have_item_cry_ll);
             images= (ImageView) view.findViewById(R.id.adapter_have_things_have_item_images);
             designerAvatar = (ImageView) view.findViewById(R.id.adapter_have_things_have_item_designer_avatar);
-            //productName= (TextView) view.findViewById(R.id.adapter_have_things_have_item_product_name);
             digest= (TextView) view.findViewById(R.id.adapter_have_things_have_item_digest);
             designerName= (TextView) view.findViewById(R.id.adapter_have_things_have_item_designer_name);
             desigerLabel= (TextView) view.findViewById(R.id.adapter_have_things_have_item_desiger_label);
@@ -118,28 +173,85 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
 //                    }
 //                });
     }
+//    private void performAnimate(View view,int height){
+//        ViewWrapper wrapper =new ViewWrapper(view);
+//        ObjectAnimator.ofInt(wrapper,"height",height).setDuration(2000).start();
+//    }
+//
+//    private static class ViewWrapper{
+//        private View mTarget;
+//
+//        public ViewWrapper(View mTarget) {
+//            this.mTarget = mTarget;
+//        }
+//        public int getHeight(){
+//            return mTarget.getLayoutParams().height;
+//        }
+//        public void setHeight(int height){
+//            mTarget.getLayoutParams().height = height;
+//            mTarget.requestLayout();
+//        }
+//    }
+
     public PopupWindow createPopLove(int height){
         PopupWindow popupWindow = new PopupWindow(context);
         popupWindow.setHeight(height);
         popupWindow.setWidth(LayoutParams.WRAP_CONTENT);
-        View view = LayoutInflater.from(context).inflate(R.layout.adapter_have_things_have_item_pop,null);
+        View view = LayoutInflater.from(context).inflate(R.layout.adapter_have_things_have_item_pop_love,null);
+        llLove= (LinearLayout) view.findViewById(R.id.adapter_have_things_have_item_pop_love);
+        ivLove= (ImageView) view.findViewById(R.id.adapter_have_things_have_item_pop_love_iv);
+        adLove= (AnimationDrawable) ivLove.getBackground();
         popupWindow.setContentView(view);
         Drawable d = new ColorDrawable(0x00000000);
         popupWindow.setBackgroundDrawable(d);
         popupWindow.setOutsideTouchable(true);
+        popupWindow.setAnimationStyle(R.style.pop);
         return popupWindow;
     }
     public PopupWindow createPopCry(int height){
         PopupWindow popupWindow = new PopupWindow(context);
         popupWindow.setHeight(height);
         popupWindow.setWidth(LayoutParams.WRAP_CONTENT);
-        View view = LayoutInflater.from(context).inflate(R.layout.adapter_have_things_have_item_pop_hate,null);
+        View view = LayoutInflater.from(context).inflate(R.layout.adapter_have_things_have_item_pop_cry,null);
+        llCry= (LinearLayout) view.findViewById(R.id.adapter_have_things_have_item_pop_cry);
+        ivCry= (ImageView) view.findViewById(R.id.adapter_have_things_have_item_pop_cry_iv);
+        adCry= (AnimationDrawable) ivCry.getBackground();
         popupWindow.setContentView(view);
         Drawable d = new ColorDrawable(0x00000000);
         popupWindow.setBackgroundDrawable(d);
         popupWindow.setOutsideTouchable(true);
+        popupWindow.setAnimationStyle(R.style.pop);
         return popupWindow;
     }
+
+//    private void threadPop(final int height, final PopupWindow popupWindow, final View view) {
+//
+//        handler = new Handler(new Callback() {
+//            @Override
+//            public boolean handleMessage(Message msg) {
+//                int i = msg.arg1;
+//                popupWindow.showAsDropDown(view,0,-(i/2+200));
+//                return false;
+//            }
+//        });
+//
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                int i;
+//                for (i = 0; i < height; i++) {
+//                    try {
+//                        Thread.sleep(500);
+//                        msg = new Message();
+//                        msg.arg1 = i;
+//                        handler.sendMessage(msg);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }).start();
+//    }
 
 
 
