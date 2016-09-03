@@ -68,6 +68,7 @@ public class PictrialFragmentAdapter extends OverviewAdapter<PictrialFragmentAda
         Glide.with(context).load(bean.getData().getArticles()
                 .get(bean.getData().getArticles().size()-netViewHolder.getPosition()-1).getImage_url())
                 .into(netViewHolder.imageView);
+
         netViewHolder.textView.setText(bean.getData().getArticles().get(bean.getData().getArticles().size() - netViewHolder.getPosition() - 1).getAuthor().getSign());
         Glide.with(context).load(bean.getData().getArticles()
                 .get(bean.getData().getArticles().size() - netViewHolder.getPosition() - 1)

@@ -3,6 +3,7 @@ package com.lanou3g.mostbeauty.fragment;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.util.Log;
 import android.view.View;
 
 import com.lanou3g.mostbeauty.Bean.PictorialBean;
@@ -78,7 +79,7 @@ public class PictorialFragment extends BaseFragment implements Overview.RecentsV
 
             @Override
             public void onError(Throwable e) {
-
+                Log.d("PictorialFragment", "12345678");
             }
         });
     }
