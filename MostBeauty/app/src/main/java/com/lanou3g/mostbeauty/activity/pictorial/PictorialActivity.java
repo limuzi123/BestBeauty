@@ -55,6 +55,7 @@ public class PictorialActivity extends BaseActivity implements OnClickListener{
     private PictorialActivityListAdapter listAdapter;
     private String str;
     private EditText etSay;
+    private String str1;
 
     @Override
     protected int getLayout() {
@@ -158,6 +159,9 @@ public class PictorialActivity extends BaseActivity implements OnClickListener{
                         tvSmallTitle.setText(response.getData().getSub_title());
                         tvName.setText(response.getData().getAuthor().getUsername());
                         tvAuthor.setText(response.getData().getAuthor().getSign());
+                        int id1 = response.getData().getAuthor().getId();
+                        str1 = Integer.toString(id1);
+                        Log.d("PictorialActivity", "12345671234567"+id1);
                         Glide.with(PictorialActivity.this).load(response.getData().getAuthor().getAvatar_url()).bitmapTransform(new CropCircleTransformation(PictorialActivity.this)).into(imgName);
 
                         if (response.getData().getDesigners().size() != 0) {
@@ -252,6 +256,7 @@ public class PictorialActivity extends BaseActivity implements OnClickListener{
                 break;
             case R.id.relative_layout_small:
                 Intent intentAuthor = new Intent(this,PictorialAuthorActivity.class);
+                intentAuthor.putExtra("idAuthor",str1);
                 startActivity(intentAuthor);
                 break;
 

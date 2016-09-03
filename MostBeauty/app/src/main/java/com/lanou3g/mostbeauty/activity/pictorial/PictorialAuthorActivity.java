@@ -1,6 +1,7 @@
 package com.lanou3g.mostbeauty.activity.pictorial;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build.VERSION_CODES;
 import android.support.design.widget.TabLayout;
@@ -15,10 +16,14 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.lanou3g.mostbeauty.Bean.PictorialAuthorActivityViewPagerTopBean;
 import com.lanou3g.mostbeauty.Bean.PivtorialAnthorInfo;
 import com.lanou3g.mostbeauty.R;
+import com.lanou3g.mostbeauty.activity.API;
 import com.lanou3g.mostbeauty.adapter.PictorialAuthorPagerAdapter;
 import com.lanou3g.mostbeauty.base.BaseActivity;
+import com.lanou3g.mostbeauty.gson.NetTool;
+import com.lanou3g.mostbeauty.gson.onHttpCallBack;
 
 /**
  * Created by dllo on 16/9/3.
@@ -66,6 +71,22 @@ public class PictorialAuthorActivity extends BaseActivity{
 
     @Override
     protected void initData() {
+        Intent intent =getIntent();
+       String str =  intent.getStringExtra("idAuthor");
+        int id = Integer.parseInt(str);
+        NetTool.getInstance().startRequest(API.PICTORIAL_AUTHOR_ACTYVITY_VIEWPAGER_TOP_ONE + id + API.PICTORIAL_AUTHOR_ACTYVITY_VIEWPAGER_TOP_TWO, PictorialAuthorActivityViewPagerTopBean.class,
+                new onHttpCallBack<PictorialAuthorActivityViewPagerTopBean>() {
+                    @Override
+                    public void onSuccess(PictorialAuthorActivityViewPagerTopBean response) {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                });
+
 
     }
 }
