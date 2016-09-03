@@ -3,6 +3,7 @@ package com.lanou3g.mostbeauty.activity.mine;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -22,7 +23,7 @@ import java.io.File;
 public class SetActivity extends BaseActivity implements View.OnClickListener{
     private ImageView imageViewSetBack;
     private RelativeLayout relativeLayoutFeedBack,relativeLayoutSetHead;
-    private RelativeLayout relativeLayoutClean;
+    private RelativeLayout relativeLayoutClean,relativeLayoutGood,relativeLayoutabout;
 
     @Override
     protected int getLayout() {
@@ -39,6 +40,10 @@ public class SetActivity extends BaseActivity implements View.OnClickListener{
         relativeLayoutFeedBack.setOnClickListener(this);
         relativeLayoutClean = (RelativeLayout) findViewById(R.id.relative_layout_clean);
         relativeLayoutClean.setOnClickListener(this);
+        relativeLayoutGood = (RelativeLayout) findViewById(R.id.relative_good);
+        relativeLayoutGood.setOnClickListener(this);
+        relativeLayoutabout = (RelativeLayout) findViewById(R.id.relative_about);
+        relativeLayoutabout.setOnClickListener(this);
 
     }
 
@@ -80,6 +85,26 @@ public class SetActivity extends BaseActivity implements View.OnClickListener{
                 break;
             case R.id.relative_layout_clean:
                 Dialog();
+                break;
+            case R.id.relative_good:
+                Apply();
+                break;
+            case R.id.relative_about:
+                startActivity(new Intent(SetActivity.this,AboutActivity.class));
+                break;
         }
     }
-}
+    //跳转到应用商店
+    private void Apply(){
+        //这里开始执行一个应用市场跳转逻辑,默认this为Context上下文对象
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        //跳转到应用市场,非Google Play市场一般情况也实现了这个接口
+        intent.setData(Uri.parse("market://details?id=" + getPackageName()));
+        if (intent.resolveActivity(getPackageManager()) != null){
+            startActivity(intent);
+            }else {
+                Toast.makeText(this, "您的手机没有安装应用市场", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
