@@ -416,6 +416,7 @@
                 android:layout_width="@dimen/thirty_two"
                 android:layout_height="@dimen/thirty_two"/>
             <EditText
+                android:id="@+id/et_say"
                 android:padding="@dimen/five"
                 android:background="@drawable/shape_et_say"
                 android:layout_gravity="center"
@@ -423,6 +424,7 @@
                 android:layout_width="@dimen/one_husand_fifty"
                 android:layout_height="wrap_content"/>
             <ImageView
+                android:id="@+id/img_say"
                 android:src="@mipmap/article_comment_icon"
                 android:layout_marginLeft="@dimen/fifteen"
                 android:layout_gravity="center"
@@ -467,7 +469,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-
+            android:id="@+id/img_back"
                 android:src="@mipmap/ic_bottom_back_normal"
                 android:layout_width="@dimen/forty"
                 android:layout_height="@dimen/forty"/>

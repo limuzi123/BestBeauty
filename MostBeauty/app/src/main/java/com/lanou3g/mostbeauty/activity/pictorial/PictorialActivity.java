@@ -13,6 +13,7 @@ import android.view.animation.AnimationUtils;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
@@ -45,7 +46,7 @@ public class PictorialActivity extends BaseActivity implements OnClickListener{
     private ScrollView scrollView;
     private RelativeLayout relativeLayout, relativeLayoutSmall;
 
-    private ImageView imgTitle, imgName, imgNameOne, imgTopName;
+    private ImageView imgTitle, imgName, imgNameOne, imgTopName,imgBack,imgSay;
     private LinearLayout linearLayout;
     private StationGridview gridView;
     private ListView listView;
@@ -53,6 +54,7 @@ public class PictorialActivity extends BaseActivity implements OnClickListener{
     private Button btnAll;
     private PictorialActivityListAdapter listAdapter;
     private String str;
+    private EditText etSay;
 
     @Override
     protected int getLayout() {
@@ -86,11 +88,16 @@ public class PictorialActivity extends BaseActivity implements OnClickListener{
         scrollView = (ScrollView) findViewById(R.id.scroll_View);
         tvSayHow = (TextView) findViewById(R.id.tv_say_how);
         tvLike = (TextView) findViewById(R.id.tv_like);
-
+        imgSay = (ImageView) findViewById(R.id.img_say);
+        imgBack = (ImageView) findViewById(R.id.img_back);
+        etSay = (EditText) findViewById(R.id.et_say);
 
 
         tvAll.setOnClickListener(this);
         btnAll.setOnClickListener(this);
+        imgBack.setOnClickListener(this);
+        imgSay.setOnClickListener(this);
+        etSay.setOnClickListener(this);
 
 
     }
@@ -228,6 +235,19 @@ public class PictorialActivity extends BaseActivity implements OnClickListener{
                 startActivity(intent);
                 break;
             case R.id.btn_all:
+                break;
+            case R.id.img_back:
+                finish();
+                break;
+            case R.id.img_say:
+                Intent intentImg = new Intent(this,PictorialCommentActivity.class);
+                intentImg.putExtra("id",str);
+                startActivity(intentImg);
+                break;
+            case R.id.et_say:
+                Intent intentEt = new Intent(this,PictorialCommentActivity.class);
+                intentEt.putExtra("id",str);
+                startActivity(intentEt);
                 break;
 
         }
