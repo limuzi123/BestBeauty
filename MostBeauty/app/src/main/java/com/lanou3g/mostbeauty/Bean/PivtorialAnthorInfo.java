@@ -2,6 +2,7 @@ package com.lanou3g.mostbeauty.Bean;
 
 import android.support.v4.app.Fragment;
 
+import com.lanou3g.mostbeauty.fragment.PictorialBuyFragment;
 import com.lanou3g.mostbeauty.fragment.PictorialProductionFragment;
 import com.lanou3g.mostbeauty.fragment.PictorialSmallFragment;
 import com.lanou3g.mostbeauty.fragment.PictorialStoreFragment;
@@ -33,6 +34,7 @@ public class PivtorialAnthorInfo {
         infos.add(new PivtorialAnthorInfo("作品",new PictorialProductionFragment()));
         infos.add(new PivtorialAnthorInfo("画报",new PictorialSmallFragment()));
         infos.add(new PivtorialAnthorInfo("旗舰门店",new PictorialStoreFragment()));
+        infos.add(new PivtorialAnthorInfo("线上购买",new PictorialBuyFragment()));
         return infos;
     }
 }

@@ -98,6 +98,7 @@ public class PictorialActivity extends BaseActivity implements OnClickListener{
         imgBack.setOnClickListener(this);
         imgSay.setOnClickListener(this);
         etSay.setOnClickListener(this);
+        relativeLayoutSmall.setOnClickListener(this);
 
 
     }
@@ -248,6 +249,10 @@ public class PictorialActivity extends BaseActivity implements OnClickListener{
                 Intent intentEt = new Intent(this,PictorialCommentActivity.class);
                 intentEt.putExtra("id",str);
                 startActivity(intentEt);
+                break;
+            case R.id.relative_layout_small:
+                Intent intentAuthor = new Intent(this,PictorialAuthorActivity.class);
+                startActivity(intentAuthor);
                 break;
 
         }
