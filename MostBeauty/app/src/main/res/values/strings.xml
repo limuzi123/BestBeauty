@@ -62,6 +62,7 @@
     <string name="person_write">请填写QQ,手机号或者邮箱等任何可以联系到您的方式.</string>
     <string name="tv_comment_tt">评论</string>
     <string name="tv_send">发送</string>
+    <string name="about_me">关于我们</string>
 
 
 </resources>
