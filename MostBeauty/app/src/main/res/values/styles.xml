@@ -12,4 +12,9 @@
         <item name="android:windowEnterAnimation">@anim/enter_anim</item>
         <item name="android:windowExitAnimation">@anim/out_anim</item>
     </style>
+    <style name="pop">
+        <item name="android:windowEnterAnimation">@anim/show_pop</item>
+        <item name="android:windowExitAnimation">@anim/hidden_pop</item>
+    </style>
+
 </resources>
