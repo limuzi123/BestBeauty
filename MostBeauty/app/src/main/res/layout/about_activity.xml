@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_about"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/include_wish"
+            layout="@layout/include_material"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/six"
+            android:text="@string/about_me"
+            android:textColor="@color/color_material"
+            android:textSize="@dimen/twenty" />
+
+        <RelativeLayout
+            android:id="@+id/relative_about_me"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/image_about"
+                android:layout_width="@dimen/one_hundred"
+                android:layout_height="@dimen/one_hundred"
+                android:layout_marginTop="@dimen/eigthty"
+                android:background="@mipmap/icon_splash" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image_about"
+                android:layout_marginLeft="@dimen/fifteen"
+                android:layout_marginTop="@dimen/ten"
+                android:text="我们致力于"
+                android:textColor="@color/color_text_color" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative_layout_about"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_about_me"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:layout_width="@dimen/three_hundred"
+                android:layout_height="@dimen/fifty"
+                android:layout_marginTop="@dimen/twenty"
+                android:background="@mipmap/slogn_about_us" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_layout_about"
+            android:layout_marginTop="@dimen/thirty">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/one_hundred_two"
+                android:background="@mipmap/share" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative_font"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_share">
+
+            <ImageView
+                android:id="@+id/image_about_me_one"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/one_hundred_three"
+                android:background="@mipmap/about_me_one"
+                android:layout_marginTop="@dimen/fifteen" />
+            <ImageView
+                android:id="@+id/image_about_me_two"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/three_hundred"
+                android:background="@mipmap/about_me_two"
+                android:layout_below="@+id/image_about_me_one"/>
+            <ImageView
+                android:id="@+id/image_about_me_three"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/one_hundred_three"
+                android:background="@mipmap/about_three"
+                android:layout_below="@+id/image_about_me_two"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/one_hundred_three"
+               android:background="@mipmap/about_me_four"
+                android:layout_below="@+id/image_about_me_three"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>
