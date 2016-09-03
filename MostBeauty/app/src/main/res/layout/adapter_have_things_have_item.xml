@@ -64,29 +64,45 @@
             android:layout_below="@+id/adapter_have_things_have_item_designer_name"
             android:textSize="10sp"
             android:layout_marginTop="5dp"/>
-        <ImageView
-            android:id="@+id/adapter_have_things_have_item_cry"
+
+        <LinearLayout
+            android:id="@+id/adapter_have_things_have_item_smile_ll"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:orientation="vertical"
+            android:background="@drawable/shape_face"
             android:layout_centerVertical="true"
-            android:src="@mipmap/feed_dislike"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp">
+            <ImageView
+                android:id="@+id/adapter_have_things_have_item_smile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@mipmap/like_1"/>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="0.1dp"
             android:layout_height="15dp"
             android:background="#ffffff"
             android:layout_centerVertical="true"
             android:layout_margin="10dp"
-            android:layout_toLeftOf="@+id/adapter_have_things_have_item_cry"/>
-        <ImageView
-            android:id="@+id/adapter_have_things_have_item_smile"
+            android:layout_toLeftOf="@+id/adapter_have_things_have_item_smile_ll"/>
+
+        <LinearLayout
+            android:id="@+id/adapter_have_things_have_item_cry_ll"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_centerVertical="true"
-            android:src="@mipmap/feed_like"
+            android:orientation="vertical"
+            android:background="@drawable/shape_face"
             android:layout_marginRight="20dp"
-            android:layout_toLeftOf="@+id/adapter_have_things_have_item_cry"/>
-
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/adapter_have_things_have_item_smile_ll">
+            <ImageView
+                android:id="@+id/adapter_have_things_have_item_cry"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@mipmap/dislike_1"/>
+        </LinearLayout>
 
 
     </RelativeLayout>

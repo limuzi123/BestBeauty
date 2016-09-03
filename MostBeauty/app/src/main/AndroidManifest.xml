@@ -35,6 +35,7 @@
         <activity android:name=".activity.DesignAttentionActivity" />
         <activity android:name=".activity.MainActivity"/>
         <activity android:name=".activity.mine.AboutActivity"/>
+        <activity android:name=".activity.pictorial.PictorialAuthorActivity"/>
         
 
     </application>
