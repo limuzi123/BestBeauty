@@ -53,7 +53,7 @@ public class SetActivity extends BaseActivity implements View.OnClickListener{
         builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-               // DataClean.getCacheSize();
+              //  DataClean.getCacheSize();
                 DataClean.cleanInternalCache(SetActivity.this);
                 Toast.makeText(SetActivity.this, "清除了缓存数据", Toast.LENGTH_SHORT).show();
             }
