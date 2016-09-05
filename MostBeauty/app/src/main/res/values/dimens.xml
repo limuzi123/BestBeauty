@@ -68,6 +68,9 @@
     <dimen name="seventeen">-17dp</dimen>
     <dimen name="one_hundred_two">120dp</dimen>
     <dimen name="one_hundred_three">130dp</dimen>
+
+    <dimen name="one_hundred_five">150dp</dimen>
+
     <dimen name="ahthhf_ll_mt">50dp</dimen>
     <dimen name="fifteen_sp_tv">15sp</dimen>
     <dimen name="five_dp">5dp</dimen>
@@ -87,6 +90,7 @@
     <dimen name="five_mt">5dp</dimen>
     <dimen name="ten_sp">10sp</dimen>
     <dimen name="twenty_five_dp">25dp</dimen>
+
 
 
 </resources>

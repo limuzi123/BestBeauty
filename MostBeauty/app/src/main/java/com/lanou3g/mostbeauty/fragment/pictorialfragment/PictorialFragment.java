@@ -1,4 +1,4 @@
-package com.lanou3g.mostbeauty.fragment;
+package com.lanou3g.mostbeauty.fragment.pictorialfragment;
 
 import android.app.SearchManager;
 import android.content.Intent;
