@@ -9,34 +9,34 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="@dimen/ahthhf_ll_mt">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
-            android:textColor="#A0A0A0"
-            android:textSize="30sp"/>
+            android:text="@string/_0"
+            android:textColor="@color/adapter_have_things_have_tc"
+            android:textSize="@dimen/thirty_sp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="/10"
-            android:textSize="15sp"
-            android:textColor="#3F3F3F"
-            android:paddingTop="15dp"/>
+            android:text="@string/_10"
+            android:textSize="@dimen/fifteen_sp"
+            android:textColor="@color/adapter_have_things_have_tvc"
+            android:paddingTop="@dimen/fifteen_dp"/>
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="已评选"
-        android:textSize="15sp"
-        android:textColor="#3F3F3F"
-        android:paddingTop="5dp"
+        android:text="@string/haved_comment"
+        android:textSize="@dimen/fifteen_sp_tv"
+        android:textColor="@color/adapter_have_things_have_tec"
+        android:paddingTop="@dimen/five_dp"
         android:gravity="center"/>
     <GridView
         android:id="@+id/adapter_have_things_have_foot_cv"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="@dimen/one_handroid_forteen"
         android:numColumns="5"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_marginLeft="@dimen/twenty_dp"
+        android:layout_marginRight="@dimen/twenty_dp"/>
 </LinearLayout>

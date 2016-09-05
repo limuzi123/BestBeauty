@@ -3,27 +3,27 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-    android:background="#0E0E0E">
+    android:background="@color/adapter_have_things_have_r">
     <LinearLayout
         android:id="@+id/fragment_have_reuse_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="#2C2C2C">
+        android:background="@color/adapter_have_things_have_rr">
         <TextView
             android:id="@+id/fragment_have_reuse_tv"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/zero_dp"
             android:layout_weight="1"
-            android:layout_height="50dp"
-            android:text="全部"
+            android:layout_height="@dimen/fifty_dp"
+            android:text="@string/whole"
             android:gravity="center_vertical"
-            android:textColor="#FEFEFE"
-            android:paddingLeft="10dp"/>
+            android:textColor="@color/adapter_have_things_have_rrr"
+            android:paddingLeft="@dimen/ten_dp"/>
         <ImageView
             android:id="@+id/fragment_have_reuse_iv"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_margin="15dp"
+            android:layout_width="@dimen/twenty_dp"
+            android:layout_height="@dimen/twenty_dp"
+            android:layout_margin="@dimen/fifteen_dp"
             android:src="@mipmap/icon_category_unfold"/>
     </LinearLayout>
 
@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:numColumns="2"
-        android:horizontalSpacing="10dp"
-        android:verticalSpacing="10dp"
-        android:layout_margin="10dp"/>
+        android:horizontalSpacing="@dimen/ten_dp"
+        android:verticalSpacing="@dimen/ten_dp"
+        android:layout_margin="@dimen/ten_dp"/>
 </LinearLayout>

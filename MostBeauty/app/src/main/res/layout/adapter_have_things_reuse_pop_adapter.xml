@@ -7,8 +7,7 @@
         android:gravity="center"
         android:id="@+id/adapter_have_things_reuse_pop_btn"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:text="测试"
-        android:textColor="#F7F7F7"
+        android:layout_height="@dimen/forty_dp"
+        android:textColor="@color/adapter_have_things_have_pop"
         android:background="@drawable/shape_button"/>
 </LinearLayout>

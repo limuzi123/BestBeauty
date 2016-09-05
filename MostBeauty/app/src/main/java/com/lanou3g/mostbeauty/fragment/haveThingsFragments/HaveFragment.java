@@ -31,6 +31,13 @@ public class HaveFragment extends BaseFragment{
     protected void initData() {
        adapter.setId(id);
         listView.setAdapter(adapter);
+//        listView.setOnItemClickListener(new OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Intent intent = new Intent(getActivity(), HaveHaveActivity.class);
+//                getContext().startActivity(intent);
+//            }
+//        });
 
     }
     public static HaveFragment newInstance(int position){
