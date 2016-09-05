@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_view_logon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/twenty_five"
+        android:text="快捷登录"
+        android:textSize="@dimen/twenty" />
+
+    <RelativeLayout
+        android:id="@+id/relative_sina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view_logon">
+
+        <ImageView
+            android:id="@+id/sina_share"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/sixty"
+            android:layout_marginLeft="@dimen/forty"
+            android:layout_marginTop="@dimen/thirty"
+            android:background="@mipmap/share_sina_normal" />
+
+        <TextView
+            android:id="@+id/text_sina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sina_share"
+            android:layout_marginLeft="@dimen/forty"
+            android:layout_marginTop="@dimen/ten"
+            android:text="@string/sina" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_qq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view_logon"
+        android:layout_toRightOf="@+id/relative_sina">
+
+        <ImageView
+            android:id="@+id/image_qq"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/sixty"
+            android:layout_marginLeft="@dimen/sixty"
+            android:layout_marginTop="@dimen/thirty"
+            android:background="@mipmap/share_qq_normal" />
+
+        <TextView
+            android:id="@+id/text_qq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/image_qq"
+            android:layout_marginLeft="@dimen/eigthty"
+            android:layout_marginTop="@dimen/ten"
+            android:text="@string/qq" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_weixin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view_logon"
+        android:layout_toRightOf="@+id/relative_qq">
+
+        <ImageView
+            android:id="@+id/image_weixin"
+            android:layout_width="@dimen/sixty"
+            android:layout_height="@dimen/sixty"
+            android:layout_marginLeft="@dimen/sixty"
+            android:layout_marginTop="@dimen/thirty"
+            android:background="@mipmap/share_weixin_normal" />
+
+        <TextView
+            android:id="@+id/text_weixin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/image_weixin"
+            android:layout_marginLeft="@dimen/eigthty"
+            android:layout_marginTop="@dimen/ten"
+            android:text="@string/weixin" />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="用户协议"
+        android:layout_below="@+id/relative_qq"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/forty"
+        android:textSize="@dimen/twenty"
+        android:textColor="@color/color_four"/>
+</RelativeLayout>
