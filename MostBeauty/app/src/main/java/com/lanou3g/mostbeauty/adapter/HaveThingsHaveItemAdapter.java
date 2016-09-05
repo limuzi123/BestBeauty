@@ -1,6 +1,7 @@
 package com.lanou3g.mostbeauty.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -22,6 +23,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.lanou3g.mostbeauty.Bean.HaveThingsHaveBean;
 import com.lanou3g.mostbeauty.R;
+import com.lanou3g.mostbeauty.activity.HaveHaveActivity;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
@@ -62,7 +64,7 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, final ViewGroup parent) {
+    public View getView(final int position, View convertView, final ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView==null){
             convertView= LayoutInflater.from(context).inflate(R.layout.adapter_have_things_have_item,parent,false);
@@ -80,6 +82,18 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
         holder.desigerLabel.setText(bean.getData().getActivities().get(position).getDesigner().getLabel());
         initGlide(holder.images,bean.getData().getActivities().get(position).getImages().get(0));
         initGlide(holder.designerAvatar,bean.getData().getActivities().get(position).getDesigner().getAvatar_url());
+        holder.images.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, HaveHaveActivity.class);
+                int id = bean.getData().getActivities().get(position).getProduct().getId();
+                intent.putExtra("haveId",id);
+                context.startActivity(intent);
+            }
+        });
+
+
+
         final int heightSmile = bean.getData().getActivities().get(position).getProduct().getLike_user_num();
         final int heightCry = bean.getData().getActivities().get(position).getProduct().getUnlike_user_num();
 
@@ -88,15 +102,16 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
         holder.smile.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                final PopupWindow popCry = createPopCry(heightCry/2+200,heightCry+heightSmile);
-                final PopupWindow popSmile =  createPopLove(heightSmile/2+200,heightCry+heightSmile);
+                final PopupWindow popCry = createPopCry(heightCry,heightCry+heightSmile);
+                final PopupWindow popSmile =  createPopLove(heightSmile,heightCry+heightSmile);
                 if (!popCry.isShowing()&&!popSmile.isShowing()) {
                     llLove.setBackgroundResource(R.drawable.shape_face_yellow);
                     llCry.setBackgroundResource(R.drawable.shape_face);
-                    popCry.showAsDropDown(finalHolder.cry, 0, -(heightCry / 2 + 200));
-                    popSmile.showAsDropDown(finalHolder.smile, 0, -(heightSmile / 2 + 200));
+                    popCry.showAsDropDown(finalHolder.cry, 0, -(heightCry/2+200));
+                    popSmile.showAsDropDown(finalHolder.smile, 0, -(heightSmile/2+200 ));
                     adLove.start();
-                    popSmile.setOnDismissListener(new OnDismissListener() {
+                    popSmile.setOnDismissListener(
+                            new OnDismissListener() {
                         @Override
                         public void onDismiss() {
                             finalHolder.smile.setBackgroundResource(R.mipmap.like_10);
@@ -117,15 +132,15 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
         holder.cry.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                final PopupWindow popCry = createPopCry(heightCry/2+200 , heightCry+heightSmile);
-                final PopupWindow popSmile =  createPopLove(heightSmile/2+200,heightCry+heightSmile);
+                final PopupWindow popCry = createPopCry(heightCry, heightCry+heightSmile);
+                final PopupWindow popSmile =  createPopLove(heightSmile,heightCry+heightSmile);
                 if (!popCry.isShowing()&&!popSmile.isShowing()) {
                     llLove.setBackgroundResource(R.drawable.shape_face);
                     llCry.setBackgroundResource(R.drawable.shape_face_yellow);
-                    popCry.showAsDropDown(finalHolder.cry, 0, -(heightCry / 2 + 200));
-                    popSmile.showAsDropDown(finalHolder.smile, 0, -(heightSmile / 2 + 200));
+                    popCry.showAsDropDown(finalHolder.cry, 0, -(heightCry/2+200 ));
+                    popSmile.showAsDropDown(finalHolder.smile, 0, -(heightSmile /2+200));
                     adCry.start();
-                    popSmile.setOnDismissListener(new OnDismissListener() {
+                    popCry.setOnDismissListener(new OnDismissListener() {
                         @Override
                         public void onDismiss() {
                             finalHolder.cry.setImageResource(R.mipmap.dislike_9);
@@ -134,16 +149,20 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
                             finalHolder.smileLL.setBackgroundResource(R.drawable.shape_face);
                     }
                     });
+
 //                    threadPop(heightCry,popCry,finalHolder.cry);
 //                    threadPop(heightSmile,popSmile,finalHolder.smile);
 
 //                ObjectAnimator.ofFloat(finalHolder.cryLL,"scaleY",heightCry).setDuration(2000).start();
 //                performAnimate(finalHolder.cryLL,heightCry);
+
                 }
+
 //                else {
 //                    popCry.dismiss();
 //                    popSmile.dismiss();
 //                }
+
             }
         });
         return convertView;
@@ -202,7 +221,7 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
 
     public PopupWindow createPopLove(int height,int total){
         PopupWindow popupWindow = new PopupWindow(context);
-        popupWindow.setHeight(height);
+        popupWindow.setHeight(height/2+200);
         popupWindow.setWidth(LayoutParams.WRAP_CONTENT);
         View view = LayoutInflater.from(context).inflate(R.layout.adapter_have_things_have_item_pop_love,null);
         llLove= (LinearLayout) view.findViewById(R.id.adapter_have_things_have_item_pop_love);
@@ -220,7 +239,7 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
     }
     public PopupWindow createPopCry(int height,int total){
         PopupWindow popupWindow = new PopupWindow(context);
-        popupWindow.setHeight(height);
+        popupWindow.setHeight(height/2+200);
         popupWindow.setWidth(LayoutParams.WRAP_CONTENT);
         View view = LayoutInflater.from(context).inflate(R.layout.adapter_have_things_have_item_pop_cry,null);
         llCry= (LinearLayout) view.findViewById(R.id.adapter_have_things_have_item_pop_cry);
