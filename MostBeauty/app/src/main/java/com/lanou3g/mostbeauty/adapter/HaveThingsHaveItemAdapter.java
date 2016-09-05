@@ -36,6 +36,7 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
     private AnimationDrawable adLove,adCry;
     private Message msg;
     private Handler handler ;
+    private TextView tvLove,tvCry;
 
     public void setBean(HaveThingsHaveBean bean) {
         this.bean = bean;
@@ -87,8 +88,8 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
         holder.smile.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                final PopupWindow popCry = createPopCry(heightCry/2+200);
-                final PopupWindow popSmile =  createPopLove(heightSmile/2+200);
+                final PopupWindow popCry = createPopCry(heightCry/2+200,heightCry+heightSmile);
+                final PopupWindow popSmile =  createPopLove(heightSmile/2+200,heightCry+heightSmile);
                 if (!popCry.isShowing()&&!popSmile.isShowing()) {
                     llLove.setBackgroundResource(R.drawable.shape_face_yellow);
                     llCry.setBackgroundResource(R.drawable.shape_face);
@@ -99,6 +100,9 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
                         @Override
                         public void onDismiss() {
                             finalHolder.smile.setBackgroundResource(R.mipmap.like_10);
+                            finalHolder.cry.setImageResource(R.mipmap.dislike_1);
+                            finalHolder.smileLL.setBackgroundResource(R.drawable.shape_face_yellow);
+                            finalHolder.cryLL.setBackgroundResource(R.drawable.shape_face);
                         }
                     });
 //                ObjectAnimator.ofFloat(finalHolder.smileLL,"scaleY",heightSmile).setDuration(2000).start();
@@ -113,8 +117,8 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
         holder.cry.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                final PopupWindow popCry = createPopCry(heightCry/2+200);
-                final PopupWindow popSmile =  createPopLove(heightSmile/2+200);
+                final PopupWindow popCry = createPopCry(heightCry/2+200 , heightCry+heightSmile);
+                final PopupWindow popSmile =  createPopLove(heightSmile/2+200,heightCry+heightSmile);
                 if (!popCry.isShowing()&&!popSmile.isShowing()) {
                     llLove.setBackgroundResource(R.drawable.shape_face);
                     llCry.setBackgroundResource(R.drawable.shape_face_yellow);
@@ -125,7 +129,10 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
                         @Override
                         public void onDismiss() {
                             finalHolder.cry.setImageResource(R.mipmap.dislike_9);
-                        }
+                            finalHolder.smile.setBackgroundResource(R.mipmap.like_1);
+                            finalHolder.cryLL.setBackgroundResource(R.drawable.shape_face_yellow);
+                            finalHolder.smileLL.setBackgroundResource(R.drawable.shape_face);
+                    }
                     });
 //                    threadPop(heightCry,popCry,finalHolder.cry);
 //                    threadPop(heightSmile,popSmile,finalHolder.smile);
@@ -193,7 +200,7 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
 //        }
 //    }
 
-    public PopupWindow createPopLove(int height){
+    public PopupWindow createPopLove(int height,int total){
         PopupWindow popupWindow = new PopupWindow(context);
         popupWindow.setHeight(height);
         popupWindow.setWidth(LayoutParams.WRAP_CONTENT);
@@ -201,6 +208,9 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
         llLove= (LinearLayout) view.findViewById(R.id.adapter_have_things_have_item_pop_love);
         ivLove= (ImageView) view.findViewById(R.id.adapter_have_things_have_item_pop_love_iv);
         adLove= (AnimationDrawable) ivLove.getBackground();
+        adLove.setOneShot(true);
+        tvLove= (TextView) view.findViewById(R.id.adapter_have_things_have_item_pop_love_tv);
+        tvLove.setText(height*100/total+"%");
         popupWindow.setContentView(view);
         Drawable d = new ColorDrawable(0x00000000);
         popupWindow.setBackgroundDrawable(d);
@@ -208,7 +218,7 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
         popupWindow.setAnimationStyle(R.style.pop);
         return popupWindow;
     }
-    public PopupWindow createPopCry(int height){
+    public PopupWindow createPopCry(int height,int total){
         PopupWindow popupWindow = new PopupWindow(context);
         popupWindow.setHeight(height);
         popupWindow.setWidth(LayoutParams.WRAP_CONTENT);
@@ -216,6 +226,9 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
         llCry= (LinearLayout) view.findViewById(R.id.adapter_have_things_have_item_pop_cry);
         ivCry= (ImageView) view.findViewById(R.id.adapter_have_things_have_item_pop_cry_iv);
         adCry= (AnimationDrawable) ivCry.getBackground();
+        adCry.setOneShot(true);
+        tvCry= (TextView) view.findViewById(R.id.adapter_have_things_have_item_pop_cry_tv);
+        tvCry.setText(height*100/total+"%");
         popupWindow.setContentView(view);
         Drawable d = new ColorDrawable(0x00000000);
         popupWindow.setBackgroundDrawable(d);
