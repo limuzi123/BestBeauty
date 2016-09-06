@@ -34,8 +34,11 @@ import com.lanou3g.mostbeauty.gson.NetTool;
 import com.lanou3g.mostbeauty.gson.onHttpCallBack;
 import com.lanou3g.mostbeauty.myview.StationGridview;
 
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.onekeyshare.OnekeyShare;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
+import static com.lanou3g.mostbeauty.R.id.cancel_action;
 import static com.lanou3g.mostbeauty.R.id.tv_city;
 
 /**
@@ -47,7 +50,7 @@ public class PictorialActivity extends BaseActivity implements OnClickListener{
     private ScrollView scrollView;
     private RelativeLayout relativeLayout, relativeLayoutSmall;
 
-    private ImageView imgTitle, imgName, imgNameOne, imgTopName,imgBack,imgSay;
+    private ImageView imgTitle, imgName, imgNameOne, imgTopName,imgBack,imgSay,imgShare;
     private LinearLayout linearLayout;
     private StationGridview gridView;
     private ListView listView;
@@ -100,6 +103,7 @@ public class PictorialActivity extends BaseActivity implements OnClickListener{
         imgSay = (ImageView) findViewById(R.id.img_say);
         imgBack = (ImageView) findViewById(R.id.img_back);
         etSay = (EditText) findViewById(R.id.et_say);
+        imgShare = (ImageView) findViewById(R.id.image_share);
 
 
         tvAll.setOnClickListener(this);
@@ -108,6 +112,7 @@ public class PictorialActivity extends BaseActivity implements OnClickListener{
         imgSay.setOnClickListener(this);
         etSay.setOnClickListener(this);
         relativeLayoutSmall.setOnClickListener(this);
+        imgShare.setOnClickListener(this);
 
 
     }
@@ -126,31 +131,31 @@ public class PictorialActivity extends BaseActivity implements OnClickListener{
         webView.setWebViewClient(new WebViewClient());
         webView.loadUrl(API.PICTORIAL_ACTIVITY_WEBVIEW + id + API.PICTORIAL_ACTIVITY_WEBVIEW_TWO);
         relativeLayoutSmall.getBackground().setAlpha(220);
-        scrollView.setOnScrollChangeListener(new OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-
-                if (scrollY > oldScrollY && scrollY - oldScrollY > 40) {
-                    if (scrollY > 0 && oldScrollY == 0) {
-                        Log.d("PictorialActivity", "88888888");
-                        relativeLayout.setVisibility(View.VISIBLE);
-                        Animation animation = AnimationUtils.loadAnimation(PictorialActivity.this, R.anim.enter_title);
-                        relativeLayout.startAnimation(animation);
-                    } else {
-                        Log.d("PictorialActivity", "999999999");
-                        relativeLayout.setVisibility(View.GONE);
-
-
-                    }
-                } else if (oldScrollY > scrollY && oldScrollY - scrollY > 40) {
-                    Log.d("PictorialActivity", "101010101010");
-                    relativeLayout.setVisibility(View.VISIBLE);
-                    Animation animation = AnimationUtils.loadAnimation(PictorialActivity.this, R.anim.exit_title);
-                    relativeLayout.startAnimation(animation);
-                }
-
-            }
-        });
+//        scrollView.setOnScrollChangeListener(new OnScrollChangeListener() {
+//            @Override
+//            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+//
+//                if (scrollY > oldScrollY && scrollY - oldScrollY > 40) {
+//                    if (scrollY > 0 && oldScrollY == 0) {
+//                        Log.d("PictorialActivity", "88888888");
+//                        relativeLayout.setVisibility(View.VISIBLE);
+//                        Animation animation = AnimationUtils.loadAnimation(PictorialActivity.this, R.anim.enter_title);
+//                        relativeLayout.startAnimation(animation);
+//                    } else {
+//                        Log.d("PictorialActivity", "999999999");
+//                        relativeLayout.setVisibility(View.GONE);
+//
+//
+//                    }
+//                } else if (oldScrollY > scrollY && oldScrollY - scrollY > 40) {
+//                    Log.d("PictorialActivity", "101010101010");
+//                    relativeLayout.setVisibility(View.VISIBLE);
+//                    Animation animation = AnimationUtils.loadAnimation(PictorialActivity.this, R.anim.exit_title);
+//                    relativeLayout.startAnimation(animation);
+//                }
+//
+//            }
+//        });
 
         getNetRequest(id);
 
@@ -284,11 +289,43 @@ public class PictorialActivity extends BaseActivity implements OnClickListener{
                 intentAuthor.putExtra("tvSmall",tvSmallStr);
                 startActivity(intentAuthor);
                 break;
+            case R.id.image_share:
+                showShare();
+                break;
 
         }
 
     }
+<<<<<<< HEAD
+    private void showShare() {
+        ShareSDK.initSDK(PictorialActivity.this);
+
+        OnekeyShare oks = new OnekeyShare();
+//关闭sso授权
+        oks.disableSSOWhenAuthorize();
+
+// title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间等使用
+        oks.setTitle("最美有物");
+// titleUrl是标题的网络链接，QQ和QQ空间等使用
+        oks.setTitleUrl(API.PICTORIAL_FRAGMENT);
+// text是分享文本，所有平台都需要这个字段
+        oks.setText("最美应用,想要专业设计师为你打造绝无仅有的造型么?来最美有物,让你体验极致视觉冲击");
+// imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
+//oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
+// url仅在微信（包括好友和朋友圈）中使用
+        oks.setUrl(API.PICTORIAL_FRAGMENT);
+// comment是我对这条分享的评论，仅在人人网和QQ空间使用
+        oks.setComment("最美应用,让你体验极致视觉体验");
+// site是分享此内容的网站名称，仅在QQ空间使用
+        oks.setSite(getString(R.string.app_name));
+// siteUrl是分享此内容的网站地址，仅在QQ空间使用
+        oks.setSiteUrl(API.PICTORIAL_FRAGMENT);
+
+// 启动分享GUI
+        oks.show(PictorialActivity.this);
+=======
     public static  PictorialActivityBean getBean(){
         return response;
+>>>>>>> fff5596aece082e414648a966e76fc0b15e27767
     }
 }
