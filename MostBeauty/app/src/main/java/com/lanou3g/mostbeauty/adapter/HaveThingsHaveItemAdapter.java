@@ -72,11 +72,9 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
             convertView.setTag(holder);
         }
         else {
-
             holder= (ViewHolder) convertView.getTag();
         }
         String str  = bean.getData().getActivities().get(position).getDigest();
-
         holder.digest.setText(str);
         holder.designerName.setText(bean.getData().getActivities().get(position).getDesigner().getName());
         holder.desigerLabel.setText(bean.getData().getActivities().get(position).getDesigner().getLabel());
@@ -91,84 +89,12 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
                 context.startActivity(intent);
             }
         });
-
-
-
         final int heightSmile = bean.getData().getActivities().get(position).getProduct().getLike_user_num();
         final int heightCry = bean.getData().getActivities().get(position).getProduct().getUnlike_user_num();
-
         final ViewHolder finalHolder = holder;
-
-        holder.smile.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final PopupWindow popCry = createPopCry(heightCry,heightCry+heightSmile);
-                final PopupWindow popSmile =  createPopLove(heightSmile,heightCry+heightSmile);
-                if (!popCry.isShowing()&&!popSmile.isShowing()) {
-                    llLove.setBackgroundResource(R.drawable.shape_face_yellow);
-                    llCry.setBackgroundResource(R.drawable.shape_face);
-                    popCry.showAsDropDown(finalHolder.cry, 0, -(heightCry/2+200));
-                    popSmile.showAsDropDown(finalHolder.smile, 0, -(heightSmile/2+200 ));
-                    adLove.start();
-                    popSmile.setOnDismissListener(
-                            new OnDismissListener() {
-                        @Override
-                        public void onDismiss() {
-                            finalHolder.smile.setBackgroundResource(R.mipmap.like_10);
-                            finalHolder.cry.setImageResource(R.mipmap.dislike_1);
-                            finalHolder.smileLL.setBackgroundResource(R.drawable.shape_face_yellow);
-                            finalHolder.cryLL.setBackgroundResource(R.drawable.shape_face);
-                        }
-                    });
-//                ObjectAnimator.ofFloat(finalHolder.smileLL,"scaleY",heightSmile).setDuration(2000).start();
-//                performAnimate(finalHolder.smileLL,heightSmile);
-                }
-//                else {
-//                    popCry.dismiss();
-//                    popSmile.dismiss();
-//                }
-            }
-        });
-        holder.cry.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final PopupWindow popCry = createPopCry(heightCry, heightCry+heightSmile);
-                final PopupWindow popSmile =  createPopLove(heightSmile,heightCry+heightSmile);
-                if (!popCry.isShowing()&&!popSmile.isShowing()) {
-                    llLove.setBackgroundResource(R.drawable.shape_face);
-                    llCry.setBackgroundResource(R.drawable.shape_face_yellow);
-                    popCry.showAsDropDown(finalHolder.cry, 0, -(heightCry/2+200 ));
-                    popSmile.showAsDropDown(finalHolder.smile, 0, -(heightSmile /2+200));
-                    adCry.start();
-                    popCry.setOnDismissListener(new OnDismissListener() {
-                        @Override
-                        public void onDismiss() {
-                            finalHolder.cry.setImageResource(R.mipmap.dislike_9);
-                            finalHolder.smile.setBackgroundResource(R.mipmap.like_1);
-                            finalHolder.cryLL.setBackgroundResource(R.drawable.shape_face_yellow);
-                            finalHolder.smileLL.setBackgroundResource(R.drawable.shape_face);
-                    }
-                    });
-
-//                    threadPop(heightCry,popCry,finalHolder.cry);
-//                    threadPop(heightSmile,popSmile,finalHolder.smile);
-
-//                ObjectAnimator.ofFloat(finalHolder.cryLL,"scaleY",heightCry).setDuration(2000).start();
-//                performAnimate(finalHolder.cryLL,heightCry);
-
-                }
-
-//                else {
-//                    popCry.dismiss();
-//                    popSmile.dismiss();
-//                }
-
-            }
-        });
+        setPop(holder.smile,holder.cry,heightSmile,heightCry,finalHolder.smileLL,finalHolder.cryLL);
         return convertView;
     }
-
-
 
     public class ViewHolder{
         private LinearLayout smileLL,cryLL;
@@ -255,6 +181,76 @@ public class HaveThingsHaveItemAdapter extends BaseAdapter {
         popupWindow.setAnimationStyle(R.style.pop);
         return popupWindow;
     }
+    private void setPop(final ImageView smile, final ImageView cry, final int heightSmile , final int heightCry, final LinearLayout smileLL, final LinearLayout cryLL) {
+        smile.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final PopupWindow popCry = createPopCry(heightCry,heightCry+heightSmile);
+                final PopupWindow popSmile =  createPopLove(heightSmile,heightCry+heightSmile);
+                if (!popCry.isShowing()&&!popSmile.isShowing()) {
+                    llLove.setBackgroundResource(R.drawable.shape_face_yellow);
+                    llCry.setBackgroundResource(R.drawable.shape_face);
+                    popCry.showAsDropDown(cry, 0, -(heightCry/2+200));
+                    popSmile.showAsDropDown(smile, 0, -(heightSmile/2+200 ));
+                    adLove.start();
+                    popSmile.setOnDismissListener(
+                            new OnDismissListener() {
+                                @Override
+                                public void onDismiss() {
+                                    smile.setBackgroundResource(R.mipmap.like_10);
+                                    cry.setBackgroundResource(R.mipmap.dislike_1);
+                                    //cry.setImageResource(R.mipmap.dislike_1);
+                                    smileLL.setBackgroundResource(R.drawable.shape_face_yellow);
+                                    cryLL.setBackgroundResource(R.drawable.shape_face);
+                                }
+                            });
+//                ObjectAnimator.ofFloat(finalHolder.smileLL,"scaleY",heightSmile).setDuration(2000).start();
+//                performAnimate(finalHolder.smileLL,heightSmile);
+                }
+//                else {
+//                    popCry.dismiss();
+//                    popSmile.dismiss();
+//                }
+            }
+        });
+        cry.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final PopupWindow popCry = createPopCry(heightCry, heightCry+heightSmile);
+                final PopupWindow popSmile =  createPopLove(heightSmile,heightCry+heightSmile);
+                if (!popCry.isShowing()&&!popSmile.isShowing()) {
+                    llLove.setBackgroundResource(R.drawable.shape_face);
+                    llCry.setBackgroundResource(R.drawable.shape_face_yellow);
+                    popCry.showAsDropDown(cry, 0, -(heightCry/2+200 ));
+                    popSmile.showAsDropDown(smile, 0, -(heightSmile /2+200));
+                    adCry.start();
+                    popCry.setOnDismissListener(new OnDismissListener() {
+                        @Override
+                        public void onDismiss() {
+                            cry.setBackgroundResource(R.mipmap.dislike_9);
+                            smile.setBackgroundResource(R.mipmap.like_1);
+                            cryLL.setBackgroundResource(R.drawable.shape_face_yellow);
+                            smileLL.setBackgroundResource(R.drawable.shape_face);
+                        }
+                    });
+
+//                    threadPop(heightCry,popCry,finalHolder.cry);
+//                    threadPop(heightSmile,popSmile,finalHolder.smile);
+
+//                ObjectAnimator.ofFloat(finalHolder.cryLL,"scaleY",heightCry).setDuration(2000).start();
+//                performAnimate(finalHolder.cryLL,heightCry);
+
+                }
+
+//                else {
+//                    popCry.dismiss();
+//                    popSmile.dismiss();
+//                }
+
+            }
+        });
+    }
+
 
 //    private void threadPop(final int height, final PopupWindow popupWindow, final View view) {
 //

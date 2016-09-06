@@ -296,7 +296,7 @@ public class PictorialActivity extends BaseActivity implements OnClickListener{
         }
 
     }
-<<<<<<< HEAD
+
     private void showShare() {
         ShareSDK.initSDK(PictorialActivity.this);
 
@@ -323,9 +323,5 @@ public class PictorialActivity extends BaseActivity implements OnClickListener{
 
 // 启动分享GUI
         oks.show(PictorialActivity.this);
-=======
-    public static  PictorialActivityBean getBean(){
-        return response;
->>>>>>> fff5596aece082e414648a966e76fc0b15e27767
-    }
-}
+
+}}
