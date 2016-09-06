@@ -37,6 +37,12 @@ public class PictorialProductionFragment extends BaseFragment {
         Intent intent = getActivity().getIntent();
         String str = intent.getStringExtra("id");
         int id = Integer.parseInt(str);
+        getNetRequest(id);
+
+    }
+
+    // TODO: 16/9/6 获取网络数据
+    private void getNetRequest(int id) {
         NetTool.getInstance().startRequest(API.PICTORIAL_ACTIVITY_ONE + id + API.PICTORIAL_ACTIVITY_TWO,
                 PictorialActivityBean.class, new onHttpCallBack<PictorialActivityBean>() {
                     @Override
@@ -52,7 +58,6 @@ public class PictorialProductionFragment extends BaseFragment {
 
                     }
                 });
-
     }
 
 }

@@ -212,6 +212,7 @@ public class PictorialActivity extends BaseActivity implements OnClickListener{
                             gridAdapter.setBean(response);
                             gridView.setAdapter(gridAdapter);
                         }
+
                         int id = response.getData().getFavor_user_num();
                         tvLike.setText(response.getData().getLike_user_num()+"");
                         tvSay.setText("评论(" + id + ")");
@@ -219,6 +220,8 @@ public class PictorialActivity extends BaseActivity implements OnClickListener{
                         listAdapter.setBean(response);
                         listView.setAdapter(listAdapter);
                         setListViewHeightBasedOnChildren(listView);
+
+
 
 
 
