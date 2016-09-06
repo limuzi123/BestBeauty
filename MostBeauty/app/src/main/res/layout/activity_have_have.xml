@@ -13,9 +13,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <android.support.v4.view.ViewPager
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/three_hundred_fifty_dp"/>
+            <FrameLayout android:layout_width="match_parent"
+                         android:layout_height="wrap_content">
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/activity_have_have_vp"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/three_hundred_fifty_dp"/>
+                <LinearLayout
+                    android:id="@+id/activity_have_have_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"/>
+
+            </FrameLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/fifty_dp"
@@ -77,9 +89,9 @@
                         android:gravity="center"
                         android:background="@color/white">
                         <ImageView
+                            android:id="@+id/activity_have_have_iv"
                             android:layout_width="@dimen/seventy_dp"
-                            android:layout_height="@dimen/seventy_dp"
-                            android:background="@color/adapter_have_things_have_tc"/>
+                            android:layout_height="@dimen/seventy_dp"/>
                         <TextView
                             android:id="@+id/activity_have_have_name"
                             android:layout_width="wrap_content"
@@ -134,6 +146,7 @@
                 android:lineSpacingExtra="@dimen/five_dp"
                 android:paddingLeft="@dimen/ten_dp"/>
             <ListView
+                android:id="@+id/activity_have_have_lv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"/>
