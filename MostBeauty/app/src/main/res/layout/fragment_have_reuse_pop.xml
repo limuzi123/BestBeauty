@@ -3,13 +3,13 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-    android:background="#2C2C2C">
+    android:background="@color/adapter_have_things_have_pp">
     <GridView
         android:id="@+id/fragment_have_reuse_pop_gv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:numColumns="3"
-        android:verticalSpacing="20dp"
-        android:horizontalSpacing="20dp"
-        android:layout_margin="20dp"/>
+        android:verticalSpacing="@dimen/twenty_dp"
+        android:horizontalSpacing="@dimen/twenty_dp"
+        android:layout_margin="@dimen/twenty_dp"/>
 </LinearLayout>

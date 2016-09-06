@@ -15,7 +15,6 @@
     <string name="boy">男</string>
     <string name="gril">女</string>
     <string name="privary">保密</string>
-
     <string name="text_share">分享这篇文章</string>
     <string name="text_name">申请成为作者</string>
     <string name="tv_content">这里就是你的发布台.</string>
@@ -63,12 +62,28 @@
     <string name="tv_comment_tt">评论</string>
     <string name="tv_send">发送</string>
     <string name="about_me">关于我们</string>
+    <string name="_0">0</string>
+    <string name="_10">/10</string>
+    <string name="haved_comment">已评选</string>
+    <string name="_1">1</string>
+    <string name="data">日期</string>
+    <string name="name">name</string>
+    <string name="designername">designerName</string>
+    <string name="label">label</string>
+    <string name="whole">全部</string>
+    <string name="design">设计师</string>
+    <string name="say_sth">说点什么吧</string>
+    <string name="net">品牌官网</string>
+
+    <string name="end">END</string>
+
     <string name="please_logn">注册</string>
     <string name="phone_number">输入手机号</string>
     <string name="password">密码</string>
     <string name="sina">新浪微博</string>
     <string name="qq">QQ</string>
     <string name="weixin">微信</string>
+
 
 
 </resources>

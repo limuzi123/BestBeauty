@@ -3,13 +3,13 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-    android:background="#1f1f1f"
+    android:background="@color/adapter_have_things_have_item"
     android:id="@+id/adapter_have_things_have_item_ll">
 
     <FrameLayout
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/have_i"
         android:layout_width="match_parent"
-        android:layout_height="370dp">
+        android:layout_height="@dimen/three_seventeen">
         <ImageView
             android:id="@+id/adapter_have_things_have_item_images"
             android:layout_width="match_parent"
@@ -19,19 +19,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#1f1f1f"
+            android:background="@color/adapter_have_things_have_item"
             android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="@dimen/ten_dp"
             android:gravity="center">
             <TextView
                 android:id="@+id/adapter_have_things_have_item_digest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#1f1f1f"
-                android:text="name"
-                android:textColor="#ffffff"
-                android:textSize="15sp"
-                android:padding="3dp"
+                android:background="@color/adapter_have_things_have_hi"
+                android:text="@string/name"
+                android:textColor="@color/adapter_have_things_have_white"
+                android:textSize="@dimen/fifteen_tv"
+                android:padding="@dimen/three_pad"
                 android:gravity="center"/>
         </LinearLayout>
 
@@ -41,40 +41,40 @@
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/adapter_have_things_have_item_designer_avatar"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/fifty_w"
+            android:layout_height="@dimen/fifty_w"
             android:src="@mipmap/ic_launcher"
             android:scaleType="fitXY"
-            android:layout_margin="10dp"/>
+            android:layout_margin="@dimen/ten_m"/>
         <TextView
             android:id="@+id/adapter_have_things_have_item_designer_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="designerName"
-            android:textColor="#ffffff"
+            android:text="@string/designername"
+            android:textColor="@color/adapter_have_things_have_ww"
             android:layout_toRightOf="@+id/adapter_have_things_have_item_designer_avatar"
-            android:layout_marginTop="10dp"
-            android:textSize="15sp"/>
+            android:layout_marginTop="@dimen/ten_mt"
+            android:textSize="@dimen/fifteen_ts"/>
         <TextView
             android:id="@+id/adapter_have_things_have_item_desiger_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="label"
-            android:textColor="#ffffff"
+            android:text="@string/label"
+            android:textColor="@color/adapter_have_things_have_white"
             android:layout_toRightOf="@+id/adapter_have_things_have_item_designer_avatar"
             android:layout_below="@+id/adapter_have_things_have_item_designer_name"
             android:textSize="10sp"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="@dimen/five_mt"/>
 
         <LinearLayout
             android:id="@+id/adapter_have_things_have_item_smile_ll"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/thirty_dp"
+            android:layout_height="@dimen/thirty_dp"
             android:orientation="vertical"
             android:background="@drawable/shape_face"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp">
+            android:layout_marginRight="@dimen/ten_dp">
             <ImageView
                 android:id="@+id/adapter_have_things_have_item_smile"
                 android:layout_width="match_parent"
@@ -82,19 +82,19 @@
                 android:background="@mipmap/like_1"/>
         </LinearLayout>
         <LinearLayout
-            android:layout_width="0.1dp"
-            android:layout_height="15dp"
-            android:background="#ffffff"
+            android:layout_width="@dimen/point_one_dp"
+            android:layout_height="@dimen/fifteen_dp"
+            android:background="@color/white"
             android:layout_centerVertical="true"
-            android:layout_margin="10dp"
+            android:layout_margin="@dimen/ten_dp"
             android:layout_toLeftOf="@+id/adapter_have_things_have_item_smile_ll"/>
         <LinearLayout
             android:id="@+id/adapter_have_things_have_item_cry_ll"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/thirty_dp"
+            android:layout_height="@dimen/thirty_dp"
             android:orientation="vertical"
             android:background="@drawable/shape_face"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="@dimen/twenty_dp"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/adapter_have_things_have_item_smile_ll">
             <ImageView
