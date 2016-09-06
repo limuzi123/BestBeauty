@@ -21,8 +21,8 @@
 
         <ImageView
             android:id="@+id/sina_share"
-            android:layout_width="@dimen/sixty"
-            android:layout_height="@dimen/sixty"
+            android:layout_width="@dimen/fifty"
+            android:layout_height="@dimen/fifty"
             android:layout_marginLeft="@dimen/forty"
             android:layout_marginTop="@dimen/thirty"
             android:background="@mipmap/share_sina_normal" />
@@ -46,8 +46,8 @@
 
         <ImageView
             android:id="@+id/image_qq"
-            android:layout_width="@dimen/sixty"
-            android:layout_height="@dimen/sixty"
+            android:layout_width="@dimen/fifty"
+            android:layout_height="@dimen/fifty"
             android:layout_marginLeft="@dimen/sixty"
             android:layout_marginTop="@dimen/thirty"
             android:background="@mipmap/share_qq_normal" />
@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/image_qq"
-            android:layout_marginLeft="@dimen/eigthty"
+            android:layout_marginLeft="@dimen/seventy_fifte"
             android:layout_marginTop="@dimen/ten"
             android:text="@string/qq" />
     </RelativeLayout>
@@ -71,8 +71,8 @@
 
         <ImageView
             android:id="@+id/image_weixin"
-            android:layout_width="@dimen/sixty"
-            android:layout_height="@dimen/sixty"
+            android:layout_width="@dimen/fifty"
+            android:layout_height="@dimen/fifty"
             android:layout_marginLeft="@dimen/sixty"
             android:layout_marginTop="@dimen/thirty"
             android:background="@mipmap/share_weixin_normal" />
@@ -82,7 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/image_weixin"
-            android:layout_marginLeft="@dimen/eigthty"
+            android:layout_marginLeft="@dimen/seventy_fifte"
             android:layout_marginTop="@dimen/ten"
             android:text="@string/weixin" />
     </RelativeLayout>

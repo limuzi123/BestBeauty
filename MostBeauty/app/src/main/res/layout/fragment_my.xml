@@ -58,7 +58,7 @@
             android:layout_width="@dimen/ninty"
             android:layout_height="@dimen/ninty"
             android:layout_marginTop="@dimen/thirty"
-            android:background="@mipmap/woman_selected" />
+            android:src="@mipmap/woman_selected" />
 
     </RelativeLayout>
 
