@@ -262,6 +262,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Pl
         return false;
     }
 
+    //接收广播,退出登录
     private class ReceiverExit extends BroadcastReceiver {
 
         @Override
@@ -271,7 +272,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Pl
         }
     }
 
-    //解除注册
+    //解除广播注册
     @Override
     public void onDestroy() {
         super.onDestroy();
