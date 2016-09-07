@@ -226,7 +226,7 @@
             android:text="@string/net"
             android:textColor="@color/white"/>
     </LinearLayout>
-    <ImageView
+    <com.lanou3g.mostbeauty.myview.MyImageView
         android:id="@+id/activity_have_have_back"
         android:visibility="gone"
         android:layout_width="40dp" android:layout_height="40dp"

@@ -1,5 +1,6 @@
 package com.lanou3g.mostbeauty.activity;
 
+import android.animation.ArgbEvaluator;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
@@ -34,11 +35,10 @@ import com.lanou3g.mostbeauty.base.BaseActivity;
 import com.lanou3g.mostbeauty.base.MyApp;
 import com.lanou3g.mostbeauty.gson.NetTool;
 import com.lanou3g.mostbeauty.gson.onHttpCallBack;
+import com.lanou3g.mostbeauty.myview.MyImageView;
 import com.lanou3g.mostbeauty.myview.NewScrollView;
 import com.lanou3g.mostbeauty.myview.NewScrollView.ScrollViewListener;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
+
 /**
  * 无画报网址
  * http://design.zuimeia.com/api/v1/product/1110/?device_id=000000000000000&platform=android&lang=zh&appVersion=1.1.7_1&appVersionCode=10171&systemVersion=19&countryCode=CN&user_id=0&token=&package_name=com.zuiapps.zuiworld
@@ -69,7 +69,7 @@ public class HaveHaveActivity extends BaseActivity {
     private LinearLayout llPaint,comment;
     private NewScrollView scrollView;
     private boolean flag = true;
-    private ImageView back;
+    private MyImageView back;
     @Override
     protected int getLayout() {
         return R.layout.activity_have_have;
@@ -101,7 +101,7 @@ public class HaveHaveActivity extends BaseActivity {
         llPaint= (LinearLayout) findViewById(R.id.activity_have_have_ll_paint);
         scrollView = (NewScrollView) findViewById(R.id.activity_have_have_scroll);
         comment= (LinearLayout) findViewById(R.id.activity_have_have_comment);
-        back = (ImageView) findViewById(R.id.activity_have_have_back);
+        back = (MyImageView) findViewById(R.id.activity_have_have_back);
     }
     @Override
     protected void initData() {
@@ -149,6 +149,33 @@ public class HaveHaveActivity extends BaseActivity {
                     });
                     flag=true;
                 }
+            }
+        });
+
+        viewPager.addOnPageChangeListener(new OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                ArgbEvaluator evaluator = new ArgbEvaluator();
+                ArgbEvaluator evaluator1 = new ArgbEvaluator();
+                int evaluate = (int) evaluator.evaluate(positionOffset,0xff8080ff,0xffff8080);
+                int evaluate1 = (int) evaluator1.evaluate(positionOffset,0xffff8080,0xff8080ff);
+                if (position%2 == 0){
+                    back.setGradient(0xff8080ff,0xffff8080);
+                    back.setGradient(evaluate,evaluate1);
+                }else {
+                    back.setGradient(0xffff8080,0xff8080ff);
+                    back.setGradient(evaluate1,evaluate);
+                }
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
     }
