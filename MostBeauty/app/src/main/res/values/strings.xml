@@ -71,28 +71,20 @@
     <string name="weixin">微信</string>
 
 
-<<<<<<< HEAD
-    <string name="tv_anthor">作者</string>
-    <string name="tv_care">+ 关注</string>
-
-=======
-
-
     <string name="tv_anthor">作者</string>
     <string name="tv_care">+ 关注</string>
 
 
 
->>>>>>> bcf61af0652fd91069813bc3c3d443fb10550f7d
+
+
+
+
     <string name="paint">相关画报</string>
 
     <string name="promptly">立即体验</string>
 
-<<<<<<< HEAD
-=======
 
-
->>>>>>> bcf61af0652fd91069813bc3c3d443fb10550f7d
 
 
     <string name="_0">0</string>

@@ -75,10 +75,8 @@
         <activity android:name=".activity.pictorial.ReaderActivity"/>
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> bcf61af0652fd91069813bc3c3d443fb10550f7d
+
         <activity android:name=".activity.LeadGuideActivity"/>
 
         <activity
