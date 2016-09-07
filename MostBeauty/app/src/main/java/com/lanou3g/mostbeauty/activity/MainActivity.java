@@ -8,7 +8,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import com.lanou3g.mostbeauty.R;
 
 import com.lanou3g.mostbeauty.base.BaseActivity;
-import com.lanou3g.mostbeauty.fragment.HaveThingsFragment;
+import com.lanou3g.mostbeauty.fragment.haveThingsFragments.HaveThingsFragment;
 import com.lanou3g.mostbeauty.fragment.MyFragment;
 import com.lanou3g.mostbeauty.fragment.PictorialFragment;
 import com.lanou3g.mostbeauty.fragment.StylistFragment;

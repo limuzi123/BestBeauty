@@ -1,4 +1,4 @@
-package com.lanou3g.mostbeauty.fragment;
+package com.lanou3g.mostbeauty.fragment.haveThingsFragments;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
