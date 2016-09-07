@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="color_text_selected">#434343</color>
+    <color name="color_material">#c9c9c9</color>
+    <color name="color_background">#FFFFFF</color>
+    <color name="color_text_color">#9f9f9f</color>
+    <color name="color">#000000</color>
+    <color name="color_huabao_name">#707070</color>
+    <color name="color_huabao_title">#000000</color>
+    <color name="color_hui">#f4f4f4</color>
+    <color name="color_gary">#eeeeee</color>
+    <color name="color_one">#1f1f1f</color>
+    <color name="color_two">#a5a5a5</color>
+    <color name="color_three">#6c6c6c</color>
+    <color name="color_four">#1ea05d</color>
+    <color name="color_five">#0e0e0e</color>
+    <color name="color_about">#F7F7F7</color>
+
+</resources>

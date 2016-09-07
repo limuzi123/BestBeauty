@@ -38,6 +38,9 @@ import com.lanou3g.mostbeauty.gson.onHttpCallBack;
 import com.lanou3g.mostbeauty.myview.MyImageView;
 import com.lanou3g.mostbeauty.myview.NewScrollView;
 import com.lanou3g.mostbeauty.myview.NewScrollView.ScrollViewListener;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
 /**
  * 无画报网址

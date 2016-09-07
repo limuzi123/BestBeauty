@@ -12,7 +12,7 @@ import com.lanou3g.mostbeauty.base.BaseFragment;
  * 实体类: HaveThingsHaveBean
  * listView套用listView
  */
-public class HaveFragment extends BaseFragment{
+public class HaveFragment extends BaseFragment {
     private ListView listView;
     private HaveThingsHaveAdapter adapter;
     private String[] id= {"1472529600000","1472400000000","1472270400000"};

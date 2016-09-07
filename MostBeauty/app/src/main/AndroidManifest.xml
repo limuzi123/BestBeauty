@@ -73,7 +73,10 @@
         <activity android:name=".activity.pictorial.PictorialAuthorActivity"
                  />
         <activity android:name=".activity.pictorial.ReaderActivity"/>
+
         <activity android:name=".activity.LeadGuideActivity"/>
+
+
         <activity
             android:name=".activity.MainActivity"
             android:clearTaskOnLaunch="true"

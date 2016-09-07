@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:focusable="true"
+
+    android:layout_gravity="center_horizontal|top">
+    <FrameLayout
+        android:background="@drawable/shape_huabao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:background="@color/color_background"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/one_thousand"
+            android:orientation="vertical"
+
+            android:layout_gravity="center_horizontal|top"
+            >
+
+            <TextView
+
+                android:layout_marginTop="@dimen/forty"
+                android:layout_gravity="center"
+                android:text="作则"
+                android:gravity="center"
+                android:id="@+id/tv_name"
+                android:paddingLeft="@dimen/twenty"
+                android:paddingRight="@dimen/twenty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:paddingLeft="@dimen/twenty"
+                android:paddingRight="@dimen/twenty"
+                android:paddingTop="@dimen/fifteen"
+                android:paddingBottom="@dimen/fifteen"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:id="@+id/tv_title"
+                android:textColor="@color/color_huabao_title"
+                android:text="标题"
+                android:textSize="@dimen/twenty"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_gravity="center"
+                android:textColor="@color/color_huabao_name"
+                android:id="@+id/tv_view"
+                android:text="作则"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:layout_marginRight="@dimen/fifteen"
+                android:layout_marginLeft="@dimen/fifteen"
+                android:layout_gravity="center"
+                android:id="@+id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+        </LinearLayout>
+        <FrameLayout
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/img_name"
+
+                android:src="@mipmap/ic_launcher"
+
+                android:layout_width="28dp"
+                android:layout_height="28dp"/>
+            <ImageView
+
+                android:layout_gravity="center"
+                android:src="@drawable/shape_img_name"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+        </FrameLayout>
+
+    </FrameLayout>
+</LinearLayout>
+
+

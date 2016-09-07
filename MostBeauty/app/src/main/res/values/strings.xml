@@ -70,10 +70,26 @@
     <string name="qq">QQ</string>
     <string name="weixin">微信</string>
 
+
     <string name="tv_anthor">作者</string>
     <string name="tv_care">+ 关注</string>
     <string name="paint">相关画报</string>
 
     <string name="promptly">立即体验</string>
+
+    <string name="_0">0</string>
+    <string name="_10">/10</string>
+    <string name="haved_comment">已评选</string>
+    <string name="_1">1</string>
+    <string name="data">日期</string>
+    <string name="name">name</string>
+    <string name="designername">designerName</string>
+    <string name="label">label</string>
+    <string name="whole">全部</string>
+    <string name="design">设计师</string>
+    <string name="say_sth">说点什么吧</string>
+    <string name="net">品牌官网</string>
+
+    <string name="end">END</string>
 
 </resources>
