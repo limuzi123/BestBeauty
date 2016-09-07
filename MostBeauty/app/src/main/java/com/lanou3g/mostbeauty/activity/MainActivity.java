@@ -10,7 +10,7 @@ import com.lanou3g.mostbeauty.R;
 import com.lanou3g.mostbeauty.base.BaseActivity;
 import com.lanou3g.mostbeauty.fragment.HaveThingsFragment;
 import com.lanou3g.mostbeauty.fragment.MyFragment;
-import com.lanou3g.mostbeauty.fragment.pictorialfragment.PictorialFragment;
+import com.lanou3g.mostbeauty.fragment.PictorialFragment;
 import com.lanou3g.mostbeauty.fragment.StylistFragment;
 
 public class MainActivity extends BaseActivity implements OnCheckedChangeListener {

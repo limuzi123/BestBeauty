@@ -44,21 +44,21 @@ import cn.sharesdk.framework.Platform;
 import cn.sharesdk.framework.PlatformActionListener;
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.tencent.qq.QQ;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * Created by dllo on 16/8/30.
  */
 public class MyFragment extends BaseFragment implements View.OnClickListener, PlatformActionListener, Handler.Callback {
-    public static final String EXIT_APP = "com.lanou3g.mostbeauty.EXIT_APP";
     private ImageView imageViewMyHead, imageViewSet, imageViewSina, imageViewQQ, imageViewWeixin;
-
     private TextView textViewFeedBack, textViewdraw, textViewMyTextViewName;
     private RelativeLayout relativeLayoutAttention, relativeLayoutWish;
     private PopupWindow mPop;
     private SharedPreferences sharedQQ;
-    //private Receiver receiver;
-    private SharedPreferences.Editor editor;
     private static final int MSG_ACTION_CCALLBACK = 2;
+    private boolean logon;
+    private SharedPreferences.Editor editor;
+    private ReceiverExit receiverExit;
 
     @Override
     protected int initLayout() {
@@ -80,16 +80,32 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Pl
         relativeLayoutWish = (RelativeLayout) getView().findViewById(R.id.relative_layout_wish);
         relativeLayoutWish.setOnClickListener(this);
         textViewMyTextViewName = (TextView) getView().findViewById(R.id.my_text_view_name);
+        receiverExit = new ReceiverExit();
     }
 
     @Override
     protected void initData() {
         LogonPop();
+        sharedQQ = getActivity().getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
+        editor = sharedQQ.edit();
         ShareSDK.initSDK(getActivity());
-
-
+        Log.d("MyFragment", "a0000000" + logon);
+        //保存登录状态
+        if (sharedQQ.getBoolean("logon", false)) {
+            String nickname = sharedQQ.getString("qqName", "");
+            textViewMyTextViewName.setText(nickname);
+            Log.d("my", nickname);
+            String picture = sharedQQ.getString("qqHeadPicture", "");
+            Log.d("MyFragment", picture);
+            //传过来的是一个String类型的网址
+            Glide.with(getContext()).load(picture).bitmapTransform(new CropCircleTransformation(getContext())).
+                    into(imageViewMyHead);
+        }
+        //广播注册
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(SetActivity.ACTION_CHANGE);
+        getActivity().registerReceiver(receiverExit, filter);
     }
-
 
     private PopupWindow LogonPop() {
         mPop = new PopupWindow(getContext());
@@ -133,9 +149,12 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Pl
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.my_image_head:
-                mPop.showAtLocation(v, Gravity.CENTER, 0, 0);
-                backgroundAlpha(0.7f);
-                //startActivity(new Intent(getActivity(), MaterialActivity.class));
+                if (sharedQQ.getBoolean("logon", false)) {
+                    startActivity(new Intent(getActivity(), MaterialActivity.class));
+                } else {
+                    mPop.showAtLocation(v, Gravity.CENTER, 0, 0);
+                    backgroundAlpha(0.7f);
+                }
                 break;
             case R.id.image_set:
                 startActivity(new Intent(getActivity(), SetActivity.class));
@@ -190,25 +209,13 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Pl
         String qqName = platform.getDb().getUserName();//获取用户名字
         String qqHeadPicture = platform.getDb().getUserIcon();//获取用户头像
         Log.d("名字", qqName);
-        //持久化缓存
-        sharedQQ = getActivity().getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedQQ.edit();
 
         editor.putString("qqName", qqName);
         editor.putString("qqHeadPicture", qqHeadPicture);
-        boolean logon = true;
+        logon = true;
         editor.putBoolean("logon", logon);
+        Log.d("MyFragment", "---------" + logon);
         editor.commit();
-
-
-        String nickname = sharedQQ.getString("qqName", "");
-        textViewMyTextViewName.setText(nickname);
-        Log.d("my", nickname);
-        String picture = sharedQQ.getString("qqHeadPicture", "");
-        Log.d("MyFragment", picture);
-
-        //传过来的是一个String类型的网址
-        Glide.with(getContext()).load(picture).into(imageViewMyHead);
 
         //登陆进去后跳到主页面
         Intent intent = new Intent(getActivity(), MainActivity.class);
@@ -232,18 +239,13 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Pl
     public boolean handleMessage(Message msg) {
         switch (msg.arg1) {
             case 1: {
+                logon = true;
+                editor.putBoolean("logon", logon);
+                Log.d("MyFragment", "---------" + logon);
+                editor.commit();
                 //成功
                 Toast.makeText(getActivity(), "成功", Toast.LENGTH_SHORT).show();
                 mPop.dismiss();
-                sharedQQ = getActivity().getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
-                String nickname = sharedQQ.getString("qqName","");
-                textViewMyTextViewName.setText(nickname);
-                Log.d("----->", nickname);
-                String picture = sharedQQ.getString("qqHeadPicture","");
-                Log.d("----->", picture);
-                //传过来的是一个String类型的网址
-                Glide.with(getContext()).load(picture).into(imageViewMyHead);
-
             }
             break;
             case 2: {
@@ -258,5 +260,21 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Pl
             break;
         }
         return false;
+    }
+
+    private class ReceiverExit extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            textViewMyTextViewName.setText("未登录");
+            imageViewMyHead.setImageResource(R.mipmap.woman_selected);
+        }
+    }
+
+    //解除注册
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getActivity().unregisterReceiver(receiverExit);
     }
 }

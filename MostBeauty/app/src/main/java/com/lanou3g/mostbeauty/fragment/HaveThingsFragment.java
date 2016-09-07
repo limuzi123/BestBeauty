@@ -1,10 +1,7 @@
 package com.lanou3g.mostbeauty.fragment;
 
-import android.content.Context;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.WindowManager;
 
 import com.lanou3g.mostbeauty.Bean.HaveThingsReuseTitleBean;
 import com.lanou3g.mostbeauty.R;
@@ -36,23 +33,6 @@ public class HaveThingsFragment extends BaseFragment {
         // 2.设置ViewPager懒加载
         viewPager.setOffscreenPageLimit(7);
         adapter=new HaveThingsAdapter(getChildFragmentManager());
-
-        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
-        final int width = wm.getDefaultDisplay().getWidth();
-        // final int tabwidth = tabLayout.getWidth()/viewPager.getChildCount();
-        adapter=new HaveThingsAdapter(getChildFragmentManager());
-        tabLayout.setPadding(width,0,0,0);
-        viewPager.setOnPageChangeListener(new OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
-
-            @Override
-            public void onPageSelected(int position) {
-                tabLayout.setPadding(width-155*position,0,0,0);
-            }
-            @Override
-            public void onPageScrollStateChanged(int state) {}
-        });
     }
     @Override
     protected void initData() {
@@ -68,7 +48,9 @@ public class HaveThingsFragment extends BaseFragment {
                     }
 
                     @Override
-                    public void onError(Throwable e) {}
+                    public void onError(Throwable e) {
+
+                    }
                 });
 
     }

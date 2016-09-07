@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="@dimen/one_hundred_sixty">
+              android:layout_height="160dp">
 <ImageView
     android:id="@+id/fragment_have_reuse_gv_item"
     android:layout_width="match_parent"

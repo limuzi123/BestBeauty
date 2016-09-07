@@ -1,13 +1,16 @@
 package com.lanou3g.mostbeauty.activity.mine;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.net.sip.SipAudioCall;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lanou3g.mostbeauty.R;
@@ -17,15 +20,20 @@ import com.lanou3g.mostbeauty.other.DataClean;
 
 import java.io.File;
 
+import okhttp3.internal.framed.ErrorCode;
+
 /**
  * Created by dllo on 16/9/2.
  */
 //设置页面
 public class SetActivity extends BaseActivity implements View.OnClickListener {
+    public static final String ACTION_CHANGE = "com.lanou3g.mostbeauty.ACTION_CHANGE";
     private ImageView imageViewSetBack;
     private RelativeLayout relativeLayoutFeedBack, relativeLayoutSetHead;
     private RelativeLayout relativeLayoutClean, relativeLayoutGood, relativeLayoutabout, relativeLayoutExit;
     private SharedPreferences sharedQQ;
+    private SharedPreferences.Editor editor;
+    private TextView textViewClean;
 
     @Override
     protected int getLayout() {
@@ -49,11 +57,13 @@ public class SetActivity extends BaseActivity implements View.OnClickListener {
         relativeLayoutExit = (RelativeLayout) findViewById(R.id.relative_exit);
         relativeLayoutExit.setOnClickListener(this);
 
+        textViewClean = (TextView) findViewById(R.id.text_clean);
+
     }
 
     @Override
     protected void initData() {
-     sharedQQ = getSharedPreferences("name",MODE_PRIVATE);
+
 
     }
 
@@ -64,7 +74,14 @@ public class SetActivity extends BaseActivity implements View.OnClickListener {
         builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                //  DataClean.getCacheSize();
+                //获取缓存大小
+                try {
+                    String str = DataClean.getCacheSize(getCacheDir());
+                    textViewClean.setText(str);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
                 DataClean.cleanInternalCache(SetActivity.this);
                 Toast.makeText(SetActivity.this, "清除了缓存数据", Toast.LENGTH_SHORT).show();
             }
@@ -100,7 +117,7 @@ public class SetActivity extends BaseActivity implements View.OnClickListener {
                 startActivity(new Intent(SetActivity.this, AboutActivity.class));
                 break;
             case R.id.relative_exit:
-
+                Exit();
                 break;
         }
     }
@@ -116,6 +133,33 @@ public class SetActivity extends BaseActivity implements View.OnClickListener {
         } else {
             Toast.makeText(this, "您的手机没有安装应用市场", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void Exit() {
+        AlertDialog.Builder builders = new AlertDialog.Builder(SetActivity.this);
+        builders.setMessage("确认退出么");
+        builders.setTitle("提示");
+        builders.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                sharedQQ = SetActivity.this.getSharedPreferences("userInfo", Activity.MODE_PRIVATE);
+                editor = sharedQQ.edit();
+                editor.clear();
+                editor.commit();
+                finish();
+                Intent intent = new Intent();
+                intent.setAction(ACTION_CHANGE);
+                sendBroadcast(intent);
+
+            }
+        });
+        builders.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builders.create().show();
     }
 }
 
