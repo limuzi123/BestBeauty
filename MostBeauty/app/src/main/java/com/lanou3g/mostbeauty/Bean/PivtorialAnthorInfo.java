@@ -47,8 +47,9 @@ public class PivtorialAnthorInfo {
         infos.add(new PivtorialAnthorInfo("作品", new PictorialProductionFragment()));
         infos.add(new PivtorialAnthorInfo("画报", new PictorialSmallFragment()));
 
-
+        if (PictorialAuthorActivity.getResponse().getData().getShops().size() != 0) {
             infos.add(new PivtorialAnthorInfo("旗舰门店", new PictorialStoreFragment()));
+        }
 
         infos.add(new PivtorialAnthorInfo("线上购买", new PictorialBuyFragment()));
         return infos;

@@ -10,6 +10,7 @@ import com.lanou3g.mostbeauty.Bean.PivtorialAnthorInfo;
 import com.lanou3g.mostbeauty.Bean.StoreBean;
 import com.lanou3g.mostbeauty.R;
 import com.lanou3g.mostbeauty.activity.API;
+import com.lanou3g.mostbeauty.activity.pictorial.PictorialAuthorActivity;
 import com.lanou3g.mostbeauty.base.BaseFragment;
 import com.lanou3g.mostbeauty.gson.NetTool;
 import com.lanou3g.mostbeauty.gson.onHttpCallBack;
@@ -18,7 +19,7 @@ import com.lanou3g.mostbeauty.gson.onHttpCallBack;
  * Created by dllo on 16/9/3.
  */
 public class PictorialStoreFragment extends BaseFragment {
-    private TextView tvCity,tvName,tvPlace;
+    private TextView tvCity, tvName, tvPlace;
     private ImageView imgName;
 
 
@@ -38,28 +39,12 @@ public class PictorialStoreFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        Intent intent = getActivity().getIntent();
-        String str =  intent.getStringExtra("idAuthor");
-        int id = Integer.parseInt(str);
-        NetTool.getInstance().startRequest(API.PICTORIAL_STORE_FRAGMENT_ONE + id + API.PICTORIAL_STORE_FRAGMENT_TWO, StoreBean.class,
-                new onHttpCallBack<StoreBean>() {
-                    @Override
-                    public void onSuccess(StoreBean response) {
-                      if(response.getData().getShops().size() != 0){
-                        tvCity.setText(response.getData().getShops().get(0).getCity());
-                        tvPlace.setText(response.getData().getShops().get(0).getAddress());
-                        tvName.setText(response.getData().getShops().get(0).getName());
-                        Glide.with(getContext()).load(response.getData().getShop_image()).into(imgName);}
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-                });
 
 
+        tvCity.setText(PictorialAuthorActivity.getResponse().getData().getShops().get(0).getCity());
+        tvPlace.setText(PictorialAuthorActivity.getResponse().getData().getShops().get(0).getAddress());
+        tvName.setText(PictorialAuthorActivity.getResponse().getData().getShops().get(0).getName());
+        Glide.with(getContext()).load(PictorialAuthorActivity.getResponse().getData().getShop_image()).into(imgName);
     }
 
 

@@ -35,6 +35,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.lanou3g.mostbeauty.Bean.PictorialAuthorActivityViewPagerTopBean;
 import com.lanou3g.mostbeauty.Bean.PivtorialAnthorInfo;
+import com.lanou3g.mostbeauty.Bean.StoreBean;
 import com.lanou3g.mostbeauty.R;
 import com.lanou3g.mostbeauty.activity.API;
 import com.lanou3g.mostbeauty.adapter.AnthorPagerAdapter;
@@ -42,6 +43,7 @@ import com.lanou3g.mostbeauty.adapter.PictorialAuthorPagerAdapter;
 import com.lanou3g.mostbeauty.base.BaseActivity;
 import com.lanou3g.mostbeauty.gson.NetTool;
 import com.lanou3g.mostbeauty.gson.onHttpCallBack;
+import com.lanou3g.mostbeauty.myview.SwipeBackLayout;
 
 import java.util.ArrayList;
 
@@ -66,6 +68,8 @@ public class PictorialAuthorActivity extends BaseActivity implements OnClickList
     private HorizontalScrollView horizontalscrollView;
     private LinearLayout linearLayout;
     private ImageView[] tips;
+    private static StoreBean response;
+    private SwipeBackLayout swipeBackLayoutTwo;
 
 
 
@@ -97,17 +101,14 @@ public class PictorialAuthorActivity extends BaseActivity implements OnClickList
         horizontalscrollView = (HorizontalScrollView) findViewById(R.id.frame_layout_big);
         linearLayout = (LinearLayout) findViewById(R.id.linear_tip);
         imgBack = (ImageView) findViewById(R.id.img_back);
+        swipeBackLayoutTwo = (SwipeBackLayout) findViewById(R.id.swipe_layout_two);
         imgBack.setOnClickListener(this);
         imgBackSmall.setOnClickListener(this);
 
 
         pagerAdapter = new PictorialAuthorPagerAdapter(getSupportFragmentManager());
 
-        viewPager.setAdapter(pagerAdapter);
-        tabLayout.setupWithViewPager(viewPager);
-        tabLayout.setTabTextColors(Color.GRAY,Color.LTGRAY);
-        tabLayout.setSelectedTabIndicatorColor(0xffffffff);
-        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+
 
 
 
@@ -125,6 +126,7 @@ public class PictorialAuthorActivity extends BaseActivity implements OnClickList
 
     @Override
     protected void initData() {
+
         adapter= new AnthorPagerAdapter(this);
         Intent intent =getIntent();
        String str =  intent.getStringExtra("idAuthor");
@@ -132,10 +134,33 @@ public class PictorialAuthorActivity extends BaseActivity implements OnClickList
         getTiltileState();
         getTabPosition();
         getNetRequest(id);
+        getStoreNetRequest(id);
 
 
+    }
+    // TODO: 16/9/7 实现侧滑退出Activity 的监听
 
 
+    // TODO: 16/9/6 获取PictorialStoreFragment的网络数据
+    private void getStoreNetRequest(int id) {
+        NetTool.getInstance().startRequest(API.PICTORIAL_STORE_FRAGMENT_ONE + id + API.PICTORIAL_STORE_FRAGMENT_TWO, StoreBean.class,
+                new onHttpCallBack<StoreBean>() {
+                    @Override
+                    public void onSuccess(StoreBean response) {
+                      PictorialAuthorActivity.response= response;
+                        viewPager.setAdapter(pagerAdapter);
+                        tabLayout.setupWithViewPager(viewPager);
+                        tabLayout.setTabTextColors(Color.GRAY,Color.LTGRAY);
+                        tabLayout.setSelectedTabIndicatorColor(0xffffffff);
+                        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                });
     }
 
     // TODO: 16/9/5 获取Tablayout上面界面的网络数据
@@ -213,6 +238,8 @@ public class PictorialAuthorActivity extends BaseActivity implements OnClickList
             }
         });
     }
+
+    // TODO: 16/9/7 实现类似轮播图,
     private void setReturn(PictorialAuthorActivityViewPagerTopBean response){
         setPagerChange();
         tips = new ImageView[response.getData().getIntroduce_images().size()];
@@ -284,4 +311,9 @@ public class PictorialAuthorActivity extends BaseActivity implements OnClickList
                 break;
         }
     }
+    public static  StoreBean getResponse(){
+        return response;
+    }
+
+
 }
