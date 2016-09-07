@@ -134,10 +134,10 @@ public class SetActivity extends BaseActivity implements View.OnClickListener {
             Toast.makeText(this, "您的手机没有安装应用市场", Toast.LENGTH_SHORT).show();
         }
     }
-
+//退出登录方法
     private void Exit() {
         AlertDialog.Builder builders = new AlertDialog.Builder(SetActivity.this);
-        builders.setMessage("确认退出么");
+        builders.setMessage("确认退出登录么");
         builders.setTitle("提示");
         builders.setPositiveButton("确认", new DialogInterface.OnClickListener() {
             @Override
