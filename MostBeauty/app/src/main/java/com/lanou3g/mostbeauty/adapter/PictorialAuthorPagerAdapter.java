@@ -16,7 +16,6 @@ public class PictorialAuthorPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-
         return PivtorialAnthorInfo.getTabInfos().get(position).getFragment();
     }
 

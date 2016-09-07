@@ -72,7 +72,6 @@ public class PictorialCommentActivity extends BaseActivity implements OnClickLis
                 intent.putExtra("id",strId);
                 startActivity(intent);
                 overridePendingTransition(R.anim.exit_comment,R.anim.enter_comment);
-                finish();
                 break;
         }
     }

@@ -3,38 +3,5 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <com.lanou3g.mostbeauty.myview.StationGridview
-        android:background="@color/color"
-        android:id="@+id/grid_view"
-        android:layout_margin="@dimen/ten"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:verticalSpacing="@dimen/ten"
-        android:horizontalSpacing="@dimen/ten"
-        android:numColumns="2">
-
-    </com.lanou3g.mostbeauty.myview.StationGridview>
-    <LinearLayout
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:src="@mipmap/ic_point_unselected"
-            android:layout_width="@dimen/ten"
-            android:layout_height="@dimen/ten"/>
-        <TextView
-            android:textColor="@color/color_three"
-            android:layout_marginLeft="@dimen/ten"
-            android:layout_marginRight="@dimen/ten"
-            android:text="@string/end"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <ImageView
-            android:src="@mipmap/ic_point_unselected"
-            android:layout_width="@dimen/ten"
-            android:layout_height="@dimen/ten"/>
-
-    </LinearLayout>
 
 </LinearLayout>

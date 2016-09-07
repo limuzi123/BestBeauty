@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="@dimen/thirteen"
-    android:background="@color/adapter_have_things_have_h">
+              android:layout_height="30dp"
+    android:background="#1f1f1f">
 
     <TextView
         android:id="@+id/adapter_have_things_have_head_date"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/ah_thirty"
-        android:text="@string/data"
+        android:layout_height="30dp"
+        android:text="日期"
         android:gravity="center"
-        android:textColor="@color/adapter_have_things_have_hc"/>
+        android:textColor="#4B4B4B"/>
 </LinearLayout>

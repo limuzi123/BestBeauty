@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,10 +66,8 @@ public class AnthorPagerAdapter extends PagerAdapter implements OnPageChangeList
         View view = LayoutInflater.from(context).inflate(R.layout.item_tips,container,false);
         ImageView imageView = (ImageView) view.findViewById(R.id.img_top);
         Glide.with(context).load(bean.getData().getIntroduce_images().get(position)).into(imageView);
-        Log.d("AnthorPagerAdapter", "aaaaaaaa"+bean.getData().getIntroduce_images().get(position));
         container.addView(view);
-
-//        viewPager.addOnPageChangeListener(this);
+        viewPager.addOnPageChangeListener(this);
         return view;
     }
 
@@ -89,10 +86,5 @@ public class AnthorPagerAdapter extends PagerAdapter implements OnPageChangeList
     @Override
     public void onPageScrollStateChanged(int state) {
 
-    }
-
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((View) object);
     }
 }

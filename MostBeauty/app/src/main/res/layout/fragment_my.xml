@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true">
 
-        <com.lanou3g.mostbeauty.myview.circleImageView
+        <ImageView
             android:id="@+id/my_image_head"
             android:layout_width="@dimen/ninty"
             android:layout_height="@dimen/ninty"

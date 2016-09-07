@@ -1,39 +1,15 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-<!--dp类-->
-    <dimen name="zero_dp">          0dp</dimen>
-    <dimen name="point_one_dp">     0.1dp</dimen>
-    <dimen name="point_two_dp">     0.2dp</dimen>
-    <dimen name="ten_dp">           10dp</dimen>
-    <dimen name="fifteen_dp">       15dp</dimen>
-    <dimen name="twenty_dp">        20dp</dimen>
-    <dimen name="thirty_dp">        30dp</dimen>
-    <dimen name="forty_dp">         40dp</dimen>
-    <dimen name="fifty_dp">         50dp</dimen>
-    <dimen name="seventy_dp">       70dp</dimen>
-
-    <dimen name = "one_hundred_sixty">      160dp </dimen>
-    <dimen name="one_hundred_eighty_dp">    180dp</dimen>
-    <dimen name="two_hundred_dp">           200dp</dimen>
-    <dimen name="three_hundred_fifty_dp">   350dp</dimen>
-
-
-<!--sp类-->
-    <dimen name="fifteen_sp">       15sp</dimen>
-    <dimen name="twenty_sp">        20sp</dimen>
-    <dimen name="thirty_sp">        30sp</dimen>
-
-
-
-
-
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="activity_main_height_bar">65dp</dimen>
     <dimen name="activity_main_radio_marginTop">40dp</dimen>
-    <dimen name="one_thousand">1000dp</dimen>
+
+<dimen name="one_thousand">1000dp</dimen>
     <dimen name="thirty_two">32dp</dimen>
     <dimen name="seventy">-70dp</dimen>
+
+
     <dimen name="five">5dp</dimen>
     <dimen name="forty">40dp</dimen>
     <dimen name="twenty_five">25dp</dimen>
@@ -49,6 +25,8 @@
     <dimen name="one">1dp</dimen>
     <dimen name="one_husand_fifty">150dp</dimen>
     <dimen name="three_hundred">300dp</dimen>
+
+
     <dimen name="fifty_zz">50dp</dimen>
     <dimen name="fifty">50dp</dimen>
     <dimen name="two_hundred">200dp</dimen>
@@ -58,40 +36,19 @@
     <dimen name="twenty_three">23sp</dimen>
     <dimen name="three">3dp</dimen>
     <dimen name="one_hundred">100dp</dimen>
+
     <dimen name="_seventy">70dp</dimen>
     <dimen name="one_hundred_and_sixty_six">166dp</dimen>
     <dimen name="_twenty_five">-25dp</dimen>
-    <dimen name="fifty_six">56dp</dimen>
+<dimen name="fifty_six">56dp</dimen>
     <dimen name="zone">0dp</dimen>
     <dimen name="seventys">70dp</dimen>
     <dimen name="eigthty">80dp</dimen>
     <dimen name="seventeen">-17dp</dimen>
     <dimen name="one_hundred_two">120dp</dimen>
     <dimen name="one_hundred_three">130dp</dimen>
-
     <dimen name="one_hundred_five">150dp</dimen>
     <dimen name="seventy_fifte">75dp</dimen>
-
-    <dimen name="ahthhf_ll_mt">50dp</dimen>
-    <dimen name="fifteen_sp_tv">15sp</dimen>
-    <dimen name="five_dp">5dp</dimen>
-    <dimen name="one_handroid_forteen">140dp</dimen>
-    <dimen name="fifteen_sp_c">15sp</dimen>
-    <dimen name="twiteen">20dp</dimen>
-    <dimen name = "thirteen"> 30dp</dimen>
-    <dimen name="ah_thirty">30dp</dimen>
-    <dimen name="have_i">30dp</dimen>
-    <dimen name="three_seventeen">370dp</dimen>
-    <dimen name="fifteen_tv">15sp</dimen>
-    <dimen name="three_pad">3dp</dimen>
-    <dimen name="fifty_w">40dp</dimen>
-    <dimen name="ten_m">10dp</dimen>
-    <dimen name="ten_mt">10dp</dimen>
-    <dimen name="fifteen_ts">15sp</dimen>
-    <dimen name="five_mt">5dp</dimen>
-    <dimen name="ten_sp">10sp</dimen>
-    <dimen name="twenty_five_dp">25dp</dimen>
-
 
 
 </resources>

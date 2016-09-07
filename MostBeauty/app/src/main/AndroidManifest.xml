@@ -68,7 +68,6 @@
         <activity android:name=".activity.DesignAttentionActivity" />
         <activity android:name=".activity.mine.AboutActivity"/>
         <activity android:name=".activity.pictorial.PictorialAuthorActivity"/>
-<<<<<<< HEAD
         <activity
             android:name=".activity.MainActivity"
             android:clearTaskOnLaunch="true"
@@ -96,9 +95,6 @@
             </intent-filter>
         </activity>
         
-=======
-        <activity android:name=".activity.HaveHaveActivity"/>
->>>>>>> fff5596aece082e414648a966e76fc0b15e27767
 
     </application>
 
