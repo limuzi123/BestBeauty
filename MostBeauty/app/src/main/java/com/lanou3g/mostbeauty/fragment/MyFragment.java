@@ -58,6 +58,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Pl
     private static final int MSG_ACTION_CCALLBACK = 2;
     private boolean logon;
     private SharedPreferences.Editor editor;
+    private ReceiverExit receiverExit;
 
     @Override
     protected int initLayout() {
@@ -79,6 +80,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Pl
         relativeLayoutWish = (RelativeLayout) getView().findViewById(R.id.relative_layout_wish);
         relativeLayoutWish.setOnClickListener(this);
         textViewMyTextViewName = (TextView) getView().findViewById(R.id.my_text_view_name);
+        receiverExit = new ReceiverExit();
     }
 
     @Override
@@ -99,6 +101,10 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Pl
             Glide.with(getContext()).load(picture).bitmapTransform(new CropCircleTransformation(getContext())).
                     into(imageViewMyHead);
         }
+        //广播注册
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(SetActivity.ACTION_CHANGE);
+        getActivity().registerReceiver(receiverExit, filter);
     }
 
     private PopupWindow LogonPop() {
@@ -256,4 +262,19 @@ public class MyFragment extends BaseFragment implements View.OnClickListener, Pl
         return false;
     }
 
+    private class ReceiverExit extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            textViewMyTextViewName.setText("未登录");
+            imageViewMyHead.setImageResource(R.mipmap.woman_selected);
+        }
+    }
+
+    //解除注册
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        getActivity().unregisterReceiver(receiverExit);
+    }
 }
