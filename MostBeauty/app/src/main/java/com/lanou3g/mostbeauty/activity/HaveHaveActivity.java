@@ -30,6 +30,7 @@ import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
 
 import com.lanou3g.mostbeauty.Bean.HaveHaveBean;
+import com.lanou3g.mostbeauty.R;
 import com.lanou3g.mostbeauty.base.BaseActivity;
 import com.lanou3g.mostbeauty.base.MyApp;
 import com.lanou3g.mostbeauty.gson.NetTool;
