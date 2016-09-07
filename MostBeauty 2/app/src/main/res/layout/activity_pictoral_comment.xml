@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <LinearLayout
+        android:background="@color/color_five"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty_six">
+        <ImageView
+            android:id="@+id/img_back"
+            android:src="@mipmap/menu_action_back"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/twenty"
+            android:layout_width="@dimen/twenty"
+            android:layout_height="@dimen/twenty"/>
+       <TextView
+           android:textColor="@color/color_three"
+           android:layout_marginLeft="@dimen/one_husand_fifty"
+           android:layout_gravity="center"
+           android:text="@string/tv_comment_tt"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/list_view"
+            android:dividerHeight="@dimen/zone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/twenty">
+
+        </ListView>
+        <LinearLayout
+            android:background="@drawable/shape_activity"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="-5dp">
+        <LinearLayout
+            android:layout_gravity="bottom"
+            android:background="@color/color_background"
+
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/sixty"
+            android:orientation="horizontal">
+            <com.lanou3g.mostbeauty.myview.circleImageView
+                android:src="@mipmap/best_beauty"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/ten"
+                android:layout_width="@dimen/thirty_two"
+                android:layout_height="@dimen/thirty_two"/>
+            <EditText
+                android:padding="@dimen/five"
+                android:background="@drawable/shape_et_say"
+                android:layout_gravity="center"
+                android:hint="@string/et_say"
+                android:layout_width="@dimen/two_hundred"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_marginLeft="@dimen/twenty_five"
+                android:layout_gravity="center"
+                android:text="@string/tv_send"
+                android:textColor="@color/color_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+
+
+
+</LinearLayout>
