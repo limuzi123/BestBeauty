@@ -69,15 +69,15 @@
         <activity android:name=".activity.WishActivity"/>
         <activity android:name=".activity.DesignAttentionActivity" />
         <activity android:name=".activity.mine.AboutActivity"/>
-<<<<<<< HEAD
+
         <activity android:name=".activity.pictorial.PictorialAuthorActivity"
                  />
         <activity android:name=".activity.pictorial.ReaderActivity"/>
 
-=======
-        <activity android:name=".activity.pictorial.PictorialAuthorActivity"/>
+
+
         <activity android:name=".activity.LeadGuideActivity"/>
->>>>>>> 80326f4f49bf17c33e59ac3ac859738fa8a9ce50
+
         <activity
             android:name=".activity.MainActivity"
             android:clearTaskOnLaunch="true"
