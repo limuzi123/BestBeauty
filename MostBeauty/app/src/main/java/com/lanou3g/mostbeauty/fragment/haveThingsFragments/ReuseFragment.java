@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
+
 import com.lanou3g.mostbeauty.Bean.HaveThingsReuseBean;
 import com.lanou3g.mostbeauty.Bean.HaveThingsReuseTitleBean;
 import com.lanou3g.mostbeauty.R;
@@ -56,7 +57,7 @@ public class ReuseFragment extends BaseFragment {
         imageView= (ImageView) getView().findViewById(R.id.fragment_have_reuse_iv);
         popAdapter=new HaveThingsReusePopAdapter(getContext());
         linearLayout = (LinearLayout) getView().findViewById(R.id.fragment_have_reuse_ll);
-        popBean=HaveThingsAdapter.getHaveThingsReuseTitleBean();
+        popBean= HaveThingsAdapter.getHaveThingsReuseTitleBean();
         view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_have_reuse_pop,null);
         gvPop = (GridView) view.findViewById(R.id.fragment_have_reuse_pop_gv);
     }
