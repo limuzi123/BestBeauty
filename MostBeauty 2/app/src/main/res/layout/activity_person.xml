@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/include_person"
+        layout="@layout/include_material"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/six"
+        android:text="@string/person_contact"
+        android:textColor="@color/color_material"
+        android:textSize="@dimen/twenty" />
+
+    <TextView
+        android:id="@+id/text_view_sure_person"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/five"
+        android:layout_marginTop="@dimen/five"
+        android:text="确定"
+        android:textColor="@color/color_background"
+        android:textSize="@dimen/eighteen" />
+
+    <EditText
+        android:id="@+id/edit_text_person"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/include_person"
+        android:background="@null"
+        android:hint="@string/person_write" />
+</RelativeLayout>

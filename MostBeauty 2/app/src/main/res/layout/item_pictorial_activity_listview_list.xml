@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+               android:background="@color/color_background"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <ImageView
+        android:layout_marginLeft="@dimen/twenty"
+        android:layout_marginTop="@dimen/twenty"
+        android:src="@mipmap/ic_launcher"
+        android:id="@+id/img_comment"
+        android:layout_width="@dimen/forty"
+        android:layout_height="@dimen/forty"/>
+    <TextView
+        android:layout_marginTop="@dimen/twenty"
+        android:text="名字"
+        android:textColor="@color/color"
+        android:layout_marginLeft="@dimen/ten"
+        android:layout_toRightOf="@+id/img_comment"
+        android:id="@+id/tv_name_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:textColor="@color/color_three"
+        android:layout_marginTop="@dimen/ten"
+        android:layout_marginLeft="@dimen/ten"
+        android:text="内容"
+        android:layout_toRightOf="@+id/img_comment"
+        android:layout_below="@+id/tv_name_list"
+        android:id="@+id/tv_content_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:layout_marginTop="@dimen/twenty"
+       android:layout_below="@+id/tv_content_content"
+        android:layout_alignParentRight="true"
+        android:layout_width="300dp"
+        android:layout_height="@dimen/one"
+        android:background="@color/color_hui"/>
+
+
+</RelativeLayout>
