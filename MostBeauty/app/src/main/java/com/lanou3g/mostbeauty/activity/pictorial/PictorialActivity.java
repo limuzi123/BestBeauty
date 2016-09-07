@@ -29,7 +29,6 @@ import com.lanou3g.mostbeauty.activity.API;
 import com.lanou3g.mostbeauty.adapter.PictorialActivityGridAdapter;
 import com.lanou3g.mostbeauty.adapter.PictorialActivityListAdapter;
 import com.lanou3g.mostbeauty.base.BaseActivity;
-import com.lanou3g.mostbeauty.fragment.pictorialfragment.PictorialProductionFragment;
 import com.lanou3g.mostbeauty.gson.NetTool;
 import com.lanou3g.mostbeauty.gson.onHttpCallBack;
 import com.lanou3g.mostbeauty.myview.StationGridview;
@@ -61,6 +60,7 @@ public class PictorialActivity extends BaseActivity implements OnClickListener {
     private String str;
     private EditText etSay;
     private String str1;
+<<<<<<< HEAD
     private int id;
     private String img;
     private String tvTitleStr;
@@ -69,6 +69,8 @@ public class PictorialActivity extends BaseActivity implements OnClickListener {
 
     private static PictorialActivityBean response;
     private SwipeBackLayout swipeBackLayoutTwo;
+=======
+>>>>>>> 80326f4f49bf17c33e59ac3ac859738fa8a9ce50
 
     @Override
     protected int getLayout() {
@@ -130,8 +132,8 @@ public class PictorialActivity extends BaseActivity implements OnClickListener {
         listAdapter = new PictorialActivityListAdapter(this);
         Intent intent = getIntent();
         str = intent.getStringExtra("id");
-        id = Integer.parseInt(str);
-        img = intent.getStringExtra("img");
+        int id = Integer.parseInt(str);
+        String img = intent.getStringExtra("img");
         Glide.with(this).load(img).into(imgTitle);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
@@ -190,27 +192,24 @@ public class PictorialActivity extends BaseActivity implements OnClickListener {
                 PictorialActivityBean.class, new onHttpCallBack<PictorialActivityBean>() {
                     @Override
                     public void onSuccess(PictorialActivityBean response) {
+<<<<<<< HEAD
                         PictorialActivity.response = response;
                         // TODO: 16/9/3 最上面的解析数据
+=======
+>>>>>>> 80326f4f49bf17c33e59ac3ac859738fa8a9ce50
                         tvTitle.setText(response.getData().getTitle());
                         tvSmallTitle.setText(response.getData().getSub_title());
-                        // TODO: 16/9/3 传值到三级界面画报Fragment
-                        tvTitleStr = response.getData().getTitle();
-                        tvSmallStr = response.getData().getSub_title();
-
-
                         tvName.setText(response.getData().getAuthor().getUsername());
                         tvAuthor.setText(response.getData().getAuthor().getSign());
-
-
-                        Glide.with(PictorialActivity.this).load(response.getData().getAuthor().getAvatar_url())
-                                .bitmapTransform(new CropCircleTransformation(PictorialActivity.this)).into(imgName);
+                        int id1 = response.getData().getAuthor().getId();
+                        str1 = Integer.toString(id1);
+                        Log.d("PictorialActivity", "12345671234567"+id1);
+                        Glide.with(PictorialActivity.this).load(response.getData().getAuthor().getAvatar_url()).bitmapTransform(new CropCircleTransformation(PictorialActivity.this)).into(imgName);
 
                         if (response.getData().getDesigners().size() != 0) {
                             linearLayout.setVisibility(View.VISIBLE);
                             relativeLayoutSmall.setVisibility(View.VISIBLE);
-                            int id1 = response.getData().getDesigners().get(0).getId();
-                            str1 = Integer.toString(id1);
+
                             tvSmall.setText(response.getData().getDesigners().get(0).getName());
                             tvSmallOne.setText(response.getData().getDesigners().get(0).getLabel());
                             Glide.with(PictorialActivity.this).load(response.getData().getDesigners().get(0)
@@ -239,6 +238,7 @@ public class PictorialActivity extends BaseActivity implements OnClickListener {
                             gridAdapter.setBean(response);
                             gridView.setAdapter(gridAdapter);
                         }
+<<<<<<< HEAD
                         if (response.getData().getComments().size() != 0) {
                             int id = response.getData().getFavor_user_num();
                             tvLike.setText(response.getData().getLike_user_num() + "");
@@ -254,6 +254,16 @@ public class PictorialActivity extends BaseActivity implements OnClickListener {
                             tvAll.setVisibility(View.GONE);
                             tvSay.setVisibility(View.GONE);
                         }
+=======
+                        int id = response.getData().getFavor_user_num();
+                        tvLike.setText(response.getData().getLike_user_num()+"");
+                        tvSay.setText("评论(" + id + ")");
+                        tvSayHow.setText(id+"");
+                        listAdapter.setBean(response);
+                        listView.setAdapter(listAdapter);
+                        setListViewHeightBasedOnChildren(listView);
+
+>>>>>>> 80326f4f49bf17c33e59ac3ac859738fa8a9ce50
 
 
                     }
@@ -305,6 +315,7 @@ public class PictorialActivity extends BaseActivity implements OnClickListener {
                 startActivity(intentEt);
                 break;
             case R.id.relative_layout_small:
+<<<<<<< HEAD
                 Intent intentAuthor = new Intent(this, PictorialAuthorActivity.class);
                 intentAuthor.putExtra("idAuthor", str1);
 
@@ -313,6 +324,10 @@ public class PictorialActivity extends BaseActivity implements OnClickListener {
                 intentAuthor.putExtra("img", img);
                 intentAuthor.putExtra("tvTitle", tvTitleStr);
                 intentAuthor.putExtra("tvSmall", tvSmallStr);
+=======
+                Intent intentAuthor = new Intent(this,PictorialAuthorActivity.class);
+                intentAuthor.putExtra("idAuthor",str1);
+>>>>>>> 80326f4f49bf17c33e59ac3ac859738fa8a9ce50
                 startActivity(intentAuthor);
                 break;
             case R.id.image_share:
@@ -322,7 +337,6 @@ public class PictorialActivity extends BaseActivity implements OnClickListener {
         }
 
     }
-
     private void showShare() {
         ShareSDK.initSDK(PictorialActivity.this);
 
@@ -349,6 +363,9 @@ public class PictorialActivity extends BaseActivity implements OnClickListener {
 
 // 启动分享GUI
         oks.show(PictorialActivity.this);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 80326f4f49bf17c33e59ac3ac859738fa8a9ce50
     }
 }

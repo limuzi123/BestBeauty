@@ -25,6 +25,7 @@ public class PhoneActivity extends BaseActivity implements View.OnClickListener 
     private ImageView imageViewPhoneBack;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+
     @Override
     protected int getLayout() {
         return R.layout.activity_phone;
@@ -58,7 +59,7 @@ public class PhoneActivity extends BaseActivity implements View.OnClickListener 
                 finish();
                 break;
             case R.id.text_view_sure:
-                startActivity(new Intent(this,MaterialActivity.class));
+                startActivity(new Intent(this, MaterialActivity.class));
                 finish();
                 break;
         }

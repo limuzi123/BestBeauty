@@ -93,12 +93,13 @@
             android:background="@mipmap/line" />
 
         <TextView
+            android:id="@+id/text_clean"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/fifteen"
             android:layout_marginTop="@dimen/ten"
-            android:text="0KB"
+
             android:textSize="@dimen/eighteen" />
 
     </RelativeLayout>

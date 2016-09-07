@@ -10,11 +10,14 @@ import android.view.KeyEvent;
 import android.widget.ImageView;
 
 import com.lanou3g.mostbeauty.R;
+import com.lanou3g.mostbeauty.adapter.LeadGuideAdapter;
 import com.lanou3g.mostbeauty.base.BaseActivity;
+import com.lanou3g.mostbeauty.other.SharedPreferencesUtil;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import butterknife.ButterKnife;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
@@ -41,6 +44,18 @@ public class WelcomeActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        // 判断是否是第一次开启应用
+        boolean isFirstOpen = SharedPreferencesUtil.getBoolean(this, SharedPreferencesUtil.FIRST_OPEN, true);
+        // 如果是第一次启动，则先进入功能引导页
+        if (isFirstOpen) {
+            Intent intent = new Intent(this, LeadGuideActivity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
+
+        // 如果不是第一次启动app，则正常显示启动屏
+        ButterKnife.bind(this);
         startMainActivity();
     }
 

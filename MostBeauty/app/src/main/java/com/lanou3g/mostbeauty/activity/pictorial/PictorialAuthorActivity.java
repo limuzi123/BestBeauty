@@ -2,62 +2,41 @@ package com.lanou3g.mostbeauty.activity.pictorial;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
 import android.os.Build.VERSION_CODES;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.TabLayout.OnTabSelectedListener;
 import android.support.design.widget.TabLayout.Tab;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.LayoutParams;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
-import android.view.Display;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.View.OnScrollChangeListener;
-import android.view.View.OnTouchListener;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.lanou3g.mostbeauty.Bean.PictorialAuthorActivityViewPagerTopBean;
 import com.lanou3g.mostbeauty.Bean.PivtorialAnthorInfo;
 import com.lanou3g.mostbeauty.Bean.StoreBean;
 import com.lanou3g.mostbeauty.R;
 import com.lanou3g.mostbeauty.activity.API;
-import com.lanou3g.mostbeauty.adapter.AnthorPagerAdapter;
 import com.lanou3g.mostbeauty.adapter.PictorialAuthorPagerAdapter;
 import com.lanou3g.mostbeauty.base.BaseActivity;
 import com.lanou3g.mostbeauty.gson.NetTool;
 import com.lanou3g.mostbeauty.gson.onHttpCallBack;
 import com.lanou3g.mostbeauty.myview.SwipeBackLayout;
 
-import java.util.ArrayList;
-
-import jp.wasabeef.glide.transformations.CropCircleTransformation;
-
 /**
  * Created by dllo on 16/9/3.
  */
-public class PictorialAuthorActivity extends BaseActivity implements OnClickListener{
+public class PictorialAuthorActivity extends BaseActivity{
     private ViewPager viewPagerTop,viewPager;
     private TabLayout tabLayout;
     private ImageView imgName;
     private TextView tvName,tvSmall,tvContent,tvMore;
     private PictorialAuthorPagerAdapter pagerAdapter;
+<<<<<<< HEAD
     private AnthorPagerAdapter adapter;
     private Handler handler;
     private boolean flag = true;
@@ -75,6 +54,9 @@ public class PictorialAuthorActivity extends BaseActivity implements OnClickList
 
     private int l;
 
+=======
+    private int width;
+>>>>>>> 80326f4f49bf17c33e59ac3ac859738fa8a9ce50
 
 
     @Override
@@ -82,7 +64,7 @@ public class PictorialAuthorActivity extends BaseActivity implements OnClickList
         return R.layout.activity_pictoral_author;
     }
 
-
+    @TargetApi(VERSION_CODES.M)
     @Override
     protected void initView() {
         viewPager = (ViewPager) findViewById(R.id.view_pager);
@@ -93,6 +75,7 @@ public class PictorialAuthorActivity extends BaseActivity implements OnClickList
         tvSmall = (TextView) findViewById(R.id.tv_small);
         tvContent = (TextView) findViewById(R.id.tv_content);
         tvMore = (TextView) findViewById(R.id.tv_more);
+<<<<<<< HEAD
         scrollView = (ScrollView) findViewById(R.id.scroll_View);
         imgBackSmall = (ImageView) findViewById(R.id.img_back_small);
         imgBackTwo = (ImageView) findViewById(R.id.img_back_two);
@@ -105,27 +88,32 @@ public class PictorialAuthorActivity extends BaseActivity implements OnClickList
         imgBack.setOnClickListener(this);
         imgBackSmall.setOnClickListener(this);
 
+=======
+>>>>>>> 80326f4f49bf17c33e59ac3ac859738fa8a9ce50
 
+       
         pagerAdapter = new PictorialAuthorPagerAdapter(getSupportFragmentManager());
+<<<<<<< HEAD
 
 
+=======
+        viewPager.setAdapter(pagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setTabTextColors(Color.GRAY,Color.LTGRAY);
+        tabLayout.setSelectedTabIndicatorColor(0xffffffff);
+        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+>>>>>>> 80326f4f49bf17c33e59ac3ac859738fa8a9ce50
 
-
-
-        WindowManager windowManager = getWindowManager();
-        Display display = windowManager.getDefaultDisplay();
-        l = display.getWidth();
-
-        tabLayout.setPadding(l/2,0,0,0);
+        final WindowManager wm = getWindowManager();
+        width = wm.getDefaultDisplay().getWidth();
 
 
 
     }
 
-
-
     @Override
     protected void initData() {
+<<<<<<< HEAD
 
         adapter= new AnthorPagerAdapter(this);
         Intent intent =getIntent();
@@ -165,21 +153,15 @@ public class PictorialAuthorActivity extends BaseActivity implements OnClickList
 
     // TODO: 16/9/5 获取Tablayout上面界面的网络数据
     private void getNetRequest(int id) {
+=======
+        Intent intent =getIntent();
+       String str =  intent.getStringExtra("idAuthor");
+        int id = Integer.parseInt(str);
+>>>>>>> 80326f4f49bf17c33e59ac3ac859738fa8a9ce50
         NetTool.getInstance().startRequest(API.PICTORIAL_AUTHOR_ACTYVITY_VIEWPAGER_TOP_ONE + id + API.PICTORIAL_AUTHOR_ACTYVITY_VIEWPAGER_TOP_TWO, PictorialAuthorActivityViewPagerTopBean.class,
                 new onHttpCallBack<PictorialAuthorActivityViewPagerTopBean>() {
                     @Override
                     public void onSuccess(PictorialAuthorActivityViewPagerTopBean response) {
-                        adapter.setBean(response);
-                        setReturn(response);
-                        adapter.setViewPager(viewPagerTop);
-                        viewPagerTop.setAdapter(adapter);
-
-                        Glide.with(PictorialAuthorActivity.this).load(response.getData().getAvatar_url())
-                                .bitmapTransform(new CropCircleTransformation(PictorialAuthorActivity.this)).into(imgName);
-                        tvName.setText(response.getData().getName());
-                        tvSmall.setText(response.getData().getLabel());
-                        tvContent.setText(response.getData().getConcept());
-                        tvMore.setText(response.getData().getDescription());
 
                     }
 
@@ -188,28 +170,9 @@ public class PictorialAuthorActivity extends BaseActivity implements OnClickList
 
                     }
                 });
-    }
-    // TODO: 16/9/6 滑动scrollView使Tablayout顶部悬浮 用removeView和addView方法对其进行移除和添加
-    @TargetApi(VERSION_CODES.M)
-    private void getTiltileState() {
-        scrollView.setOnScrollChangeListener(new OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                Log.d("PictorialAuthorActivity", + viewPager.getTop()-scrollY-tabLayout.getHeight()+"");
 
-                if(viewPager.getTop()-scrollY-tabLayout.getHeight()<=0){
-                    frameLayoutOne.removeView(tabLayout);
-                    horizontalscrollView.setVisibility(View.VISIBLE);
-                    imgBackTwo.setVisibility(View.VISIBLE);
-                    frameLayoutTwo.removeAllViews();
 
-                    frameLayoutTwo.addView(tabLayout);
-                }else if(viewPager.getTop()-scrollY-tabLayout.getHeight()>0){
-                    frameLayoutOne.removeAllViews();
-                    frameLayoutTwo.removeAllViews();
-                    frameLayoutOne.addView(tabLayout);
-                    horizontalscrollView.setVisibility(View.GONE);
-
+<<<<<<< HEAD
                     imgBackSmall.setVisibility(View.INVISIBLE);
 
                 }
@@ -310,6 +273,8 @@ public class PictorialAuthorActivity extends BaseActivity implements OnClickList
                 finish();
                 break;
         }
+=======
+>>>>>>> 80326f4f49bf17c33e59ac3ac859738fa8a9ce50
     }
     public static  StoreBean getResponse(){
         return response;

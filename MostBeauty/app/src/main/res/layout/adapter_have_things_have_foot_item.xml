@@ -7,11 +7,11 @@
     android:id="@+id/adapter_have_things_have_foot_item_tv"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="@string/_1"
-    android:textColor="@color/adapter_have_things_have_write"
-    android:textSize="@dimen/fifteen_sp_c"
+    android:text="1"
+    android:textColor="#A0A0A0"
+    android:textSize="15sp"
     android:gravity="center"
     android:layout_centerInParent="true"
     android:background="@drawable/shape_circle"
-        android:layout_marginTop="@dimen/twiteen"/>
+        android:layout_marginTop="20dp"/>
 </RelativeLayout>

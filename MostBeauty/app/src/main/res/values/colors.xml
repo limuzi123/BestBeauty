@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="white"> #ffffff</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
@@ -19,25 +18,5 @@
     <color name="color_four">#1ea05d</color>
     <color name="color_five">#0e0e0e</color>
     <color name="color_about">#F7F7F7</color>
-    <color name="adapter_have_things_have_ll">#121212</color>
-    <color name="adapter_have_things_have_tc">#A0A0A0 </color>
-    <color name="adapter_have_things_have_tvc">#3F3F3F </color>
-    <color name="adapter_have_things_have_tec"> #3F3F3F</color>
-    <color name="adapter_have_things_have_write">#A0A0A0 </color>
-    <color name="adapter_have_things_have_h">#1f1f1f </color>
-    <color name="adapter_have_things_have_hc">#4B4B4B </color>
-    <color name="adapter_have_things_have_item"> #1f1f1f</color>
-    <color name="adapter_have_things_have_hi"> #1f1f1f</color>
-    <color name="adapter_have_things_have_white"> #ffffff</color>
-    <color name="adapter_have_things_have_ww">#ffffff </color>
-    <color name="adapter_have_things_have_p"> #FFFCF2</color>
-    <color name="adapter_have_things_have_pop">#F7F7F7 </color>
-    <color name="adapter_have_things_have_hh"> #121212</color>
-    <color name="adapter_have_things_have_r"> #0E0E0E</color>
-    <color name="adapter_have_things_have_rr"> #2C2C2C</color>
-    <color name="adapter_have_things_have_rrr"> #FEFEFE</color>
-    <color name="adapter_have_things_have_pp"> #2C2C2C</color>
-    <color name="adapter_have_things_have_t"> #121212</color>
-    <color name="red">#ff0000</color>
 
 </resources>
