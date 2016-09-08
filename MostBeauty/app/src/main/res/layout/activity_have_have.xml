@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:orientation="vertical">
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="match_parent"
-                    android:orientation="vertical">
+                  android:orientation="vertical">
         <com.lanou3g.mostbeauty.myview.NewScrollView
             android:id="@+id/activity_have_have_scroll"
             android:layout_width="match_parent"
@@ -160,19 +160,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"/>
-                <LinearLayout android:layout_width="match_parent"
+                <LinearLayout android:id="@+id/activity_have_have_ll_paint"
+                              android:layout_width="match_parent"
                               android:layout_height="wrap_content"
                               android:layout_margin="10dp"
                               android:orientation="vertical"
-                              android:visibility="gone"
-                              android:id="@+id/activity_have_have_ll_paint">
+                              android:visibility="gone">
                     <TextView android:layout_width="wrap_content"
                               android:layout_height="wrap_content"
+                              android:layout_marginBottom="@dimen/ten_dp"
                               android:layout_marginLeft="@dimen/twenty_dp"
-                              android:text="@string/paint"
                               android:layout_marginTop="@dimen/ten_dp"
-                              android:textColor="@color/white"
-                              android:layout_marginBottom="@dimen/ten_dp"/>
+                              android:text="@string/paint"
+                              android:textColor="@color/white"/>
                     <ListView
                         android:id="@+id/activity_have_have_paint"
                         android:layout_width="match_parent"
@@ -184,14 +184,13 @@
     </LinearLayout>
 
 
-
     <LinearLayout
         android:id="@+id/activity_have_have_comment"
         android:layout_width="match_parent"
         android:layout_height="@dimen/fifty_dp"
-        android:background="@color/white"
         android:layout_gravity="bottom"
-    android:visibility="gone">
+        android:background="@color/white"
+        android:visibility="gone">
 
         <com.lanou3g.mostbeauty.myview.circleImageView
             android:layout_width="@dimen/thirty_dp"
@@ -203,7 +202,7 @@
 
             android:src="@mipmap/ic_mine_portrait"/>
 
-            android:src="@mipmap/ic_launcher"/>
+        android:src="@mipmap/ic_launcher"/>
 
         <EditText
             android:layout_width="@dimen/one_hundred_eighty_dp"
@@ -232,19 +231,14 @@
     </LinearLayout>
     <com.lanou3g.mostbeauty.myview.MyImageView
         android:id="@+id/activity_have_have_back"
-        android:visibility="gone"
-        android:layout_width="40dp" android:layout_height="40dp"
-<<<<<<< HEAD
+        android:layout_width="40dp"
+        android:layout_height="40dp" android:layout_margin="10dp"
+        android:background="@mipmap/ic_bottom_back_normal"
+        android:visibility="gone"/>
 
-    android:background="@mipmap/ic_bottom_back_normal"
-    android:layout_margin="10dp"/>
 
-=======
->>>>>>> 00ace45a434b642e47b193fce82f2b192c57bbee
-
-        android:layout_margin="10dp"/>
-        <ImageView android:layout_width="40dp" android:layout_height="40dp"
-                   android:src="@mipmap/ic_bottom_back_normal"/>
+    <ImageView android:layout_width="40dp" android:layout_height="40dp"
+               android:src="@mipmap/ic_bottom_back_normal"/>
 
 
 </FrameLayout>
