@@ -16,5 +16,9 @@
         <item name="android:windowEnterAnimation">@anim/show_pop</item>
         <item name="android:windowExitAnimation">@anim/hidden_pop</item>
     </style>
+    <style name="AppTheme.TransparentActivity" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
 
 </resources>

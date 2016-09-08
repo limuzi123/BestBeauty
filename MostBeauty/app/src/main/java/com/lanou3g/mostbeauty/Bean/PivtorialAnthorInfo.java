@@ -24,7 +24,7 @@ import java.util.List;
 public class PivtorialAnthorInfo {
     private String title;
     private Fragment fragment;
-    private static StoreBean storeBean;
+
     private static List<PivtorialAnthorInfo> infos;
 
 
@@ -47,13 +47,12 @@ public class PivtorialAnthorInfo {
         infos.add(new PivtorialAnthorInfo("作品", new PictorialProductionFragment()));
         infos.add(new PivtorialAnthorInfo("画报", new PictorialSmallFragment()));
 
-
+        if (PictorialAuthorActivity.getResponse().getData().getShops().size() != 0) {
             infos.add(new PivtorialAnthorInfo("旗舰门店", new PictorialStoreFragment()));
+        }
 
         infos.add(new PivtorialAnthorInfo("线上购买", new PictorialBuyFragment()));
         return infos;
     }
-    public static void remove(Fragment fragment){
-        infos.remove(fragment);
-    }
+
 }

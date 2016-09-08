@@ -66,18 +66,19 @@ public class AnthorPagerAdapter extends PagerAdapter implements OnPageChangeList
     public Object instantiateItem(ViewGroup container, int position) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_tips,container,false);
         ImageView imageView = (ImageView) view.findViewById(R.id.img_top);
+
         Glide.with(context).load(bean.getData().getIntroduce_images().get(position)).into(imageView);
         Log.d("AnthorPagerAdapter", "aaaaaaaa"+bean.getData().getIntroduce_images().get(position));
         container.addView(view);
 
-//        viewPager.addOnPageChangeListener(this);
+        viewPager.addOnPageChangeListener(this);
         return view;
     }
 
     @Override
     public void onPageSelected(int position) {
         for (int i = 0; i <tips.length ; i++) {
-            if(i == position % (bean.getData().getIntroduce_images().size())){
+            if(i == position){
                 tips[i].setImageResource(R.mipmap.ic_point_selected);
             }else {
                 tips[i].setImageResource(R.mipmap.ic_point_unselected);

@@ -53,7 +53,7 @@ public class PictorialFragment extends BaseFragment implements Overview.RecentsV
         } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
-
+        getNetRequest();
     }
 
     @Override
@@ -64,6 +64,10 @@ public class PictorialFragment extends BaseFragment implements Overview.RecentsV
     @Override
     public void onResume() {
         super.onResume();
+
+    }
+
+    private void getNetRequest() {
         mVisible = true;
         adapter = new PictrialFragmentAdapter(models,getContext());
         NetTool.getInstance().startRequest(API.PICTORIAL_FRAGMENT, PictorialBean.class, new onHttpCallBack<PictorialBean>() {
