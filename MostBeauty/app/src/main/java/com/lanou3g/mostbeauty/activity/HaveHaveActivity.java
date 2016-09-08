@@ -1,6 +1,5 @@
 package com.lanou3g.mostbeauty.activity;
 
-import android.animation.ArgbEvaluator;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
@@ -155,32 +154,32 @@ public class HaveHaveActivity extends BaseActivity {
             }
         });
 
-        viewPager.addOnPageChangeListener(new OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                ArgbEvaluator evaluator = new ArgbEvaluator();
-                ArgbEvaluator evaluator1 = new ArgbEvaluator();
-                int evaluate = (int) evaluator.evaluate(positionOffset,0xff8080ff,0xffff8080);
-                int evaluate1 = (int) evaluator1.evaluate(positionOffset,0xffff8080,0xff8080ff);
-                if (position%2 == 0){
-                    back.setGradient(0xff8080ff,0xffff8080);
-                    back.setGradient(evaluate,evaluate1);
-                }else {
-                    back.setGradient(0xffff8080,0xff8080ff);
-                    back.setGradient(evaluate1,evaluate);
-                }
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
+//        viewPager.addOnPageChangeListener(new OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+//                ArgbEvaluator evaluator = new ArgbEvaluator();
+//                ArgbEvaluator evaluator1 = new ArgbEvaluator();
+//                int evaluate = (int) evaluator.evaluate(positionOffset,0xff8080ff,0xffff8080);
+//                int evaluate1 = (int) evaluator1.evaluate(positionOffset,0xffff8080,0xff8080ff);
+//                if (position%2 == 0){
+////                    back.setGradient(0xff8080ff,0xffff8080);
+////                    back.setGradient(evaluate,evaluate1);
+//                }else {
+////                    back.setGradient(0xffff8080,0xff8080ff);
+////                    back.setGradient(evaluate1,evaluate);
+//                }
+//            }
+//
+//            @Override
+//            public void onPageSelected(int position) {
+//
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int state) {
+//
+//            }
+//        });
     }
 
     private void getNetData(int id) {
