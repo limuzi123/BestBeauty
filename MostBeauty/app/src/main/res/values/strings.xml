@@ -65,20 +65,7 @@
     <string name="about_me">关于我们</string>
 
 
-
-
-
-
-
-
-
-
-
-
     <string name="promptly">立即体验</string>
-
-
-
 
     <string name="_0">0</string>
     <string name="_10">/10</string>
@@ -95,6 +82,7 @@
     <string name="end">END</string>
 
 
+
     <string name="please_logn">注册</string>
     <string name="phone_number">输入手机号</string>
     <string name="password">密码</string>
@@ -104,6 +92,7 @@
     <string name="tv_anthor">作者</string>
     <string name="tv_care">+ 关注</string>
     <string name="paint">相关画报</string>
+
 
 
 </resources>

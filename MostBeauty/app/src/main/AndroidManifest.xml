@@ -92,9 +92,6 @@
         <activity android:name=".activity.pictorial.ReaderActivity"/>
 
 
-
-
-
         <activity android:name=".activity.LeadGuideActivity"/>
 
 
