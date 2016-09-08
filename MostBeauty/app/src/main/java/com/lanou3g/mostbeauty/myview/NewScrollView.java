@@ -35,7 +35,9 @@ public class NewScrollView extends ScrollView {
         return super.overScrollBy(deltaX, deltaY, scrollX, scrollY, scrollRangeX, scrollRangeY, 0, 0, isTouchEvent);
     }
     public interface ScrollViewListener{
+
         void onScrollChanged(View scrollView , int x , int y , int oldx , int oldy);
+
     }
     public void setScrollViewListener(ScrollViewListener listener){
         scrollViewListener = listener;

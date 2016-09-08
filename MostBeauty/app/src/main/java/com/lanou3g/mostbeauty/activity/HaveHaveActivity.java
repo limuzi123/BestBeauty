@@ -363,7 +363,7 @@ public class HaveHaveActivity extends BaseActivity {
     /**
      * 轮播图的Adapter
      */
-    public class ReturnAdapter extends PagerAdapter{
+    public class ReturnAdapter extends PagerAdapter {
         private HaveHaveBean bean;
         private Context context;
         //private ViewPager viewPager;

@@ -3,6 +3,7 @@
           package="com.lanou3g.mostbeauty">
 
 
+
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -28,6 +29,11 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="16" />
 
+
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+
     <!--调用手机相机以及读取系统图库的权限-->
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -41,6 +47,17 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
     <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+
 
     <application
         android:allowBackup="true"
@@ -77,7 +94,9 @@
 
 
 
+
         <activity android:name=".activity.LeadGuideActivity"/>
+
 
         <activity
             android:name=".activity.MainActivity"
@@ -105,6 +124,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+
+
+        
+
+        <activity android:name=".activity.HaveHaveActivity"/>
+
 
 
     </application>

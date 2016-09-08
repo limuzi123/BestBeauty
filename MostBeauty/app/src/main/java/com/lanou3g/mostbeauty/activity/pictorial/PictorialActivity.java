@@ -71,6 +71,8 @@ public class PictorialActivity extends BaseActivity implements OnClickListener {
     private SwipeBackLayout swipeBackLayoutTwo;
 
 
+
+
     @Override
     protected int getLayout() {
         return R.layout.activity_pictoral;
@@ -236,7 +238,6 @@ public class PictorialActivity extends BaseActivity implements OnClickListener {
                             gridAdapter.setBean(response);
                             gridView.setAdapter(gridAdapter);
                         }
-
                         if (response.getData().getComments().size() != 0) {
                             int id = response.getData().getFavor_user_num();
                             tvLike.setText(response.getData().getLike_user_num() + "");
@@ -253,6 +254,7 @@ public class PictorialActivity extends BaseActivity implements OnClickListener {
                             tvSay.setVisibility(View.GONE);
                         }
 
+
                         int id = response.getData().getFavor_user_num();
                         tvLike.setText(response.getData().getLike_user_num()+"");
                         tvSay.setText("评论(" + id + ")");
@@ -260,6 +262,7 @@ public class PictorialActivity extends BaseActivity implements OnClickListener {
                         listAdapter.setBean(response);
                         listView.setAdapter(listAdapter);
                         setListViewHeightBasedOnChildren(listView);
+
 
 
 
@@ -314,6 +317,7 @@ public class PictorialActivity extends BaseActivity implements OnClickListener {
                 break;
             case R.id.relative_layout_small:
 
+
                 Intent intentAuthor = new Intent(this, PictorialAuthorActivity.class);
                 intentAuthor.putExtra("idAuthor", str1);
 
@@ -325,6 +329,14 @@ public class PictorialActivity extends BaseActivity implements OnClickListener {
 
 
 
+
+
+                intentAuthor.putExtra("id", str);
+
+                intentAuthor.putExtra("img", img);
+                intentAuthor.putExtra("tvTitle", tvTitleStr);
+                intentAuthor.putExtra("tvSmall", tvSmallStr);
+
                 startActivity(intentAuthor);
                 break;
             case R.id.image_share:
@@ -334,6 +346,7 @@ public class PictorialActivity extends BaseActivity implements OnClickListener {
         }
 
     }
+
     private void showShare() {
         ShareSDK.initSDK(PictorialActivity.this);
 
@@ -360,7 +373,6 @@ public class PictorialActivity extends BaseActivity implements OnClickListener {
 
 // 启动分享GUI
         oks.show(PictorialActivity.this);
-
 
 
     }

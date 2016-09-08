@@ -5,6 +5,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.lanou3g.mostbeauty.R;
+
+
+import com.lanou3g.mostbeauty.activity.API;
+
 import com.lanou3g.mostbeauty.activity.pictorial.PictorialAuthorActivity;
 import com.lanou3g.mostbeauty.base.BaseFragment;
 

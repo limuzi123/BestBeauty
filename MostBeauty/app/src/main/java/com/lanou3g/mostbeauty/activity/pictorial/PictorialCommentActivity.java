@@ -68,12 +68,19 @@ public class PictorialCommentActivity extends BaseActivity implements OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.img_back:
+
                 Intent intent = new Intent(PictorialCommentActivity.this,PictorialActivity.class);
                 intent.putExtra("id",strId);
                 startActivity(intent);
                 overridePendingTransition(R.anim.exit_comment,R.anim.enter_comment);
+
+
+
+                finish();
+
                 break;
         }
+        overridePendingTransition(R.anim.exit_comment,R.anim.enter_comment);
     }
 
 

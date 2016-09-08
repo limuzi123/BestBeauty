@@ -200,7 +200,11 @@
             android:layout_marginLeft="@dimen/ten_dp"
             android:layout_marginRight="@dimen/ten_dp"
             android:scaleType="fitXY"
+
             android:src="@mipmap/ic_mine_portrait"/>
+
+            android:src="@mipmap/ic_launcher"/>
+
         <EditText
             android:layout_width="@dimen/one_hundred_eighty_dp"
             android:layout_height="@dimen/thirty_dp"
@@ -230,8 +234,10 @@
         android:id="@+id/activity_have_have_back"
         android:visibility="gone"
         android:layout_width="40dp" android:layout_height="40dp"
+
     android:background="@mipmap/ic_bottom_back_normal"
     android:layout_margin="10dp"/>
+
 
 
 

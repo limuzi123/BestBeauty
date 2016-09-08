@@ -2,6 +2,8 @@ package com.lanou3g.mostbeauty.activity.pictorial;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
 import android.os.Build.VERSION_CODES;
 import android.os.Handler;
@@ -39,12 +41,18 @@ import com.lanou3g.mostbeauty.gson.NetTool;
 import com.lanou3g.mostbeauty.gson.onHttpCallBack;
 import com.lanou3g.mostbeauty.myview.SwipeBackLayout;
 
+
+
+import java.util.ArrayList;
+
+
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * Created by dllo on 16/9/3.
  */
-public class PictorialAuthorActivity extends BaseActivity implements OnClickListener {
+
+public class PictorialAuthorActivity extends BaseActivity implements OnClickListener{
     private ViewPager viewPagerTop,viewPager;
     private TabLayout tabLayout;
     private ImageView imgName;

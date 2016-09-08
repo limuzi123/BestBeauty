@@ -27,11 +27,14 @@ import okhttp3.internal.framed.ErrorCode;
  */
 //设置页面
 public class SetActivity extends BaseActivity implements View.OnClickListener {
+
     public static final String ACTION_CHANGE = "com.lanou3g.mostbeauty.ACTION_CHANGE";
+
     private ImageView imageViewSetBack;
     private RelativeLayout relativeLayoutFeedBack, relativeLayoutSetHead;
     private RelativeLayout relativeLayoutClean, relativeLayoutGood, relativeLayoutabout, relativeLayoutExit;
     private SharedPreferences sharedQQ;
+
     private SharedPreferences.Editor editor;
     private TextView textViewClean;
 
@@ -57,12 +60,14 @@ public class SetActivity extends BaseActivity implements View.OnClickListener {
         relativeLayoutExit = (RelativeLayout) findViewById(R.id.relative_exit);
         relativeLayoutExit.setOnClickListener(this);
 
+
         textViewClean = (TextView) findViewById(R.id.text_clean);
 
     }
 
     @Override
     protected void initData() {
+     sharedQQ = getSharedPreferences("name",MODE_PRIVATE);
 
 
     }
@@ -74,6 +79,7 @@ public class SetActivity extends BaseActivity implements View.OnClickListener {
         builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+
                 //获取缓存大小
                 try {
                     String str = DataClean.getCacheSize(getCacheDir());
@@ -117,7 +123,11 @@ public class SetActivity extends BaseActivity implements View.OnClickListener {
                 startActivity(new Intent(SetActivity.this, AboutActivity.class));
                 break;
             case R.id.relative_exit:
+
                 Exit();
+
+
+
                 break;
         }
     }
@@ -134,6 +144,7 @@ public class SetActivity extends BaseActivity implements View.OnClickListener {
             Toast.makeText(this, "您的手机没有安装应用市场", Toast.LENGTH_SHORT).show();
         }
     }
+
 //退出登录方法
     private void Exit() {
         AlertDialog.Builder builders = new AlertDialog.Builder(SetActivity.this);
@@ -161,5 +172,6 @@ public class SetActivity extends BaseActivity implements View.OnClickListener {
         });
         builders.create().show();
     }
+
 }
 
