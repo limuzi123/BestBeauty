@@ -234,11 +234,17 @@
         android:id="@+id/activity_have_have_back"
         android:visibility="gone"
         android:layout_width="40dp" android:layout_height="40dp"
+<<<<<<< HEAD
 
     android:background="@mipmap/ic_bottom_back_normal"
     android:layout_margin="10dp"/>
 
+=======
+>>>>>>> 00ace45a434b642e47b193fce82f2b192c57bbee
 
+        android:layout_margin="10dp"/>
+        <ImageView android:layout_width="40dp" android:layout_height="40dp"
+                   android:src="@mipmap/ic_bottom_back_normal"/>
 
 
 </FrameLayout>
