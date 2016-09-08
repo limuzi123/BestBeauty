@@ -10,11 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"/>
-    <!--<com.rey.material.widget.TabPageIndicator-->
-        <!--android:id="@+id/haveThings_tl"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="48dp"-->
-        <!--/>-->
+
     <android.support.v4.view.ViewPager
         android:id="@+id/haveThings_vp"
         android:layout_width="match_parent"
